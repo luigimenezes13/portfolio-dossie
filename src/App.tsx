@@ -26,10 +26,18 @@ function App() {
     const fetchData = async () => {
       try {
         setLoading(true);
+        const startTime = Date.now();
+        
         const [apiData, dossiesData] = await Promise.all([
           ApiService.healthCheck(),
           DossieService.getAll() as Promise<DossiesResponse>
         ]);
+        
+        const elapsedTime = Date.now() - startTime;
+        const minimumLoadingTime = 5500;
+        const remainingTime = Math.max(0, minimumLoadingTime - elapsedTime);
+        
+        await new Promise(resolve => setTimeout(resolve, remainingTime));
         
         setApiInfo(apiData);
         setDossie(dossiesData.data?.[0] || null);
