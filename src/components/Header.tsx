@@ -11,8 +11,8 @@ export function Header({ dossie }: HeaderProps) {
     <header className="mb-12">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-4">
         <div className="relative flex-shrink-0 animate-fade-in-left">
-          <div className="relative w-48 h-48">
-            <div className="rounded-full overflow-hidden border-4 border-primary/60 shadow-2xl shadow-primary/30 w-full h-full">
+          <div className="profile-image-container">
+            <div className="profile-image">
               <img 
                 src={profileImage} 
                 alt={`Foto de ${dossie.colaborador.nome}`}
@@ -20,7 +20,7 @@ export function Header({ dossie }: HeaderProps) {
               />
             </div>
             
-            <div className="absolute -bottom-2 -right-2 w-14 h-14 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black">
+            <div className="profile-badge">
               <CheckCircle2 className="w-7 h-7 text-white" />
             </div>
           </div>

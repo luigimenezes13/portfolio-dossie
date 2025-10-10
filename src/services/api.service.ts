@@ -49,7 +49,7 @@ export class DossieService {
   }
 
   static async create(data: DossieCreateInput) {
-    return ApiService.post('/api/dossies', data as unknown as RequestData);
+    return ApiService.post('/api/dossies', data);
   }
 
   static async update(id: string, data: DossieUpdateInput) {
