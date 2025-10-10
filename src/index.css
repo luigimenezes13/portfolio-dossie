@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * ========================================
+ * PALETA MONOCROMÁTICA VERMELHA - PIFE
+ * ========================================
+ * 
+ * Baseada na identidade Netflix Red (#e50914)
+ * Desenvolvida para o Modelo de Desenvolvimento Holístico
+ * 
+ * DIMENSÕES:
+ * - P (Pessoal):     #dc2626 red-600     | Relacionamentos
+ * - I (Intelectual): #e11d48 rose-600    | Aprendizado
+ * - F (Físico):      #be123c rose-700    | Bem-estar
+ * - E (Espiritual):  #ea580c orange-600  | Propósito
+ * 
+ * ========================================
+ */
+
 @layer base {
   body {
     @apply bg-black text-white font-montserrat;
@@ -21,10 +38,48 @@
 }
 
 @layer components {
+  /* ===================
+     CONTAINER
+     =================== */
   .container-main {
     @apply max-w-5xl mx-auto px-6 py-12;
   }
   
+  /* ===================
+     SISTEMA DE CARDS
+     =================== */
+  
+  /* Card Base - Padrão geral (70% dos casos) */
+  .card-base {
+    @apply bg-gradient-to-br from-neutral-900/40 via-neutral-900/30 to-neutral-900/35 
+           border-2 border-neutral-700/40 
+           rounded-2xl p-6
+           hover:border-neutral-600/60 hover:scale-[1.02]
+           transition-all duration-300
+           backdrop-blur-sm;
+  }
+  
+  /* Card Primary - Destaque importante (20% dos casos) */
+  .card-primary {
+    @apply bg-gradient-to-br from-primary/10 to-tertiary/10
+           border-2 border-primary/40
+           rounded-2xl p-6
+           hover:border-primary/60 hover:scale-[1.02]
+           transition-all duration-300
+           hover:shadow-2xl hover:shadow-primary/15
+           backdrop-blur-sm;
+  }
+  
+  /* Card Compact - Listas e itens menores (10% dos casos) */
+  .card-compact {
+    @apply bg-gradient-to-r from-neutral-800/30 to-transparent
+           border border-neutral-700/40
+           rounded-xl p-4
+           hover:border-neutral-600/60 hover:from-neutral-800/50
+           transition-all duration-300;
+  }
+  
+  /* Section Cards - Para seções completas */
   .section-card {
     @apply bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-primary/15 transition-all duration-700 backdrop-blur-sm;
   }
@@ -33,8 +88,9 @@
     @apply bg-gradient-to-br from-primary/20 to-tertiary/20 border-2 border-primary/40 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-primary/25 transition-all duration-700 backdrop-blur-sm;
   }
   
+  /* Legacy Classes - Manter por compatibilidade temporária */
   .content-card {
-    @apply bg-black/50 border border-tertiary/20 rounded-xl p-6 hover:bg-black/70 hover:border-primary/40 transition-all duration-300 backdrop-blur-sm;
+    @apply card-compact;
   }
   
   .content-card-hover {
@@ -51,6 +107,63 @@
   
   .content-card-glow {
     @apply bg-gradient-to-br from-primary/20 to-tertiary/20 border-2 border-primary/50 hover:from-primary/30 hover:to-tertiary/30 hover:border-primary/70 animate-pulse-glow shadow-lg shadow-primary/20;
+  }
+  
+  /* ===================
+     SISTEMA DE BADGES
+     =================== */
+  
+  /* Base para todos os badges */
+  .badge-base {
+    @apply inline-flex items-center px-3 py-1 rounded-full 
+           text-xs font-bold uppercase tracking-wider
+           transition-transform duration-200 hover:scale-105;
+  }
+  
+  /* Badges de Criticidade */
+  .badge-critical {
+    @apply badge-base bg-red-600 text-white border-2 border-red-500;
+  }
+  
+  .badge-high {
+    @apply badge-base bg-orange-600 text-white border-2 border-orange-500;
+  }
+  
+  .badge-medium {
+    @apply badge-base bg-amber-600 text-white border-2 border-amber-500;
+  }
+  
+  .badge-low {
+    @apply badge-base bg-emerald-600 text-white border-2 border-emerald-500;
+  }
+  
+  /* Badge de Tecnologia */
+  .badge-tech {
+    @apply inline-flex items-center gap-1.5
+           px-3 py-1.5 rounded-lg
+           bg-neutral-700/20 border-2 border-neutral-600/50
+           text-neutral-300 text-sm font-bold uppercase
+           hover:scale-110 hover:border-neutral-500
+           transition-all duration-200;
+  }
+  
+  /* Badges de Status de Desenvolvimento */
+  .badge-completed {
+    @apply inline-flex items-center px-3 py-1 rounded-lg border 
+           text-xs font-semibold
+           text-emerald-300 bg-emerald-500/15 border-emerald-500/25;
+  }
+  
+  .badge-in-progress {
+    @apply inline-flex items-center px-3 py-1 rounded-lg border 
+           text-xs font-semibold
+           text-amber-300 bg-amber-500/15 border-amber-500/25;
+  }
+  
+  .badge-planned {
+    @apply inline-flex items-center px-3 py-1 rounded-lg border 
+           text-xs font-semibold
+           text-purple-300 bg-purple-500/15 border-purple-500/25;
   }
   
   .section-header {
@@ -217,10 +330,6 @@
 
   .tech-badge-purple {
     @apply bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 hover:border-purple-500/50 text-purple-300;
-  }
-
-  .tech-badge-blue {
-    @apply bg-blue-500/10 border border-blue-500/30 hover:bg-blue-500/20 hover:border-blue-500/50 text-blue-300;
   }
 
   .tech-badge-white {

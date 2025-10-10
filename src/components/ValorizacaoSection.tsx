@@ -33,7 +33,7 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
         
         <div className="grid md:grid-cols-2 gap-8">
           <div className="relative">
-            <div className="content-card content-card-scale-lg border-2 border-neutral-600/30 hover:border-neutral-500/50 transition-all duration-300">
+            <div className="card-base border-2 border-neutral-600/30 hover:border-neutral-500/50">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-neutral-700/50 rounded-xl flex items-center justify-center border-2 border-neutral-600/50">
                   <TrendingDown className="w-6 h-6 text-neutral-400" />
@@ -60,7 +60,7 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
               </div>
             </div>
             
-            <div className="content-card content-card-scale-lg border-2 border-primary/50 hover:border-primary/70 transition-all duration-300 relative overflow-hidden">
+            <div className="card-primary border-2 border-primary/50 hover:border-primary/70 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-tertiary/5"></div>
               
               <div className="relative z-10">
@@ -118,7 +118,7 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
         </div>
       </div>
 
-      <div className="content-card">
+      <div className="card-base">
         <h3 className="text-subtitle">
           <Building className="w-5 h-5" />
           Referência de Mercado

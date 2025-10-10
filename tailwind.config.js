@@ -6,17 +6,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#e50914',
-        secondary: '#662222',
-        tertiary: '#842A3B',
-        // Cores complementares para melhor hierarquia visual
+        // Primárias - Tom Netflix Red
+        primary: '#e50914',           // Netflix Red - Destaque principal
+        'primary-light': '#f43f5e',   // Vermelho claro para hovers
+        'primary-dark': '#be123c',    // Vermelho escuro para textos
+        secondary: '#662222',         // Vermelho escuro profundo
+        tertiary: '#842A3B',          // Borgonha
+        
+        // Acentos Quentes (SEM AZUL)
         accent: {
-          gold: '#FFD700',
-          blue: '#60A5FA',
-          green: '#10B981',
-          purple: '#A855F7',
+          orange: '#ea580c',   // Laranja energético (orange-600)
+          amber: '#f59e0b',    // Âmbar dourado (amber-500)
+          rose: '#e11d48',     // Rosa vibrante (rose-600)
+          gold: '#FFD700',     // Dourado
+          green: '#10B981',    // Verde (emerald-500)
+          purple: '#A855F7',   // Roxo (purple-500)
         },
-        // Cinzas com melhor contraste
+        
+        // Estados e Feedback (SEM AZUL)
+        success: '#10b981',    // Verde (emerald-500) - Sucesso, métricas positivas
+        warning: '#f59e0b',    // Âmbar (amber-500) - Avisos, atenção
+        error: '#ef4444',      // Vermelho (red-500) - Erros, crítico
+        info: '#8b5cf6',       // Roxo (purple-500) - Informação (SUBSTITUI AZUL)
+        
+        // Paleta Monocromática Vermelha PIFE (Pessoal, Intelectual, Físico, Espiritual)
+        pife: {
+          pessoal: '#dc2626',         // red-600 - Vermelho puro intenso
+          intelectual: '#e11d48',     // rose-600 - Rose vibrante
+          fisico: '#be123c',          // rose-700 - Rose profundo
+          espiritual: '#ea580c',      // orange-600 - Laranja quente
+          // Variações para hover e backgrounds
+          pessoalLight: '#f87171',    // red-400
+          intelectualLight: '#fb7185',// rose-400
+          fisicoLight: '#fb923c',     // orange-400
+          espiritualLight: '#fbbf24', // amber-400
+        },
+        
+        // Cinzas com melhor contraste (Escala Neutra Completa)
         neutral: {
           50: '#FAFAFA',
           100: '#F5F5F5',

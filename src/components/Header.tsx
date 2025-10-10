@@ -138,7 +138,7 @@ export function Header({ dossie }: HeaderProps) {
                             href="https://lovable.dev" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="tech-badge tech-badge-purple"
+                            className="badge-tech"
                           >
                             <img src={lovableIcon} alt="Lovable AI" className="w-3.5 h-3.5" />
                             Lovable
@@ -147,7 +147,7 @@ export function Header({ dossie }: HeaderProps) {
                             href="https://v0.dev" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="tech-badge tech-badge-white"
+                            className="badge-tech"
                           >
                             <img src={v0Icon} alt="Vercel v0" className="w-3.5 h-3.5" />
                             v0

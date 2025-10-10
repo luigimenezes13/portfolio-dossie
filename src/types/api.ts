@@ -56,6 +56,12 @@ export type AreaAtuacao =
   | 'Outro';
 
 // Dimensões de Alinhamento Cultural (baseado em desenvolvimento holístico)
+// PIFE - Acrônimo das 4 dimensões principais:
+//   P - Pessoal: Relacionamentos e networking
+//   I - Intelectual: Conhecimento e aprendizado
+//   F - Físico: Saúde e bem-estar
+//   E - Espiritual: Propósito e valores
+// + Dimensões complementares: Profissional, Financeiro, Social
 export type DimensaoCultural =
   | 'Pessoal' // Relacionamentos e networking
   | 'Intelectual' // Conhecimento e aprendizado

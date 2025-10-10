@@ -1,4 +1,4 @@
-import { TrendingUp, BarChart3, Target, Github, BookOpen, CheckCircle, Star, Award } from 'lucide-react';
+import { TrendingUp, BarChart3, Crosshair, Github, BookOpen, CheckCircle, Star, Award } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import type { Dossie, Metrica } from '../types/api';
 import PipefyIcon from '../assets/pipefy.svg';
@@ -10,34 +10,6 @@ interface AtuacaoSectionProps {
 interface MetricasPorEscopo {
   [escopo: string]: Metrica[];
 }
-
-const escopoColors = [
-  // Backend - Bege pastel elegante e sofisticado
-  'from-stone-400/20 to-amber-200/20 border-stone-400/40 hover:from-stone-400/30 hover:to-amber-200/30 hover:border-stone-400/60',
-  // Frontend - Verde vibrante para inovação (GitHub-like)
-  'from-emerald-600/20 to-teal-600/20 border-emerald-500/40 hover:from-emerald-600/30 hover:to-teal-600/30 hover:border-emerald-500/60',
-  // Help Desk - Laranja energético para automação (Pipefy-inspired)
-  'from-orange-600/20 to-amber-600/20 border-orange-500/40 hover:from-orange-600/30 hover:to-amber-600/30 hover:border-orange-500/60',
-  // Educação - Roxo sábio para aprendizado (Academic)
-  'from-violet-600/20 to-purple-600/20 border-violet-500/40 hover:from-violet-600/30 hover:to-purple-600/30 hover:border-violet-500/60',
-  // Fallback colors
-  'from-indigo-600/20 to-blue-600/20 border-indigo-500/40 hover:from-indigo-600/30 hover:to-blue-600/30 hover:border-indigo-500/60',
-  'from-rose-600/20 to-pink-600/20 border-rose-500/40 hover:from-rose-600/30 hover:to-pink-600/30 hover:border-rose-500/60',
-];
-
-const escopoTextColors = [
-  // Backend - Bege pastel para contraste
-  'text-amber-200',
-  // Frontend - Verde claro para contraste
-  'text-emerald-400',
-  // Help Desk - Laranja claro para contraste
-  'text-orange-400',
-  // Educação - Roxo claro para contraste
-  'text-violet-400',
-  // Fallback colors
-  'text-indigo-400',
-  'text-rose-400',
-];
 
 export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -121,7 +93,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
 
       <div className="mb-10">
         <h3 className="text-subtitle mb-6">
-          <Award className="w-5 h-5 text-primary" />
+          <Award className="w-5 h-5 text-neutral-400" />
           Principais Destaques
         </h3>
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
@@ -133,12 +105,12 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
             return (
               <div 
                 key={idx} 
-                className="group relative bg-gradient-to-r from-neutral-800/50 to-neutral-700/30 border border-neutral-600/30 rounded-xl p-5 hover:border-primary/40 hover:from-neutral-700/60 hover:to-neutral-600/40 transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm"
+                className="group relative card-compact hover:shadow-xl hover:shadow-neutral-700/20"
               >
                 {/* Ícone de destaque */}
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-primary/10 border border-primary/30 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-200">
-                    <IconComponent className="w-5 h-5 text-primary" />
+                  <div className="flex-shrink-0 w-10 h-10 bg-neutral-700/20 border border-neutral-600/40 rounded-lg flex items-center justify-center group-hover:bg-neutral-700/30 transition-colors duration-200">
+                    <IconComponent className="w-5 h-5 text-neutral-400" />
                   </div>
                   
                   {/* Conteúdo do destaque */}
@@ -149,15 +121,15 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                   </div>
                   
                   {/* Indicador numérico */}
-                  <div className="flex-shrink-0 w-6 h-6 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-center">
-                    <span className="text-primary text-xs font-bold">
+                  <div className="flex-shrink-0 w-6 h-6 bg-neutral-700/30 border border-neutral-600/50 rounded-full flex items-center justify-center">
+                    <span className="text-neutral-300 text-xs font-bold">
                       {idx + 1}
                     </span>
                   </div>
                 </div>
                 
                 {/* Linha de destaque sutil */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/60 via-primary/30 to-transparent rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-neutral-600/60 via-neutral-600/30 to-transparent rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             );
           })}
@@ -167,14 +139,11 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
       {escopos.length > 0 && (
         <div>
           <h3 className="text-subtitle">
-            <BarChart3 className="w-5 h-5 text-primary" />
+            <BarChart3 className="w-5 h-5 text-neutral-400" />
             Métricas de Performance por Escopo
           </h3>
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 md:grid-rows-[1fr_0.5fr_0.5fr]">
             {escopos.map((escopo, escopoIdx) => {
-            const colorClass = escopoColors[escopoIdx % escopoColors.length];
-            const textColorClass = escopoTextColors[escopoIdx % escopoTextColors.length];
-            
             // Definir classes específicas para cada card baseado no índice
             let gridClasses = '';
             if (escopoIdx === 0) {
@@ -192,27 +161,27 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
             return (
               <div 
                 key={escopo}
-                className={`bg-gradient-to-br ${colorClass} border-2 rounded-2xl p-5 transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm shadow-lg flex flex-col ${gridClasses}`}
+                className={`card-base shadow-lg flex flex-col ${gridClasses}`}
               >
                 {/* Header do Card */}
                 <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
                   <div className="flex items-center gap-3">
-                    <div className={`p-2 bg-black/30 rounded-lg`}>
+                    <div className="p-2 bg-neutral-700/30 rounded-lg">
                       {escopoIdx === 0 || escopoIdx === 1 ? (
-                        <Github className={`w-5 h-5 ${textColorClass}`} />
+                        <Github className="w-5 h-5 text-neutral-400" />
                       ) : escopoIdx === 2 ? (
-                        <img src={PipefyIcon} alt="Pipefy" className={`w-5 h-5`} style={{ filter: 'brightness(0) saturate(100%) invert(70%) sepia(100%) saturate(2000%) hue-rotate(200deg)' }} />
+                        <img src={PipefyIcon} alt="Pipefy" className="w-5 h-5 opacity-60" />
                       ) : escopoIdx === 3 ? (
-                        <BookOpen className={`w-5 h-5 ${textColorClass}`} />
+                        <BookOpen className="w-5 h-5 text-neutral-400" />
                       ) : (
-                        <Target className={`w-5 h-5 ${textColorClass}`} />
+                        <Crosshair className="w-5 h-5 text-neutral-400" />
                       )}
                     </div>
-                    <h4 className={`text-xl font-bold ${textColorClass}`}>
+                    <h4 className="text-xl font-bold text-neutral-300">
                       {escopo}
                     </h4>
                   </div>
-                  <span className={`text-xs font-bold ${textColorClass} bg-black/30 px-2.5 py-1 rounded-full`}>
+                  <span className="text-xs font-bold text-neutral-300 bg-neutral-800/50 px-2.5 py-1 rounded-full">
                     {metricasPorEscopo[escopo].length}
                   </span>
                 </div>
@@ -222,11 +191,11 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                   {metricasPorEscopo[escopo].map((metrica, idx) => (
                     <div 
                       key={idx}
-                      className="bg-black/40 rounded-xl p-4 border border-white/5 hover:bg-black/50 transition-all duration-200"
+                      className="bg-neutral-800/40 rounded-xl p-4 border border-neutral-700/20 hover:bg-neutral-800/60 transition-all duration-200"
                     >
                       {/* Valor e Atividade */}
                       <div className="flex items-baseline gap-2 mb-2">
-                        {renderMetricValue(metrica.valor, textColorClass)}
+                        {renderMetricValue(metrica.valor, 'text-neutral-300')}
                       </div>
                       <p className="text-white text-sm font-medium leading-snug mb-2">
                         {metrica.atividade}
@@ -234,7 +203,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                       
                       {/* Período */}
                       {metrica.tempo && (
-                        <div className="flex items-center gap-2 pt-2 border-t border-white/5">
+                        <div className="flex items-center gap-2 pt-2 border-t border-neutral-700/20">
                           <span className="text-xs text-neutral-400 uppercase tracking-wider">
                             Período:
                           </span>
@@ -246,7 +215,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                       
                       {/* Observação */}
                       {metrica.observacao && (
-                        <div className="flex items-start gap-2 pt-2 border-t border-white/5 mt-2">
+                        <div className="flex items-start gap-2 pt-2 border-t border-neutral-700/20 mt-2">
                           <span className="text-xs text-neutral-400 uppercase tracking-wider">
                             Obs:
                           </span>
