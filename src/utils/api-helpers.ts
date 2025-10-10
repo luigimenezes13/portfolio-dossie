@@ -19,7 +19,7 @@ export function isSuccessResponse(status: number): boolean {
   return status >= 200 && status < 300;
 }
 
-export function buildQueryString(params: Record<string, any>): string {
+export function buildQueryString(params: Record<string, string | number | boolean | null | undefined>): string {
   const query = new URLSearchParams();
   
   Object.entries(params).forEach(([key, value]) => {
@@ -72,7 +72,9 @@ export function formatDateTime(date: string | Date): string {
   });
 }
 
-export function debounce<T extends (...args: any[]) => any>(
+type AnyFunction = (...args: unknown[]) => unknown;
+
+export function debounce<T extends AnyFunction>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
