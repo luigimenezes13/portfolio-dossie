@@ -16,16 +16,16 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
     >
       <div className="section-header">
         <div className="icon-container">
-          <Briefcase className="w-6 h-6 text-primary" />
+          <Briefcase className="w-7 h-7 text-primary" />
         </div>
         <h2 className="section-title">Iniciativas Estratégicas</h2>
       </div>
 
       <div className="space-y-content-lg">
         {iniciativasEstrategicas.map((iniciativa, idx) => (
-          <div key={idx} className="content-card content-card-scale">
-            <h3 className="text-xl font-bold text-primary mb-3">{iniciativa.projeto}</h3>
-            <p className="text-description">{iniciativa.descricao}</p>
+          <div key={idx} className="content-card content-card-scale-lg">
+            <h3 className="text-2xl font-bold text-primary mb-4">{iniciativa.projeto}</h3>
+            <p className="text-neutral-200 text-lg leading-relaxed">{iniciativa.descricao}</p>
           </div>
         ))}
       </div>

@@ -9,10 +9,44 @@ export default {
         primary: '#e50914',
         secondary: '#662222',
         tertiary: '#842A3B',
+        // Cores complementares para melhor hierarquia visual
+        accent: {
+          gold: '#FFD700',
+          blue: '#60A5FA',
+          green: '#10B981',
+          purple: '#A855F7',
+        },
+        // Cinzas com melhor contraste
+        neutral: {
+          50: '#FAFAFA',
+          100: '#F5F5F5',
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+        },
       },
       fontFamily: {
         'sans': ['Montserrat', 'sans-serif'],
         'montserrat': ['Montserrat', 'sans-serif'],
+      },
+      fontSize: {
+        'display': ['4rem', { lineHeight: '1.1', fontWeight: '900' }],
+        'hero': ['3.5rem', { lineHeight: '1.1', fontWeight: '800' }],
+        'title': ['2.5rem', { lineHeight: '1.2', fontWeight: '700' }],
+        'subtitle': ['1.75rem', { lineHeight: '1.3', fontWeight: '600' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.75', fontWeight: '400' }],
+        'body': ['1rem', { lineHeight: '1.75', fontWeight: '400' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '26': '6.5rem',
+        '30': '7.5rem',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',

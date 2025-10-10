@@ -12,31 +12,31 @@ export function ObjetivoSection({ objetivo }: ObjetivoSectionProps) {
   return (
     <section 
       ref={ref}
-      className={`bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 transition-all duration-700 ${
+      className={`section-card ${
         isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
       }`}
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30">
-          <Target className="w-6 h-6 text-primary" />
+      <div className="section-header">
+        <div className="icon-container">
+          <Target className="w-7 h-7 text-primary" />
         </div>
-        <h2 className="text-2xl font-bold text-white">Objetivo da Efetivação</h2>
+        <h2 className="section-title">Objetivo da Efetivação</h2>
       </div>
       
-      <p className="text-gray-300 mb-6 leading-relaxed font-normal">{objetivo.descricao}</p>
+      <p className="text-description">{objetivo.descricao}</p>
       
-      <div className="grid md:grid-cols-3 gap-4">
-        <div className="bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:bg-black/70 hover:border-primary/30 transition-all duration-300 hover:scale-105">
-          <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wide">Cargo Proposto</p>
-          <p className="text-white font-bold text-lg">{objetivo.cargoProposto}</p>
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="content-card content-card-scale-lg">
+          <p className="text-small mb-3">Cargo Proposto</p>
+          <p className="text-white font-bold text-xl">{objetivo.cargoProposto}</p>
         </div>
-        <div className="bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:bg-black/70 hover:border-primary/30 transition-all duration-300 hover:scale-105">
-          <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wide">Modelo</p>
-          <p className="text-white font-bold text-lg">{objetivo.modeloContratacao}</p>
+        <div className="content-card content-card-scale-lg">
+          <p className="text-small mb-3">Modelo</p>
+          <p className="text-white font-bold text-xl">{objetivo.modeloContratacao}</p>
         </div>
-        <div className="bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:bg-black/70 hover:border-primary/30 transition-all duration-300 hover:scale-105">
-          <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wide">Empresa</p>
-          <p className="text-white font-bold text-lg">{objetivo.empresa}</p>
+        <div className="content-card content-card-scale-lg">
+          <p className="text-small mb-3">Empresa</p>
+          <p className="text-white font-bold text-xl">{objetivo.empresa}</p>
         </div>
       </div>
     </section>

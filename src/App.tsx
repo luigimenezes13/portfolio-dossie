@@ -67,11 +67,11 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-black via-neutral-900 to-black text-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-12">
         <Header dossie={dossie} />
 
-        <div className="space-y-8">
+        <div className="space-y-12 md:space-y-16">
           <ObjetivoSection objetivo={dossie.objetivo} />
           <TrajetoriaSection trajetoria={dossie.trajetoria} />
           <AtuacaoSection atuacaoResultados={dossie.atuacaoResultados} />

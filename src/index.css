@@ -21,21 +21,21 @@
 }
 
 @layer components {
-  /* Layout Classes */
+  /* Layout Classes - Espaçamentos aumentados para melhor hierarquia */
   .container-main {
-    @apply max-w-4xl mx-auto px-4 py-8;
+    @apply max-w-5xl mx-auto px-6 py-12;
   }
   
   .section-card {
-    @apply bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 transition-all duration-700;
+    @apply bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-primary/15 transition-all duration-700 backdrop-blur-sm;
   }
   
   .section-card-primary {
-    @apply bg-gradient-to-br from-primary/20 to-tertiary/20 border border-primary/40 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/20 transition-all duration-700;
+    @apply bg-gradient-to-br from-primary/20 to-tertiary/20 border-2 border-primary/40 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-primary/25 transition-all duration-700 backdrop-blur-sm;
   }
   
   .content-card {
-    @apply bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:bg-black/70 hover:border-primary/30 transition-all duration-300;
+    @apply bg-black/50 border border-tertiary/20 rounded-xl p-6 hover:bg-black/70 hover:border-primary/40 transition-all duration-300 backdrop-blur-sm;
   }
   
   .content-card-hover {
@@ -51,82 +51,82 @@
   }
   
   .content-card-glow {
-    @apply bg-gradient-to-br from-primary/20 to-tertiary/20 border border-primary/40 hover:from-primary/30 hover:to-tertiary/30 hover:border-primary/60 animate-pulse-glow;
+    @apply bg-gradient-to-br from-primary/20 to-tertiary/20 border-2 border-primary/50 hover:from-primary/30 hover:to-tertiary/30 hover:border-primary/70 animate-pulse-glow shadow-lg shadow-primary/20;
   }
   
-  /* Header Classes */
+  /* Header Classes - Tamanhos aumentados para melhor hierarquia */
   .section-header {
-    @apply flex items-center gap-3 mb-6;
+    @apply flex items-center gap-4 mb-8;
   }
   
   .icon-container {
-    @apply w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30;
+    @apply w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center border-2 border-primary/30 shadow-lg shadow-primary/10;
   }
   
   .section-title {
-    @apply text-2xl font-bold text-white;
+    @apply text-3xl md:text-4xl font-bold text-white tracking-tight;
   }
   
   .section-title-large {
-    @apply text-3xl font-bold text-white mb-4;
+    @apply text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight;
   }
   
-  /* Text Classes */
+  /* Text Classes - Melhor legibilidade e contraste */
   .text-description {
-    @apply text-gray-300 mb-6 leading-relaxed font-normal;
+    @apply text-neutral-200 mb-8 leading-relaxed text-lg font-normal;
   }
   
   .text-description-large {
-    @apply text-gray-200 leading-relaxed text-lg font-normal;
+    @apply text-neutral-100 leading-relaxed text-xl font-normal;
   }
   
   .text-subtitle {
-    @apply text-sm font-semibold text-gray-400 mb-3 flex items-center gap-2 uppercase tracking-wide;
+    @apply text-sm font-semibold text-neutral-300 mb-4 flex items-center gap-2 uppercase tracking-wider;
   }
   
   .text-highlight {
-    @apply text-primary font-bold;
+    @apply text-primary font-bold text-lg;
   }
   
   .text-value {
-    @apply text-white font-semibold;
+    @apply text-white font-semibold text-lg;
   }
   
   .text-value-large {
-    @apply text-3xl font-bold;
+    @apply text-4xl md:text-5xl font-bold;
   }
   
   .text-primary-value {
-    @apply text-primary text-3xl font-bold mb-1;
+    @apply text-primary text-4xl md:text-5xl font-bold mb-2;
   }
   
   .text-small {
-    @apply text-xs text-gray-400 uppercase tracking-wide;
+    @apply text-xs text-neutral-400 uppercase tracking-wider font-medium;
   }
   
   .text-small-gray {
-    @apply text-xs text-gray-500 font-light;
+    @apply text-sm text-neutral-400 font-normal;
   }
   
   .text-muted {
-    @apply text-gray-400 text-sm font-light;
+    @apply text-neutral-300 text-base font-normal;
   }
   
-  /* Profile Classes */
+  /* Profile Classes - Tamanhos aumentados e melhor destaque */
   .profile-image-container {
-    @apply relative w-48 h-48;
+    @apply relative w-56 h-56 md:w-64 md:h-64;
   }
   
   .profile-image {
-    @apply rounded-full overflow-hidden border-4 border-primary/60 shadow-2xl shadow-primary/30 w-full h-full;
+    @apply rounded-full overflow-hidden border-4 border-primary/70 shadow-2xl shadow-primary/40 w-full h-full ring-4 ring-primary/20;
   }
   
   .profile-badge {
-    @apply absolute -bottom-2 -right-2 w-14 h-14 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black;
+    @apply absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black shadow-xl shadow-primary/50;
   }
   
   .profile-badge-large {
-    @apply absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black;
+    @apply absolute -bottom-3 -right-3 w-20 h-20 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black shadow-xl shadow-primary/50;
   }
   
   /* Animation Classes */
@@ -138,26 +138,26 @@
     @apply animate-fade-in-up;
   }
   
-  /* Grid Classes */
+  /* Grid Classes - Espaçamentos maiores */
   .grid-responsive {
-    @apply grid md:grid-cols-2 gap-6;
+    @apply grid md:grid-cols-2 gap-8;
   }
   
   .grid-responsive-3 {
-    @apply grid grid-cols-3 gap-4;
+    @apply grid grid-cols-3 gap-6;
   }
   
-  /* Spacing Classes */
+  /* Spacing Classes - Espaçamentos aumentados */
   .space-y-content {
-    @apply space-y-3;
-  }
-  
-  .space-y-content-lg {
     @apply space-y-4;
   }
   
-  .space-y-section {
+  .space-y-content-lg {
     @apply space-y-6;
+  }
+  
+  .space-y-section {
+    @apply space-y-10;
   }
   
   /* Button Classes */
