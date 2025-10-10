@@ -1,4 +1,21 @@
 import { useEffect, useState } from 'react';
+import { 
+  Globe, 
+  XCircle, 
+  CheckCircle2, 
+  Link, 
+  Zap, 
+  Atom, 
+  BookOpen, 
+  Palette, 
+  Radio, 
+  FolderOpen, 
+  Settings, 
+  FileText, 
+  Wrench, 
+  Code, 
+  Heart 
+} from 'lucide-react';
 import { ApiService } from './services/api.service';
 import type { ApiResponse } from './types/api';
 
@@ -45,7 +62,7 @@ function App() {
           <div className="bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-2xl p-8 backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30">
-                <span className="text-2xl">🌐</span>
+                <Globe className="w-6 h-6 text-primary" />
               </div>
               <h2 className="text-2xl font-bold text-white">Status da API</h2>
             </div>
@@ -63,8 +80,8 @@ function App() {
             {error && (
               <div className="bg-red-950/50 border border-red-500/50 rounded-xl p-6">
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl">❌</span>
-                  <div>
+                  <XCircle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+      <div>
                     <p className="font-bold text-red-400 mb-2">Erro de Conexão</p>
                     <p className="text-red-300 text-sm">{error}</p>
                   </div>
@@ -75,7 +92,7 @@ function App() {
             {!loading && !error && apiInfo && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3 bg-green-950/30 border border-green-500/30 rounded-xl p-4">
-                  <span className="text-2xl">✅</span>
+                  <CheckCircle2 className="w-6 h-6 text-green-400" />
                   <span className="font-semibold text-green-400">Conectado com Sucesso</span>
                 </div>
 
@@ -111,14 +128,14 @@ function App() {
                         className="text-primary hover:text-tertiary underline font-mono text-sm transition-colors"
                       >
                         {apiInfo.docs}
-                      </a>
-                    </div>
+        </a>
+      </div>
                   )}
                 </div>
 
                 <div className="mt-6 bg-primary/10 border border-primary/30 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-primary font-bold">🔗</span>
+                    <Link className="w-4 h-4 text-primary" />
                     <span className="text-gray-400 text-sm font-medium">Endpoint Base</span>
                   </div>
                   <code className="text-primary font-mono text-sm break-all">
@@ -133,7 +150,7 @@ function App() {
             <div className="bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-2xl p-8 backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30">
-                  <span className="text-2xl">⚡</span>
+                  <Zap className="w-6 h-6 text-primary" />
                 </div>
                 <h2 className="text-2xl font-bold text-white">Stack Tecnológica</h2>
               </div>
@@ -141,8 +158,8 @@ function App() {
               <div className="space-y-4">
                 <div className="group hover:bg-tertiary/10 border border-transparent hover:border-tertiary/30 rounded-xl p-4 transition-all cursor-default">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center text-xl">
-                      ⚛️
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center">
+                      <Atom className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-white">React 19</h3>
@@ -153,8 +170,8 @@ function App() {
 
                 <div className="group hover:bg-tertiary/10 border border-transparent hover:border-tertiary/30 rounded-xl p-4 transition-all cursor-default">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center text-xl">
-                      📘
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center">
+                      <BookOpen className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-white">TypeScript</h3>
@@ -165,8 +182,8 @@ function App() {
 
                 <div className="group hover:bg-tertiary/10 border border-transparent hover:border-tertiary/30 rounded-xl p-4 transition-all cursor-default">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center text-xl">
-                      🎨
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center">
+                      <Palette className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-white">TailwindCSS</h3>
@@ -177,8 +194,8 @@ function App() {
 
                 <div className="group hover:bg-tertiary/10 border border-transparent hover:border-tertiary/30 rounded-xl p-4 transition-all cursor-default">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center text-xl">
-                      📡
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center">
+                      <Radio className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-white">Axios</h3>
@@ -189,8 +206,8 @@ function App() {
 
                 <div className="group hover:bg-tertiary/10 border border-transparent hover:border-tertiary/30 rounded-xl p-4 transition-all cursor-default">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center text-xl">
-                      ⚡
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-tertiary rounded-lg flex items-center justify-center">
+                      <Zap className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-white">Vite</h3>
@@ -206,7 +223,7 @@ function App() {
         <div className="bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-2xl p-8 backdrop-blur-sm">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30">
-              <span className="text-2xl">📂</span>
+              <FolderOpen className="w-6 h-6 text-primary" />
             </div>
             <h2 className="text-2xl font-bold text-white">Arquitetura do Projeto</h2>
           </div>
@@ -214,7 +231,7 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-primary text-xl">⚙️</span>
+                <Settings className="w-5 h-5 text-primary" />
                 <span className="font-mono text-xs text-gray-500">config/</span>
               </div>
               <h3 className="font-bold text-white text-sm mb-1">api.ts</h3>
@@ -223,7 +240,7 @@ function App() {
 
             <div className="bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-primary text-xl">📝</span>
+                <FileText className="w-5 h-5 text-primary" />
                 <span className="font-mono text-xs text-gray-500">types/</span>
               </div>
               <h3 className="font-bold text-white text-sm mb-1">api.ts</h3>
@@ -232,7 +249,7 @@ function App() {
 
             <div className="bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-primary text-xl">🔧</span>
+                <Wrench className="w-5 h-5 text-primary" />
                 <span className="font-mono text-xs text-gray-500">services/</span>
               </div>
               <h3 className="font-bold text-white text-sm mb-1">api.service.ts</h3>
@@ -241,7 +258,7 @@ function App() {
 
             <div className="bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-primary text-xl">🎣</span>
+                <Code className="w-5 h-5 text-primary" />
                 <span className="font-mono text-xs text-gray-500">hooks/</span>
               </div>
               <h3 className="font-bold text-white text-sm mb-1">useApi.ts</h3>
@@ -252,10 +269,10 @@ function App() {
 
         <footer className="mt-16 text-center">
           <div className="inline-block bg-gradient-to-r from-secondary/20 via-tertiary/20 to-secondary/20 border border-tertiary/20 rounded-full px-8 py-4">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm flex items-center justify-center gap-2">
               Desenvolvido com{' '}
-              <span className="text-primary">❤</span>{' '}
-              usando React + TypeScript + Tailwind
+              <Heart className="w-4 h-4 text-primary fill-primary" />
+              {' '}usando React + TypeScript + Tailwind
             </p>
           </div>
         </footer>
