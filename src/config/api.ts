@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { environment } from './environment';
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://dossie-backend.vercel.app',
+  baseURL: environment.apiUrl,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
