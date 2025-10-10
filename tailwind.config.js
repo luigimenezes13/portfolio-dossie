@@ -6,14 +6,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primárias - Tom Netflix Red
-        primary: '#e50914',           // Netflix Red - Destaque principal
-        'primary-light': '#f43f5e',   // Vermelho claro para hovers
-        'primary-dark': '#be123c',    // Vermelho escuro para textos
-        secondary: '#662222',         // Vermelho escuro profundo
-        tertiary: '#842A3B',          // Borgonha
+        // Primárias - Azul Profissional (Confiança e Tecnologia)
+        primary: '#2563eb',           // blue-600 - Elementos principais
+        'primary-light': '#3b82f6',   // blue-500 - Hovers e estados ativos
+        'primary-dark': '#1d4ed8',    // blue-700 - Textos importantes
+        secondary: '#059669',         // emerald-600 - Métricas positivas
+        'secondary-light': '#10b981', // emerald-500 - Estados de sucesso
+        'secondary-dark': '#047857',  // emerald-700 - Textos de destaque
+        tertiary: '#ea580c',          // orange-600 - Elementos de atenção
+        'tertiary-light': '#fb923c',  // orange-400 - Hovers terciários
+        'tertiary-dark': '#c2410c',   // orange-700 - Textos de alerta
         
-        // Acentos Quentes (SEM AZUL)
+        // Acentos Balanceados
         accent: {
           orange: '#ea580c',   // Laranja energético (orange-600)
           amber: '#f59e0b',    // Âmbar dourado (amber-500)
@@ -23,11 +27,11 @@ export default {
           purple: '#A855F7',   // Roxo (purple-500)
         },
         
-        // Estados e Feedback (SEM AZUL)
-        success: '#10b981',    // Verde (emerald-500) - Sucesso, métricas positivas
-        warning: '#f59e0b',    // Âmbar (amber-500) - Avisos, atenção
-        error: '#ef4444',      // Vermelho (red-500) - Erros, crítico
-        info: '#8b5cf6',       // Roxo (purple-500) - Informação (SUBSTITUI AZUL)
+        // Estados e Feedback
+        success: '#10b981',    // Verde (emerald-500) - Sucessos, conclusões
+        warning: '#f59e0b',    // Âmbar (amber-500) - Avisos, pendências
+        error: '#ef4444',      // Vermelho (red-500) - Erros, críticos
+        info: '#3b82f6',       // Azul (blue-500) - Informações
         
         // Paleta Monocromática Vermelha PIFE (Pessoal, Intelectual, Físico, Espiritual)
         pife: {
@@ -114,8 +118,8 @@ export default {
           '100%': { transform: 'translateY(0)' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(191, 9, 47, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(191, 9, 47, 0.6)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(37, 99, 235, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(37, 99, 235, 0.6)' },
         },
       },
     },

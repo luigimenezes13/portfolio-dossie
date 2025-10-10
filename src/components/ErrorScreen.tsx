@@ -13,7 +13,7 @@ export function ErrorScreen({ error }: ErrorScreenProps) {
             <div className="absolute inset-0 bg-error/20 blur-3xl rounded-full"></div>
             <XCircle className="w-20 h-20 text-error mx-auto animate-pulse relative drop-shadow-2xl group-hover:scale-110 transition-transform duration-300" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-error via-red-400 to-error bg-clip-text text-transparent mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-error via-error to-error bg-clip-text text-transparent mb-4">
             Erro ao Carregar
           </h2>
           <p className="text-error text-lg font-normal px-4">{error}</p>

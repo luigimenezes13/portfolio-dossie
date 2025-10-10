@@ -33,7 +33,7 @@ export function Footer({ apiInfo, dossie }: FooterProps) {
         <div className="flex items-center gap-6">
           <span className="hover:text-neutral-200 transition-colors duration-300">Atualizado: {new Date(dossie.updatedAt).toLocaleDateString('pt-BR')}</span>
           <span>•</span>
-          <span className="text-neutral-500 font-semibold bg-gradient-to-r from-primary/10 to-tertiary/10 px-3 py-1 rounded-md border border-primary/20 hover:border-primary/40 transition-all duration-300">Dossiê System</span>
+          <span className="text-neutral-500 font-semibold bg-gradient-to-r from-primary/10 to-secondary/10 px-3 py-1 rounded-md border border-primary/20 hover:border-primary/40 transition-all duration-300">Dossiê System</span>
         </div>
       </div>
     </footer>

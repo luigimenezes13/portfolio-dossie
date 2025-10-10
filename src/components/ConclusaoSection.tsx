@@ -15,10 +15,10 @@ export function ConclusaoSection({ conclusao }: ConclusaoSectionProps) {
     >
       {/* Header com ícone */}
       <div className="section-header mb-8">
-        <div className="icon-container bg-gradient-to-br from-success/20 to-accent-green/20 border-success/50 shadow-lg shadow-success/20">
-          <CheckCircle className="w-7 h-7 text-success drop-shadow-lg" />
+        <div className="icon-container bg-gradient-to-br from-secondary/20 to-secondary-light/20 border-secondary/50 shadow-lg shadow-secondary/20">
+          <CheckCircle className="w-7 h-7 text-secondary drop-shadow-lg" />
         </div>
-        <h2 className="section-title bg-gradient-to-r from-white via-success to-white bg-clip-text text-transparent">Conclusão</h2>
+        <h2 className="section-title bg-gradient-to-r from-white via-secondary to-white bg-clip-text text-transparent">Conclusão</h2>
       </div>
 
       {/* Card principal de conclusão */}
@@ -26,11 +26,11 @@ export function ConclusaoSection({ conclusao }: ConclusaoSectionProps) {
         
         {/* Ícone decorativo no canto */}
         <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-          <Sparkles className="w-16 h-16 text-accent-gold animate-pulse" />
+          <Sparkles className="w-16 h-16 text-secondary animate-pulse" />
         </div>
 
         {/* Barra decorativa superior */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent-rose to-accent-orange rounded-t-2xl"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-tertiary rounded-t-2xl"></div>
 
         {/* Conteúdo da conclusão */}
         <div className="relative z-10">
@@ -40,10 +40,10 @@ export function ConclusaoSection({ conclusao }: ConclusaoSectionProps) {
         </div>
 
         {/* Barra decorativa inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/40 to-accent-orange/60 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/40 to-tertiary/60 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
         {/* Efeito de brilho no hover */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/10 to-accent-orange/10 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-2xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/10 to-tertiary/10 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-2xl"></div>
       </div>
     </section>
   );

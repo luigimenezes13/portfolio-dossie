@@ -32,18 +32,18 @@ export const BADGE_CLASSES = {
   base: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-transform duration-200',
   
   // Badges de criticidade
-  critical: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-600 text-white border-2 border-red-500',
-  high: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-600 text-white border-2 border-orange-500',
-  medium: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-600 text-white border-2 border-amber-500',
-  low: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-600 text-white border-2 border-emerald-500',
+  critical: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-error text-white border-2 border-error/80',
+  high: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-tertiary text-white border-2 border-tertiary/80',
+  medium: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-warning text-white border-2 border-warning/80',
+  low: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-success text-white border-2 border-success/80',
   
   // Badge de tecnologia
   tech: 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-700/20 border-2 border-neutral-600/50 text-neutral-300 text-sm font-bold uppercase hover:scale-110 hover:border-neutral-500 transition-all duration-200',
   
   // Badge de status de desenvolvimento
-  completed: 'inline-flex items-center px-3 py-1 rounded-lg border text-xs font-semibold text-emerald-300 bg-emerald-500/15 border-emerald-500/25',
-  inProgress: 'inline-flex items-center px-3 py-1 rounded-lg border text-xs font-semibold text-amber-300 bg-amber-500/15 border-amber-500/25',
-  planned: 'inline-flex items-center px-3 py-1 rounded-lg border text-xs font-semibold text-purple-300 bg-purple-500/15 border-purple-500/25',
+  completed: 'inline-flex items-center px-3 py-1 rounded-lg border text-xs font-semibold text-secondary bg-secondary/15 border-secondary/25',
+  inProgress: 'inline-flex items-center px-3 py-1 rounded-lg border text-xs font-semibold text-warning bg-warning/15 border-warning/25',
+  planned: 'inline-flex items-center px-3 py-1 rounded-lg border text-xs font-semibold text-info bg-info/15 border-info/25',
 } as const;
 
 /**
@@ -194,20 +194,20 @@ export const CRITICALITY_CONFIG = {
 export const STATUS_CONFIG = {
   'Concluído': {
     badge: BADGE_CLASSES.completed,
-    color: 'text-emerald-300',
-    bgColor: 'bg-emerald-500',
+    color: 'text-secondary',
+    bgColor: 'bg-secondary',
     progress: 100,
   },
   'Em andamento': {
     badge: BADGE_CLASSES.inProgress,
-    color: 'text-amber-300',
-    bgColor: 'bg-amber-500',
+    color: 'text-warning',
+    bgColor: 'bg-warning',
     progress: 66,
   },
   'Planejado': {
     badge: BADGE_CLASSES.planned,
-    color: 'text-purple-300',
-    bgColor: 'bg-purple-500',
+    color: 'text-info',
+    bgColor: 'bg-info',
     progress: 33,
   },
 } as const;

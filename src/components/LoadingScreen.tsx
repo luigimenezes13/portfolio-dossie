@@ -34,7 +34,7 @@ export function LoadingScreen() {
           </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold animate-fade-in-up px-4" style={{ animationDelay: '0.3s', animationFillMode: 'backwards' }}>
-            <span className="bg-gradient-to-r from-primary via-accent-rose to-accent-orange bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-primary-light to-secondary bg-clip-text text-transparent">
               Bem-vindo ao meu dossiê
             </span>
           </h1>

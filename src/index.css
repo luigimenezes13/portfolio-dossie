@@ -370,7 +370,7 @@
   }
 
   .tech-badge-purple {
-    @apply bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 hover:border-purple-500/50 text-purple-300;
+    @apply bg-info/10 border border-info/30 hover:bg-info/20 hover:border-info/50 text-info;
   }
 
   .tech-badge-white {
@@ -387,11 +387,11 @@
   @keyframes pulse-badge {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+      box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
     }
     50% {
       transform: scale(1.05);
-      box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+      box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
     }
   }
   
@@ -421,7 +421,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(99, 102, 241, 0.3) 50%,
+      rgba(37, 99, 235, 0.3) 50%,
       transparent 100%
     );
     background-size: 200% 100%;
@@ -433,7 +433,7 @@
   }
   
   .notification-dot {
-    @apply absolute -top-1 -right-1 w-3 h-3 bg-success rounded-full border-2 border-black shadow-lg shadow-success/50;
+    @apply absolute -top-1 -right-1 w-3 h-3 bg-secondary rounded-full border-2 border-black shadow-lg shadow-secondary/50;
     animation: pulse-badge 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }

@@ -83,17 +83,17 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
       className={`section-card ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
       <div className="section-header">
-        <div className="icon-container bg-gradient-to-br from-success/20 to-accent-green/20 border-success/50 shadow-lg shadow-success/20">
-          <TrendingUp className="w-7 h-7 text-success drop-shadow-lg" />
+        <div className="icon-container bg-gradient-to-br from-secondary/20 to-secondary-light/20 border-secondary/50 shadow-lg shadow-secondary/20">
+          <TrendingUp className="w-7 h-7 text-secondary drop-shadow-lg" />
         </div>
-        <h2 className="section-title bg-gradient-to-r from-white via-success to-white bg-clip-text text-transparent">Atuação e Resultados</h2>
+        <h2 className="section-title bg-gradient-to-r from-white via-secondary to-white bg-clip-text text-transparent">Atuação e Resultados</h2>
       </div>
 
       <p className="text-description">{atuacaoResultados.descricao}</p>
 
       <div className="mb-10">
         <h3 className="text-subtitle mb-6">
-          <Award className="w-5 h-5 text-accent-gold" />
+          <Award className="w-5 h-5 text-secondary" />
           Principais Destaques
         </h3>
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
@@ -105,12 +105,12 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
             return (
               <div 
                 key={idx} 
-                className="group relative card-compact hover:shadow-xl hover:shadow-success/10 hover:border-success/20"
+                className="group relative card-compact hover:shadow-xl hover:shadow-secondary/10 hover:border-secondary/20"
               >
                 {/* Ícone de destaque */}
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-success/10 border border-success/30 rounded-lg flex items-center justify-center group-hover:bg-success/20 group-hover:scale-110 transition-all duration-300">
-                    <IconComponent className="w-5 h-5 text-success" />
+                  <div className="flex-shrink-0 w-10 h-10 bg-secondary/10 border border-secondary/30 rounded-lg flex items-center justify-center group-hover:bg-secondary/20 group-hover:scale-110 transition-all duration-300">
+                    <IconComponent className="w-5 h-5 text-secondary" />
                   </div>
                   
                   {/* Conteúdo do destaque */}
@@ -139,7 +139,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
       {escopos.length > 0 && (
         <div>
           <h3 className="text-subtitle">
-            <BarChart3 className="w-5 h-5 text-info" />
+            <BarChart3 className="w-5 h-5 text-primary" />
             Métricas de Performance por Escopo
           </h3>
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 md:grid-rows-[1fr_0.5fr_0.5fr]">
@@ -167,39 +167,39 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                 <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
                   <div className="flex items-center gap-3">
                     <div className={`p-2 rounded-lg ${
-                      escopoIdx === 0 ? 'bg-accent-rose/15 border border-accent-rose/30' :
-                      escopoIdx === 1 ? 'bg-info/15 border border-info/30' :
-                      escopoIdx === 2 ? 'bg-accent-amber/15 border border-accent-amber/30' :
-                      escopoIdx === 3 ? 'bg-accent-orange/15 border border-accent-orange/30' :
+                      escopoIdx === 0 ? 'bg-primary/15 border border-primary/30' :
+                      escopoIdx === 1 ? 'bg-primary-light/15 border border-primary-light/30' :
+                      escopoIdx === 2 ? 'bg-tertiary/15 border border-tertiary/30' :
+                      escopoIdx === 3 ? 'bg-secondary/15 border border-secondary/30' :
                       'bg-neutral-700/30'
                     }`}>
                       {escopoIdx === 0 ? (
-                        <Github className="w-5 h-5 text-accent-rose" />
+                        <Github className="w-5 h-5 text-primary" />
                       ) : escopoIdx === 1 ? (
-                        <Github className="w-5 h-5 text-info" />
+                        <Github className="w-5 h-5 text-primary-light" />
                       ) : escopoIdx === 2 ? (
                         <img src={PipefyIcon} alt="Pipefy" className="w-5 h-5 opacity-80 brightness-125" />
                       ) : escopoIdx === 3 ? (
-                        <BookOpen className="w-5 h-5 text-accent-orange" />
+                        <BookOpen className="w-5 h-5 text-secondary" />
                       ) : (
-                        <Crosshair className="w-5 h-5 text-accent-green" />
+                        <Crosshair className="w-5 h-5 text-tertiary" />
                       )}
                     </div>
                     <h4 className={`text-xl font-bold ${
-                      escopoIdx === 0 ? 'text-accent-rose' :
-                      escopoIdx === 1 ? 'text-info' :
-                      escopoIdx === 2 ? 'text-accent-amber' :
-                      escopoIdx === 3 ? 'text-accent-orange' :
+                      escopoIdx === 0 ? 'text-primary' :
+                      escopoIdx === 1 ? 'text-primary-light' :
+                      escopoIdx === 2 ? 'text-tertiary' :
+                      escopoIdx === 3 ? 'text-secondary' :
                       'text-neutral-300'
                     }`}>
                       {escopo}
                     </h4>
                   </div>
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
-                    escopoIdx === 0 ? 'text-accent-rose bg-accent-rose/20 border border-accent-rose/30' :
-                    escopoIdx === 1 ? 'text-info bg-info/20 border border-info/30' :
-                    escopoIdx === 2 ? 'text-accent-amber bg-accent-amber/20 border border-accent-amber/30' :
-                    escopoIdx === 3 ? 'text-accent-orange bg-accent-orange/20 border border-accent-orange/30' :
+                    escopoIdx === 0 ? 'text-primary bg-primary/20 border border-primary/30' :
+                    escopoIdx === 1 ? 'text-primary-light bg-primary-light/20 border border-primary-light/30' :
+                    escopoIdx === 2 ? 'text-tertiary bg-tertiary/20 border border-tertiary/30' :
+                    escopoIdx === 3 ? 'text-secondary bg-secondary/20 border border-secondary/30' :
                     'text-neutral-300 bg-neutral-800/50'
                   }`}>
                     {metricasPorEscopo[escopo].length}
@@ -224,7 +224,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                       {/* Período */}
                       {metrica.tempo && (
                         <div className="flex items-center gap-2 pt-2 border-t border-neutral-700/20">
-                          <span className="text-xs text-info uppercase tracking-wider font-bold">
+                          <span className="text-xs text-primary uppercase tracking-wider font-bold">
                             Período:
                           </span>
                           <span className="text-xs text-neutral-100 font-semibold">
@@ -236,7 +236,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                       {/* Observação */}
                       {metrica.observacao && (
                         <div className="flex items-start gap-2 pt-2 border-t border-neutral-700/20 mt-2">
-                          <span className="text-xs text-accent-amber uppercase tracking-wider font-bold">
+                          <span className="text-xs text-tertiary uppercase tracking-wider font-bold">
                             Obs:
                           </span>
                           <span className="text-xs text-neutral-200">

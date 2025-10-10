@@ -10,10 +10,10 @@ interface TrajetoriaSectionProps {
 const getDesenvolvimentoInfo = (tipo: string) => {
   // Configuração uniforme para todos os tipos
   const uniformConfig = {
-    gradient: 'from-neutral-900/40 via-neutral-900/30 to-neutral-900/35',
-    borderColor: 'border-neutral-700/40',
-    iconBg: 'bg-neutral-700/20',
-    iconColor: 'text-neutral-400',
+    gradient: 'from-primary/10 via-neutral-900/30 to-secondary/10',
+    borderColor: 'border-primary/30',
+    iconBg: 'bg-primary/20',
+    iconColor: 'text-primary',
       statusColors: {
         'Concluído': 'status-completed',
         'Em andamento': 'status-in-progress',
@@ -77,12 +77,12 @@ const getDesenvolvimentoInfo = (tipo: string) => {
 const getCaracteristicaInfo = (caracteristica: string) => {
   // Configuração uniforme para todas as características
   const uniformConfig = {
-    gradient: 'from-neutral-900/40 via-neutral-900/30 to-neutral-900/35',
-    borderColor: 'border-neutral-700/40',
-    iconBg: 'bg-neutral-700/20',
+    gradient: 'from-secondary/10 via-neutral-900/30 to-tertiary/10',
+    borderColor: 'border-secondary/30',
+    iconBg: 'bg-secondary/20',
     textColor: 'group-hover:text-neutral-300',
-    glowColor: 'group-hover:shadow-neutral-700/20',
-    iconColor: 'text-neutral-400'
+    glowColor: 'group-hover:shadow-secondary/20',
+    iconColor: 'text-secondary'
   };
 
   const mapping: Record<string, { 
@@ -213,11 +213,11 @@ const extractKeywords = (text: string): { description: string; keywords: string[
 const getAreaInfo = (area: string) => {
   // Configuração uniforme para todas as áreas
   const uniformConfig = {
-    gradient: 'from-neutral-900/40 via-neutral-900/30 to-neutral-900/35',
-    borderGradient: 'border-neutral-700/40',
-    glowColor: 'group-hover:shadow-neutral-700/20',
-    iconBg: 'bg-neutral-700/20',
-    iconBorder: 'border-neutral-600/40'
+    gradient: 'from-primary/10 via-neutral-900/30 to-secondary/10',
+    borderGradient: 'border-primary/30',
+    glowColor: 'group-hover:shadow-primary/20',
+    iconBg: 'bg-primary/20',
+    iconBorder: 'border-primary/40'
   };
 
   const mapping: Record<string, { 
@@ -255,41 +255,41 @@ const getDimensaoInfo = (dimensao: string) => {
       icon: Users, 
       letter: 'P', 
       description: 'Relacionamentos e networking',
-      color: 'text-pife-pessoal',
-      colorLight: 'text-pife-pessoalLight',
-      bgColor: 'bg-pife-pessoal/15',
-      borderColor: 'border-pife-pessoal/40',
-      glowColor: 'shadow-pife-pessoal/20'
+      color: 'text-primary',
+      colorLight: 'text-primary-light',
+      bgColor: 'bg-primary/15',
+      borderColor: 'border-primary/40',
+      glowColor: 'shadow-primary/20'
     },
     'Intelectual': { 
       icon: Brain, 
       letter: 'I', 
       description: 'Conhecimento e aprendizado',
-      color: 'text-pife-intelectual',
-      colorLight: 'text-pife-intelectualLight',
-      bgColor: 'bg-pife-intelectual/15',
-      borderColor: 'border-pife-intelectual/40',
-      glowColor: 'shadow-pife-intelectual/20'
+      color: 'text-secondary',
+      colorLight: 'text-secondary-light',
+      bgColor: 'bg-secondary/15',
+      borderColor: 'border-secondary/40',
+      glowColor: 'shadow-secondary/20'
     },
     'Físico': { 
       icon: HeartPulse, 
       letter: 'F', 
       description: 'Saúde e bem-estar',
-      color: 'text-pife-fisico',
-      colorLight: 'text-pife-fisicoLight',
-      bgColor: 'bg-pife-fisico/15',
-      borderColor: 'border-pife-fisico/40',
-      glowColor: 'shadow-pife-fisico/20'
+      color: 'text-tertiary',
+      colorLight: 'text-tertiary-light',
+      bgColor: 'bg-tertiary/15',
+      borderColor: 'border-tertiary/40',
+      glowColor: 'shadow-tertiary/20'
     },
     'Espiritual': { 
       icon: Sparkles, 
       letter: 'E', 
       description: 'Propósito e valores',
-      color: 'text-pife-espiritual',
-      colorLight: 'text-pife-espiritualLight',
-      bgColor: 'bg-pife-espiritual/15',
-      borderColor: 'border-pife-espiritual/40',
-      glowColor: 'shadow-pife-espiritual/20'
+      color: 'text-info',
+      colorLight: 'text-info',
+      bgColor: 'bg-info/15',
+      borderColor: 'border-info/40',
+      glowColor: 'shadow-info/20'
     }
   };
   
