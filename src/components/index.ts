@@ -1,0 +1,13 @@
+export { ProfileImage } from './ProfileImage';
+export { Header } from './Header';
+export { ObjetivoSection } from './ObjetivoSection';
+export { TrajetoriaSection } from './TrajetoriaSection';
+export { AtuacaoSection } from './AtuacaoSection';
+export { IniciativasSection } from './IniciativasSection';
+export { ValorizacaoSection } from './ValorizacaoSection';
+export { PotencialSection } from './PotencialSection';
+export { ConclusaoSection } from './ConclusaoSection';
+export { Footer } from './Footer';
+export { LoadingScreen } from './LoadingScreen';
+export { ErrorScreen } from './ErrorScreen';
+export { EmptyState } from './EmptyState';
