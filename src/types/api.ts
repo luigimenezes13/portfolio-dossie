@@ -1,10 +1,13 @@
+// Tipos compartilhados da aplicação
+
 export interface ApiResponse<T = unknown> {
-  message?: string;
-  version?: string;
-  timestamp?: string;
-  docs?: string;
+  success: boolean;
   data?: T;
-  success?: boolean;
+  error?: string;
+  message?: string;
+  timestamp: string;
+  version?: string;
+  docs?: string;
 }
 
 export interface ApiError {
@@ -13,89 +16,265 @@ export interface ApiError {
   statusCode?: number;
 }
 
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  createdAt: string;
-  updatedAt: string;
-}
+// ============================================
+// Tipos Categóricos (Union Types)
+// ============================================
+
+// Modelos de Contratação
+export type ModeloContratacao = 'CLT' | 'PJ' | 'SLU' | 'Estágio' | 'Temporário' | 'Autônomo';
+
+// Níveis de Senioridade
+export type NivelSenioridade =
+  | 'Estagiário'
+  | 'Trainee'
+  | 'Júnior'
+  | 'Pleno'
+  | 'Sênior'
+  | 'Especialista'
+  | 'Tech Lead'
+  | 'Coordenador'
+  | 'Gerente'
+  | 'Diretor';
+
+// Áreas de Atuação Profissional
+export type AreaAtuacao =
+  | 'Desenvolvimento'
+  | 'Produto'
+  | 'Design'
+  | 'Help Desk'
+  | 'Infraestrutura'
+  | 'DevOps'
+  | 'QA/Testes'
+  | 'Dados'
+  | 'Segurança'
+  | 'Marketing'
+  | 'Vendas'
+  | 'RH'
+  | 'Financeiro'
+  | 'Operações'
+  | 'Atendimento'
+  | 'Outro';
+
+// Dimensões de Alinhamento Cultural (baseado em desenvolvimento holístico)
+export type DimensaoCultural =
+  | 'Pessoal' // Relacionamentos e networking
+  | 'Intelectual' // Conhecimento e aprendizado
+  | 'Físico' // Saúde e bem-estar
+  | 'Espiritual' // Propósito e valores
+  | 'Profissional' // Carreira e habilidades
+  | 'Financeiro' // Gestão financeira
+  | 'Social'; // Impacto na comunidade
+
+// Tipos de Atividades para Métricas
+export type TipoAtividade =
+  | 'commits'
+  | 'PRs'
+  | 'pull requests'
+  | 'linhas de código'
+  | 'issues resolvidos'
+  | 'code reviews'
+  | 'chamados resolvidos'
+  | 'chamados resolvidos com CSAT satisfatório'
+  | 'deploys'
+  | 'releases'
+  | 'bugs corrigidos'
+  | 'features entregues'
+  | 'refatorações'
+  | 'documentações'
+  | 'testes escritos'
+  | 'aprendizado específico e excelência'
+  | 'reuniões técnicas'
+  | 'mentorias'
+  | 'treinamentos ministrados'
+  | 'horas trabalhadas';
+
+// Escopos de Atuação
+export type EscopoAtuacao =
+  | 'backend'
+  | 'frontend'
+  | 'mobile'
+  | 'fullstack'
+  | 'infraestrutura'
+  | 'DevOps'
+  | 'design'
+  | 'produto'
+  | 'Help Desk'
+  | 'atendimento'
+  | 'educação'
+  | 'operações'
+  | 'geral';
+
+// Períodos de Tempo
+export type PeriodoTempo =
+  | '1 dia'
+  | '1 semana'
+  | '2 semanas'
+  | '1 mês'
+  | '2 meses'
+  | '3 meses'
+  | '6 meses'
+  | '1 ano'
+  | 'todo o período de estágio'
+  | 'todo o período na empresa'
+  | 'maio-outubro'
+  | 'contínuo'
+  | 'diário'
+  | 'semanal'
+  | 'mensal'
+  | string; // Permite valores customizados
+
+// Fontes de Pesquisa Salarial
+export type FontePesquisaSalarial =
+  | 'Glassdoor'
+  | 'Indeed'
+  | 'LinkedIn'
+  | 'Catho'
+  | 'Vagas.com'
+  | 'Gupy'
+  | 'Trabalha Brasil'
+  | 'Love Mondays'
+  | 'Olhar Digital'
+  | 'Pesquisa Salarial Robert Half'
+  | 'Pesquisa interna'
+  | string; // Permite valores customizados
+
+// Características de Perfil Profissional
+export type CaracteristicaPerfil =
+  | 'Proativo'
+  | 'Disciplinado'
+  | 'Ético'
+  | 'Maduro'
+  | 'Comunicativo'
+  | 'Analítico'
+  | 'Criativo'
+  | 'Organizado'
+  | 'Flexível'
+  | 'Resiliente'
+  | 'Empático'
+  | 'Leadership'
+  | 'Ownership elevado'
+  | 'High performance'
+  | 'Team player'
+  | 'Autodidata';
+
+// ============================================
+// Modelo de Dossiê
+// ============================================
 
 export interface Colaborador {
   nome: string;
   idade: number;
   funcaoAtual: string;
-  dataInicio: string;
+  dataInicio: string; // Ex: "janeiro/2023", "março/2025"
+  senioridade?: NivelSenioridade;
 }
 
 export interface Objetivo {
   descricao: string;
   cargoProposto: string;
-  modeloContratacao: string;
+  senioridadeProposta?: NivelSenioridade;
+  modeloContratacao: ModeloContratacao;
   empresa: string;
 }
 
 export interface Area {
-  nome: string;
-  descricao: string;
+  nome: AreaAtuacao | string; // Permite valores customizados
+  descricao?: string;
+  periodo?: string;
 }
 
 export interface AlinhamentoCultural {
-  valor: string;
+  dimensao: DimensaoCultural;
   exemploPratico: string;
+}
+
+export interface DesenvolvimentoPessoal {
+  tipo:
+    | 'Curso'
+    | 'Certificação'
+    | 'Graduação'
+    | 'Pós-graduação'
+    | 'Livro'
+    | 'Workshop'
+    | 'Projeto Pessoal'
+    | 'Pesquisa Acadêmica'
+    | 'Idioma';
+  titulo: string;
+  instituicao?: string;
+  status?: 'Concluído' | 'Em andamento' | 'Planejado';
+  periodo?: string;
 }
 
 export interface Trajetoria {
   areas: Area[];
-  perfil: string;
+  perfil: string | CaracteristicaPerfil[]; // String livre ou array de características
   alinhamentoCultural: AlinhamentoCultural[];
-  desenvolvimentoPessoal: string[];
+  desenvolvimentoPessoal: Array<DesenvolvimentoPessoal | string>; // Aceita objeto estruturado ou string livre
+}
+
+export interface Metrica {
+  valor: number | string;
+  atividade: TipoAtividade;
+  escopo: EscopoAtuacao;
+  tempo?: PeriodoTempo;
+  observacao?: string;
 }
 
 export interface AtuacaoResultados {
   descricao: string;
   destaques: string[];
-  metricas: string[];
+  metricas?: Metrica[];
 }
 
 export interface IniciativaEstrategica {
   projeto: string;
   descricao: string;
+  impacto?: 'Baixo' | 'Médio' | 'Alto' | 'Crítico';
+  periodo?: string;
+  area?: AreaAtuacao | string;
 }
 
 export interface ContextoEfetivacao {
   situacaoAtual: string[];
   acoesColaborador: string[];
+  urgencia?: 'Baixa' | 'Média' | 'Alta' | 'Urgente';
 }
 
 export interface FaixaSalarial {
   minimo: number;
   maximo: number;
-  pico: number;
+  pico?: number;
+  mediana?: number;
 }
 
 export interface ReferenciaMercado {
   cargo: string;
+  senioridade?: NivelSenioridade;
+  regiao?: string;
   faixaSalarial: FaixaSalarial;
-  fontesPesquisa: string[];
+  fontesPesquisa: FontePesquisaSalarial[];
   valorProposto: number;
+  dataReferencia?: string; // Data da pesquisa salarial
 }
 
 export interface PotencialRetorno {
   beneficios: string[];
-  projecaoCargo: string;
-  prazoEvolucao: string;
+  projecaoCargo?: string | NivelSenioridade;
+  prazoEvolucao?: string;
+  estimativaROI?: string; // Retorno sobre investimento estimado
 }
 
 export interface SituacaoAtual {
-  modelo: string;
+  modelo: ModeloContratacao;
   valor: number;
 }
 
 export interface Proposta {
-  modelo: string;
+  modelo: ModeloContratacao;
   valorBruto: number;
-  valorLiquido: number;
+  valorLiquido?: number;
+  beneficios?: string[];
+  observacoes?: string;
 }
 
 export interface PropostaValorizacao {
@@ -115,8 +294,36 @@ export interface Dossie {
   potencialRetorno: PotencialRetorno;
   propostaValorizacao: PropostaValorizacao;
   conclusao: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+}
+
+// DTO para criação de dossiê
+export interface CreateDossieDto {
+  colaborador: Dossie['colaborador'];
+  objetivo: Dossie['objetivo'];
+  trajetoria: Dossie['trajetoria'];
+  atuacaoResultados: Dossie['atuacaoResultados'];
+  iniciativasEstrategicas: Dossie['iniciativasEstrategicas'];
+  contextoEfetivacao: Dossie['contextoEfetivacao'];
+  referenciaMercado: Dossie['referenciaMercado'];
+  potencialRetorno: Dossie['potencialRetorno'];
+  propostaValorizacao: Dossie['propostaValorizacao'];
+  conclusao: string;
+}
+
+// DTO para atualização de dossiê
+export type UpdateDossieDto = Partial<CreateDossieDto>;
+
+// Lista simplificada de dossiês
+export interface DossieListItem {
+  id: string;
+  colaboradorNome: string;
+  cargoProposto: string;
+  valorProposto: number;
+  empresa: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
 }
 
 export interface DossiesResponse {
@@ -124,14 +331,6 @@ export interface DossiesResponse {
   data: Dossie[];
   message: string;
   timestamp: string;
-}
-
-export interface PaginatedResponse<T> {
-  data: T[];
-  total: number;
-  page: number;
-  pageSize: number;
-  totalPages: number;
 }
 
 export interface QueryParams {
@@ -142,23 +341,3 @@ export interface QueryParams {
   order?: 'asc' | 'desc';
   [key: string]: string | number | undefined;
 }
-
-export interface RequestData {
-  [key: string]: unknown;
-}
-
-export interface DossieCreateInput {
-  colaborador: Colaborador;
-  objetivo: Objetivo;
-  trajetoria: Trajetoria;
-  atuacaoResultados: AtuacaoResultados;
-  iniciativasEstrategicas: IniciativaEstrategica[];
-  contextoEfetivacao: ContextoEfetivacao;
-  referenciaMercado: ReferenciaMercado;
-  potencialRetorno: PotencialRetorno;
-  propostaValorizacao: PropostaValorizacao;
-  conclusao: string;
-  [key: string]: unknown;
-}
-
-export type DossieUpdateInput = Partial<DossieCreateInput>;

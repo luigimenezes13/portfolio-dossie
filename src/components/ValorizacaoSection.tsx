@@ -79,9 +79,30 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
                   <p className="text-primary text-4xl md:text-5xl font-bold">
                     {formatCurrency(propostaValorizacao.proposta.valorBruto)}
                   </p>
-                  <p className="text-neutral-300 text-lg mt-2 font-medium">
-                    Líquido: {formatCurrency(propostaValorizacao.proposta.valorLiquido)}
-                  </p>
+                  {propostaValorizacao.proposta.valorLiquido && (
+                    <p className="text-neutral-300 text-lg mt-2 font-medium">
+                      Líquido: {formatCurrency(propostaValorizacao.proposta.valorLiquido)}
+                    </p>
+                  )}
+                  {propostaValorizacao.proposta.beneficios && propostaValorizacao.proposta.beneficios.length > 0 && (
+                    <div className="mt-4 pt-3 border-t border-white/10">
+                      <p className="text-xs text-neutral-400 uppercase tracking-wider mb-2">Benefícios:</p>
+                      <ul className="text-sm text-neutral-200 space-y-1">
+                        {propostaValorizacao.proposta.beneficios.map((beneficio, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="text-primary">•</span>
+                            <span>{beneficio}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {propostaValorizacao.proposta.observacoes && (
+                    <div className="mt-3 pt-3 border-t border-white/10">
+                      <p className="text-xs text-neutral-400 uppercase tracking-wider mb-1">Observações:</p>
+                      <p className="text-sm text-neutral-200 italic">{propostaValorizacao.proposta.observacoes}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -102,7 +123,17 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
           <Building className="w-5 h-5" />
           Referência de Mercado
         </h3>
-        <p className="text-value mb-6 text-xl">{referenciaMercado.cargo}</p>
+        <div className="flex items-center gap-3 flex-wrap mb-6">
+          <p className="text-value text-xl">{referenciaMercado.cargo}</p>
+          {referenciaMercado.senioridade && (
+            <span className="px-3 py-1 bg-primary/10 border border-primary/30 text-primary rounded-full text-sm font-semibold">
+              {referenciaMercado.senioridade}
+            </span>
+          )}
+          {referenciaMercado.regiao && (
+            <span className="text-neutral-400 text-sm">📍 {referenciaMercado.regiao}</span>
+          )}
+        </div>
         <div className="grid-responsive-3 mb-4">
           <div>
             <p className="text-small mb-2">Mínimo</p>
@@ -112,12 +143,25 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
             <p className="text-small mb-2">Máximo</p>
             <p className="text-neutral-200 text-lg font-semibold">{formatCurrency(referenciaMercado.faixaSalarial.maximo)}</p>
           </div>
-          <div>
-            <p className="text-small mb-2">Pico</p>
-            <p className="text-primary text-lg font-bold">{formatCurrency(referenciaMercado.faixaSalarial.pico)}</p>
-          </div>
+          {referenciaMercado.faixaSalarial.pico && (
+            <div>
+              <p className="text-small mb-2">Pico</p>
+              <p className="text-primary text-lg font-bold">{formatCurrency(referenciaMercado.faixaSalarial.pico)}</p>
+            </div>
+          )}
+          {referenciaMercado.faixaSalarial.mediana && (
+            <div>
+              <p className="text-small mb-2">Mediana</p>
+              <p className="text-neutral-200 text-lg font-semibold">{formatCurrency(referenciaMercado.faixaSalarial.mediana)}</p>
+            </div>
+          )}
         </div>
-        <p className="text-small-gray">Fontes: {referenciaMercado.fontesPesquisa.join(', ')}</p>
+        <div className="space-y-2">
+          <p className="text-small-gray">Fontes: {referenciaMercado.fontesPesquisa.join(', ')}</p>
+          {referenciaMercado.dataReferencia && (
+            <p className="text-small-gray">Data da pesquisa: {referenciaMercado.dataReferencia}</p>
+          )}
+        </div>
       </div>
     </section>
   );

@@ -35,18 +35,30 @@ export function PotencialSection({ potencialRetorno }: PotencialSectionProps) {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-primary/10 to-tertiary/10 border-2 border-primary/40 rounded-2xl p-8 shadow-lg shadow-primary/20">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <p className="text-small mb-3">Projeção de Cargo</p>
-            <p className="text-white font-bold text-2xl">{potencialRetorno.projecaoCargo}</p>
-          </div>
-          <div className="text-center md:text-right">
-            <p className="text-small mb-3">Prazo de Evolução</p>
-            <p className="text-primary font-bold text-2xl">{potencialRetorno.prazoEvolucao}</p>
+      {(potencialRetorno.projecaoCargo || potencialRetorno.prazoEvolucao || potencialRetorno.estimativaROI) && (
+        <div className="bg-gradient-to-r from-primary/10 to-tertiary/10 border-2 border-primary/40 rounded-2xl p-8 shadow-lg shadow-primary/20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {potencialRetorno.projecaoCargo && (
+              <div className="text-center md:text-left flex-1">
+                <p className="text-small mb-3">Projeção de Cargo</p>
+                <p className="text-white font-bold text-2xl">{potencialRetorno.projecaoCargo}</p>
+              </div>
+            )}
+            {potencialRetorno.prazoEvolucao && (
+              <div className="text-center md:text-center flex-1">
+                <p className="text-small mb-3">Prazo de Evolução</p>
+                <p className="text-primary font-bold text-2xl">{potencialRetorno.prazoEvolucao}</p>
+              </div>
+            )}
+            {potencialRetorno.estimativaROI && (
+              <div className="text-center md:text-right flex-1">
+                <p className="text-small mb-3">Estimativa de ROI</p>
+                <p className="text-tertiary font-bold text-xl leading-tight">{potencialRetorno.estimativaROI}</p>
+              </div>
+            )}
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

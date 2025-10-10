@@ -29,6 +29,9 @@ export function ObjetivoSection({ objetivo }: ObjetivoSectionProps) {
         <div className="content-card content-card-scale-lg">
           <p className="text-small mb-3">Cargo Proposto</p>
           <p className="text-white font-bold text-xl">{objetivo.cargoProposto}</p>
+          {objetivo.senioridadeProposta && (
+            <p className="text-primary text-sm mt-2 font-medium">{objetivo.senioridadeProposta}</p>
+          )}
         </div>
         <div className="content-card content-card-scale-lg">
           <p className="text-small mb-3">Modelo</p>

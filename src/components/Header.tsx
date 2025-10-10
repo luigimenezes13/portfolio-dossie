@@ -183,13 +183,19 @@ export function Header({ dossie }: HeaderProps) {
           <p className="text-neutral-200 text-2xl md:text-3xl mb-10 font-semibold leading-relaxed">
             {dossie.colaborador.funcaoAtual}
           </p>
-          <div className="flex items-center justify-center md:justify-start gap-6 text-base text-neutral-400 font-medium">
+          <div className="flex items-center justify-center md:justify-start gap-6 text-base text-neutral-400 font-medium flex-wrap">
             <span className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
               {dossie.colaborador.idade} anos
             </span>
             <span>•</span>
             <span>Início: {dossie.colaborador.dataInicio}</span>
+            {dossie.colaborador.senioridade && (
+              <>
+                <span>•</span>
+                <span className="text-primary font-semibold">{dossie.colaborador.senioridade}</span>
+              </>
+            )}
           </div>
         </div>
       </div>

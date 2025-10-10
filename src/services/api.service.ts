@@ -1,10 +1,9 @@
 import api from '../config/api';
 import type { 
   ApiResponse, 
-  QueryParams, 
-  RequestData, 
-  DossieCreateInput, 
-  DossieUpdateInput 
+  QueryParams,
+  CreateDossieDto,
+  UpdateDossieDto
 } from '../types/api';
 
 export class ApiService {
@@ -18,12 +17,12 @@ export class ApiService {
     return response.data;
   }
 
-  static async post<T>(endpoint: string, data?: RequestData): Promise<T> {
+  static async post<T>(endpoint: string, data?: unknown): Promise<T> {
     const response = await api.post(endpoint, data);
     return response.data;
   }
 
-  static async put<T>(endpoint: string, data?: RequestData): Promise<T> {
+  static async put<T>(endpoint: string, data?: unknown): Promise<T> {
     const response = await api.put(endpoint, data);
     return response.data;
   }
@@ -33,7 +32,7 @@ export class ApiService {
     return response.data;
   }
 
-  static async patch<T>(endpoint: string, data?: RequestData): Promise<T> {
+  static async patch<T>(endpoint: string, data?: unknown): Promise<T> {
     const response = await api.patch(endpoint, data);
     return response.data;
   }
@@ -48,11 +47,11 @@ export class DossieService {
     return ApiService.get(`/api/dossies/${id}`);
   }
 
-  static async create(data: DossieCreateInput) {
+  static async create(data: CreateDossieDto) {
     return ApiService.post('/api/dossies', data);
   }
 
-  static async update(id: string, data: DossieUpdateInput) {
+  static async update(id: string, data: UpdateDossieDto) {
     return ApiService.put(`/api/dossies/${id}`, data);
   }
 
