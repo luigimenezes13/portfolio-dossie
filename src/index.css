@@ -112,22 +112,7 @@
     @apply text-gray-400 text-sm font-light;
   }
   
-  /* Profile Classes */
-  .profile-image-container {
-    @apply relative w-48 h-48;
-  }
-  
-  .profile-image {
-    @apply rounded-full overflow-hidden border-4 border-primary/60 shadow-2xl shadow-primary/30 w-full h-full;
-  }
-  
-  .profile-badge {
-    @apply absolute -bottom-2 -right-2 w-14 h-14 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black;
-  }
-  
-  .profile-badge-large {
-    @apply absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black;
-  }
+  /* Profile Classes - Removed custom classes that weren't working */
   
   /* Animation Classes */
   .animate-on-scroll {
