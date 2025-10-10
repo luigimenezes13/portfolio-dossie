@@ -190,11 +190,13 @@
   }
 
   .tooltip-arrow {
-    @apply absolute -left-6 top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-neutral-700;
+    @apply absolute -left-6 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-neutral-700;
+    top: 92.5%;
   }
 
   .tooltip-arrow-inner {
-    @apply absolute -left-[22px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-neutral-800;
+    @apply absolute -left-[22px] -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-neutral-800;
+    top: 92.5%;
   }
 
   .hint-bubble {
