@@ -99,7 +99,7 @@ export function Header({ dossie }: HeaderProps) {
             {showHint && !showTooltip && (
               <div className="hint-bubble">
                 <div className="hint-content">
-                  👆 Clique no check!
+                  Clique no check! 👆
                   <div className="hint-arrow"></div>
                 </div>
               </div>
