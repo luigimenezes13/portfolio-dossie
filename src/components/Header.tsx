@@ -87,13 +87,13 @@ export function Header({ dossie }: HeaderProps) {
             </div>
             
             <div 
-              className={`profile-badge cursor-pointer hover:scale-110 transition-transform duration-200 absolute bottom-0 right-0 ${!hasInteracted ? 'animate-pulse-badge' : ''}`}
+              className={`profile-badge cursor-pointer hover:scale-110 transition-all duration-300 absolute bottom-0 right-0 hover:shadow-2xl hover:shadow-success/50 ${!hasInteracted ? 'animate-pulse-badge' : ''}`}
               onClick={handleClick}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <CheckCircle2 className="w-8 h-8 text-white" />
-              {!hasInteracted && <span className="notification-dot"></span>}
+              <CheckCircle2 className="w-8 h-8 text-white drop-shadow-lg" />
+              {!hasInteracted && <span className="notification-dot bg-success"></span>}
             </div>
 
             {showHint && !showTooltip && (
@@ -132,7 +132,7 @@ export function Header({ dossie }: HeaderProps) {
                       </div>
                       
                       <div className="pt-2 border-t border-neutral-600">
-                        <p className="text-xs text-neutral-400 mb-2"><span className="text-primary">Não</span> foram usadas tecnologias como:</p>
+                        <p className="text-xs text-neutral-300 mb-2 font-medium"><span className="text-primary">Não</span> foram usadas tecnologias como:</p>
                         <div className="flex flex-wrap gap-2">
                           <a 
                             href="https://lovable.dev" 
@@ -156,7 +156,7 @@ export function Header({ dossie }: HeaderProps) {
                       </div>
 
                       <div className="pt-2 border-t border-neutral-600">
-                        <p className="text-xs text-neutral-400">
+                        <p className="text-xs text-neutral-300 font-medium">
                           Esse dossiê utiliza a API pública (também desenvolvida por mim) disponível em{' '}
                           <a 
                             href="https://dossie-backend.vercel.app" 
@@ -177,15 +177,15 @@ export function Header({ dossie }: HeaderProps) {
         </div>
         
         <div className="flex-1 flex flex-col justify-center text-center md:text-left animate-fade-in-right" style={{ animationDelay: '0.2s', animationFillMode: 'backwards' }}>
-          <h1 className=" py-6 text-5xl md:text-6xl lg:text-7xl font-black tracking-tight bg-gradient-to-r from-primary via-tertiary to-primary bg-clip-text text-transparent mb-10 leading-tight">
+          <h1 className=" py-6 text-5xl md:text-6xl lg:text-7xl font-black tracking-tight bg-gradient-to-r from-primary via-accent-rose to-accent-orange bg-clip-text text-transparent mb-10 leading-tight animate-fade-in">
             {dossie.colaborador.nome}
           </h1>
           <p className="text-neutral-200 text-2xl md:text-3xl mb-10 font-semibold leading-relaxed">
             {dossie.colaborador.funcaoAtual}
           </p>
-          <div className="flex items-center justify-center md:justify-start gap-6 text-base text-neutral-400 font-medium flex-wrap">
-            <span className="flex items-center gap-2">
-              <Calendar className="w-5 h-5" />
+          <div className="flex items-center justify-center md:justify-start gap-6 text-base text-neutral-300 font-medium flex-wrap">
+            <span className="flex items-center gap-2 hover:text-accent-amber transition-colors group">
+              <Calendar className="w-5 h-5 text-accent-amber group-hover:scale-110 transition-transform" />
               {dossie.colaborador.idade} anos
             </span>
             <span>•</span>

@@ -191,20 +191,28 @@
 
 ```
 projeto/
-├── 📊 SUMARIO_EXECUTIVO.md         # Visão executiva
-├── 📋 PADRONIZACAO.md              # Plano completo
-├── 🎨 DESIGN_SYSTEM.md             # Guia visual
-├── ⚡ QUICK_REFERENCE.md           # Cheat sheet
-├── 🔄 EXEMPLOS_REFATORACAO.md     # Antes/depois
-├── 📝 PR_TEMPLATE.md               # Template de PR
-├── 📖 README.md                    # Doc principal
-├── 📚 INDEX.md                     # Este arquivo
+├── 📊 SUMARIO_EXECUTIVO.md              # Visão executiva
+├── 📋 PADRONIZACAO.md                   # Plano completo
+├── 🎨 DESIGN_SYSTEM.md                  # Guia visual
+├── ⚡ QUICK_REFERENCE.md                # Cheat sheet
+├── 🔄 EXEMPLOS_REFATORACAO.md          # Antes/depois
+├── 📝 PR_TEMPLATE.md                    # Template de PR
+├── 📖 README.md                         # Doc principal
+├── 📚 INDEX.md                          # Este arquivo
+├── 📋 WALLCHART.txt                     # Poster para parede
+├── 📋 CHANGELOG.md                      # Histórico de versões
+│
+├── 🎨 AUDITORIA_CORES.md               # Auditoria de cores (NOVO)
+├── 📊 LISTA_COMPONENTES_CORES.md       # Tabela de cores (NOVO)
+├── 🎨 RESUMO_CORES_VISUAL.md           # Mapa visual (NOVO)
+├── 📊 RELATORIO_CORES_FINAL.md         # Relatório detalhado (NOVO)
+├── 🎉 RELATORIO_FINAL_PADRONIZACAO.md  # Relatório final (NOVO)
 │
 └── src/
     ├── constants/
-    │   └── 💻 design-system.ts     # Constantes reutilizáveis
-    ├── index.css                   # Classes CSS customizadas
-    └── components/                 # Componentes React
+    │   └── 💻 design-system.ts          # Constantes reutilizáveis
+    ├── index.css                        # Classes CSS customizadas
+    └── components/                      # 12 componentes ✅ refatorados
 ```
 
 ---

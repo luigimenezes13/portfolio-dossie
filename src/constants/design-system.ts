@@ -68,6 +68,21 @@ export const ICON_COLORS = {
   neutralWithHover: 'text-neutral-400 group-hover:text-neutral-200',
   white: 'text-white',
   muted: 'text-neutral-500',
+  // Accent colors
+  accentRose: 'text-accent-rose',
+  accentAmber: 'text-accent-amber',
+  accentOrange: 'text-accent-orange',
+  accentGold: 'text-accent-gold',
+  // State colors
+  success: 'text-success',
+  warning: 'text-warning',
+  error: 'text-error',
+  info: 'text-info',
+  // PIFE colors
+  pifePessoal: 'text-pife-pessoal',
+  pifeIntelectual: 'text-pife-intelectual',
+  pifeFisico: 'text-pife-fisico',
+  pifeEspiritual: 'text-pife-espiritual',
 } as const;
 
 /**
@@ -262,12 +277,50 @@ export const getStatusConfig = (status?: string) => {
 };
 
 /**
+ * CLASSES DE COR PARA GRADIENTES
+ */
+export const GRADIENT_COLORS = {
+  // Gradiente principal (vermelho)
+  primary: 'bg-gradient-to-r from-primary via-tertiary to-primary',
+  // Gradiente vibrante (vermelho-rosa-laranja)
+  vibrant: 'bg-gradient-to-r from-primary via-accent-rose to-accent-orange',
+  // Gradiente quente (laranja-âmbar)
+  warm: 'bg-gradient-to-r from-accent-orange to-accent-amber',
+  // Gradiente PIFE completo
+  pife: 'bg-gradient-to-r from-pife-pessoal via-pife-intelectual via-pife-fisico to-pife-espiritual',
+} as const;
+
+/**
+ * CLASSES DE SHADOW COLORIDAS
+ */
+export const COLORED_SHADOWS = {
+  // Shadows de accent
+  accentRose: 'shadow-accent-rose/20 hover:shadow-accent-rose/30',
+  accentAmber: 'shadow-accent-amber/20 hover:shadow-accent-amber/30',
+  accentOrange: 'shadow-accent-orange/20 hover:shadow-accent-orange/30',
+  // Shadows de estado
+  success: 'shadow-success/20 hover:shadow-success/30',
+  warning: 'shadow-warning/20 hover:shadow-warning/30',
+  error: 'shadow-error/20 hover:shadow-error/30',
+  info: 'shadow-info/20 hover:shadow-info/30',
+  // Shadows PIFE
+  pifePessoal: 'shadow-pife-pessoal/20 hover:shadow-pife-pessoal/30',
+  pifeIntelectual: 'shadow-pife-intelectual/20 hover:shadow-pife-intelectual/30',
+  pifeFisico: 'shadow-pife-fisico/20 hover:shadow-pife-fisico/30',
+  pifeEspiritual: 'shadow-pife-espiritual/20 hover:shadow-pife-espiritual/30',
+} as const;
+
+/**
  * EXEMPLO DE USO:
  * 
- * import { CARD_CLASSES, ICON_SIZES, cn } from '@/constants/design-system';
+ * import { CARD_CLASSES, ICON_SIZES, ICON_COLORS, GRADIENT_COLORS, cn } from '@/constants/design-system';
  * 
  * <div className={cn(CARD_CLASSES.base, 'shadow-xl')}>
- *   <Icon className={ICON_SIZES.card} />
+ *   <Icon className={cn(ICON_SIZES.card, ICON_COLORS.accentRose)} />
  * </div>
+ * 
+ * <h1 className={cn(GRADIENT_COLORS.vibrant, 'bg-clip-text text-transparent')}>
+ *   Título Vibrante
+ * </h1>
  */
 

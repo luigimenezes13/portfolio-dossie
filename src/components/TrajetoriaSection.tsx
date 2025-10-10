@@ -248,41 +248,48 @@ const getAreaInfo = (area: string) => {
   };
 };
 
-// Configuração uniforme para dimensões PIFE - cores neutras e suaves
+// Configuração para dimensões PIFE - usando cores vibrantes da paleta
 const getDimensaoInfo = (dimensao: string) => {
-  // Configuração uniforme para todas as dimensões
-  const uniformConfig = {
-    color: 'text-neutral-400',
-    colorLight: 'text-neutral-300',
-    bgColor: 'bg-neutral-700/15',
-    borderColor: 'border-neutral-700/40',
-    glowColor: 'shadow-neutral-700/20'
-  };
-
   const mapping: Record<string, { icon: typeof Users; letter: string; color: string; colorLight: string; bgColor: string; borderColor: string; glowColor: string; description: string }> = {
     'Pessoal': { 
       icon: Users, 
       letter: 'P', 
       description: 'Relacionamentos e networking',
-      ...uniformConfig
+      color: 'text-pife-pessoal',
+      colorLight: 'text-pife-pessoalLight',
+      bgColor: 'bg-pife-pessoal/15',
+      borderColor: 'border-pife-pessoal/40',
+      glowColor: 'shadow-pife-pessoal/20'
     },
     'Intelectual': { 
       icon: Brain, 
       letter: 'I', 
       description: 'Conhecimento e aprendizado',
-      ...uniformConfig
+      color: 'text-pife-intelectual',
+      colorLight: 'text-pife-intelectualLight',
+      bgColor: 'bg-pife-intelectual/15',
+      borderColor: 'border-pife-intelectual/40',
+      glowColor: 'shadow-pife-intelectual/20'
     },
     'Físico': { 
       icon: HeartPulse, 
       letter: 'F', 
       description: 'Saúde e bem-estar',
-      ...uniformConfig
+      color: 'text-pife-fisico',
+      colorLight: 'text-pife-fisicoLight',
+      bgColor: 'bg-pife-fisico/15',
+      borderColor: 'border-pife-fisico/40',
+      glowColor: 'shadow-pife-fisico/20'
     },
     'Espiritual': { 
       icon: Sparkles, 
       letter: 'E', 
       description: 'Propósito e valores',
-      ...uniformConfig
+      color: 'text-pife-espiritual',
+      colorLight: 'text-pife-espiritualLight',
+      bgColor: 'bg-pife-espiritual/15',
+      borderColor: 'border-pife-espiritual/40',
+      glowColor: 'shadow-pife-espiritual/20'
     }
   };
   
@@ -290,7 +297,11 @@ const getDimensaoInfo = (dimensao: string) => {
     icon: Users, 
     letter: 'P', 
     description: 'Dimensão de desenvolvimento',
-    ...uniformConfig
+    color: 'text-neutral-400',
+    colorLight: 'text-neutral-300',
+    bgColor: 'bg-neutral-700/15',
+    borderColor: 'border-neutral-700/40',
+    glowColor: 'shadow-neutral-700/20'
   };
 };
 
@@ -305,10 +316,10 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
       }`}
     >
       <div className="section-header">
-        <div className="icon-container">
-          <Award className="w-7 h-7 text-primary" />
+        <div className="icon-container bg-gradient-to-br from-accent-amber/20 to-accent-gold/20 border-accent-amber/50 shadow-lg shadow-accent-amber/20">
+          <Award className="w-7 h-7 text-accent-amber drop-shadow-lg" />
         </div>
-        <h2 className="section-title">Trajetória Profissional</h2>
+        <h2 className="section-title bg-gradient-to-r from-white via-accent-amber to-white bg-clip-text text-transparent">Trajetória Profissional</h2>
       </div>
       
       <div className="mb-10">
@@ -341,7 +352,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                       <h4 className={`text-white font-bold text-base mb-1 ${info.textColor} transition-colors duration-300`}>
                         {caracteristica}
                       </h4>
-                      <p className="text-neutral-400 text-xs leading-relaxed line-clamp-2 group-hover:text-neutral-300 transition-colors duration-300">
+                      <p className="text-neutral-300 text-xs leading-relaxed line-clamp-2 group-hover:text-white transition-colors duration-300">
                         {info.description}
                       </p>
                     </div>
@@ -372,21 +383,37 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                   key={idx} 
                   className="relative group card-base hover:shadow-2xl hover:shadow-neutral-700/20"
                 >
-            {/* Timeline indicator - cor uniforme */}
-            <div className="absolute -left-3 top-8 w-6 h-6 bg-neutral-600 border-4 border-black rounded-full shadow-lg group-hover:scale-125 transition-transform duration-300"></div>
+            {/* Timeline indicator - colorido por área */}
+            <div className={`absolute -left-3 top-8 w-6 h-6 ${
+              idx === 0 ? 'bg-gradient-to-br from-accent-rose to-accent-orange' :
+              idx === 1 ? 'bg-gradient-to-br from-info to-accent-purple' :
+              'bg-gradient-to-br from-accent-amber to-accent-gold'
+            } border-4 border-black rounded-full shadow-lg group-hover:scale-125 transition-transform duration-300`}></div>
                 
                 {/* Header com ícone e período */}
                 <div className="flex items-start justify-between gap-4 mb-4">
                   <div className="flex items-center gap-3">
-                    <div className={`p-3 ${areaInfo.iconBg} border ${areaInfo.iconBorder} rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-md`}>
-                      <AreaIcon className="w-6 h-6 text-neutral-400" />
+                    <div className={`p-3 ${
+                      idx === 0 ? 'bg-accent-rose/15 border-accent-rose/40' :
+                      idx === 1 ? 'bg-info/15 border-info/40' :
+                      'bg-accent-amber/15 border-accent-amber/40'
+                    } rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-md`}>
+                      <AreaIcon className={`w-6 h-6 ${
+                        idx === 0 ? 'text-accent-rose' :
+                        idx === 1 ? 'text-info' :
+                        'text-accent-amber'
+                      }`} />
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-xl mb-1">
                         {area.nome}
                       </h4>
                       {area.periodo && (
-                        <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                        <span className={`text-xs font-bold uppercase tracking-wider ${
+                          idx === 0 ? 'text-accent-rose/70' :
+                          idx === 1 ? 'text-info/70' :
+                          'text-accent-amber/70'
+                        }`}>
                           {area.periodo}
                         </span>
                       )}
@@ -407,7 +434,12 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                     {keywords.map((keyword, kidx) => (
                       <span
                         key={kidx}
-                        className="badge-tech"
+                        className={`badge-tech ${
+                          kidx % 4 === 0 ? 'hover:border-accent-rose/50 hover:bg-accent-rose/10 hover:text-accent-rose' :
+                          kidx % 4 === 1 ? 'hover:border-info/50 hover:bg-info/10 hover:text-info' :
+                          kidx % 4 === 2 ? 'hover:border-accent-amber/50 hover:bg-accent-amber/10 hover:text-accent-amber' :
+                          'hover:border-accent-orange/50 hover:bg-accent-orange/10 hover:text-accent-orange'
+                        }`}
                       >
                         {keyword}
                       </span>
@@ -432,17 +464,17 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <div className="flex items-center gap-2">
                 {[
-                  { letter: 'P', color: 'text-neutral-300', bg: 'bg-neutral-700/20', border: 'border-neutral-600' },
-                  { letter: 'I', color: 'text-neutral-300', bg: 'bg-neutral-700/20', border: 'border-neutral-600' },
-                  { letter: 'F', color: 'text-neutral-300', bg: 'bg-neutral-700/20', border: 'border-neutral-600' },
-                  { letter: 'E', color: 'text-neutral-300', bg: 'bg-neutral-700/20', border: 'border-neutral-600' }
+                  { letter: 'P', color: 'text-pife-pessoalLight', bg: 'bg-pife-pessoal/20', border: 'border-pife-pessoal/50', glow: 'hover:shadow-pife-pessoal/30' },
+                  { letter: 'I', color: 'text-pife-intelectualLight', bg: 'bg-pife-intelectual/20', border: 'border-pife-intelectual/50', glow: 'hover:shadow-pife-intelectual/30' },
+                  { letter: 'F', color: 'text-pife-fisicoLight', bg: 'bg-pife-fisico/20', border: 'border-pife-fisico/50', glow: 'hover:shadow-pife-fisico/30' },
+                  { letter: 'E', color: 'text-pife-espiritualLight', bg: 'bg-pife-espiritual/20', border: 'border-pife-espiritual/50', glow: 'hover:shadow-pife-espiritual/30' }
                 ].map((item, idx) => (
                   <div 
                     key={item.letter}
-                    className={`w-12 h-12 ${item.bg} border-2 ${item.border} rounded-lg flex items-center justify-center animate-fade-in-up transition-all hover:scale-110 hover:rotate-6 duration-300 cursor-pointer`}
+                    className={`w-12 h-12 ${item.bg} border-2 ${item.border} rounded-lg flex items-center justify-center animate-fade-in-up transition-all hover:scale-110 hover:rotate-6 duration-300 cursor-pointer shadow-lg ${item.glow}`}
                     style={{ animationDelay: `${idx * 0.1}s` }}
                   >
-                    <span className={`${item.color} font-bold text-2xl`}>{item.letter}</span>
+                    <span className={`${item.color} font-bold text-2xl drop-shadow-lg`}>{item.letter}</span>
                   </div>
                 ))}
               </div>
@@ -451,8 +483,11 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                 <p className="text-base font-semibold text-white">
                   Modelo de Desenvolvimento Holístico
                 </p>
-                <p className="text-sm text-neutral-400 mt-1">
-                  Pessoal · Intelectual · Físico · Espiritual
+                <p className="text-sm mt-1 font-semibold">
+                  <span className="text-pife-pessoalLight">Pessoal</span> · 
+                  <span className="text-pife-intelectualLight"> Intelectual</span> · 
+                  <span className="text-pife-fisicoLight"> Físico</span> · 
+                  <span className="text-pife-espiritualLight"> Espiritual</span>
                 </p>
               </div>
             </div>
@@ -468,11 +503,11 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
               return (
                 <div 
                   key={idx} 
-                  className="relative group card-base hover:shadow-xl hover:shadow-neutral-700/20"
+                  className={`relative group card-base hover:shadow-xl hover:${info.glowColor}`}
                 >
                 {/* Letter Badge */}
-                <div className={`absolute -top-3 -left-3 w-14 h-14 bg-black border-2 ${info.borderColor} rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300`}>
-                  <span className={`${info.colorLight} font-bold text-2xl`}>
+                <div className={`absolute -top-3 -left-3 w-14 h-14 ${info.bgColor} border-2 ${info.borderColor} rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 group-hover:shadow-xl group-hover:${info.glowColor}`}>
+                  <span className={`${info.colorLight} font-bold text-2xl drop-shadow-lg`}>
                     {info.letter}
                   </span>
                 </div>
@@ -522,8 +557,8 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                 if (typeof item === 'string') {
                   return (
                     <div key={idx} className="relative flex items-start gap-4">
-                    {/* Timeline dot - cor neutra */}
-                    <div className="absolute -left-8 w-4 h-4 bg-neutral-600 border-4 border-black rounded-full shadow-lg"></div>
+                    {/* Timeline dot - colorido */}
+                    <div className="absolute -left-8 w-4 h-4 bg-gradient-to-br from-accent-amber to-accent-orange border-4 border-black rounded-full shadow-lg shadow-accent-amber/30"></div>
                       
                       {/* Card de texto livre */}
                       <div className="flex-1 card-compact">
@@ -562,7 +597,12 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                               {item.titulo}
                             </h4>
                             <div className="flex items-center gap-2 flex-wrap">
-                              <span className={`px-3 py-1 rounded-lg border text-xs font-semibold ${info.borderColor.replace('border-', 'bg-').replace('/35', '/15').replace('/40', '/15')} ${info.iconColor}`}>
+                              <span className={`px-3 py-1 rounded-lg border text-xs font-semibold ${
+                                item.tipo === 'Curso' || item.tipo === 'Certificação' ? 'bg-info/15 border-info/30 text-info' :
+                                item.tipo === 'Workshop' ? 'bg-accent-rose/15 border-accent-rose/30 text-accent-rose' :
+                                item.tipo === 'Projeto Pessoal' ? 'bg-accent-orange/15 border-accent-orange/30 text-accent-orange' :
+                                'bg-accent-amber/15 border-accent-amber/30 text-accent-amber'
+                              }`}>
                                 {item.tipo}
                               </span>
                               
@@ -580,7 +620,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                         
                         {/* Período */}
                         {item.periodo && (
-                          <div className="flex items-center gap-1 text-xs text-neutral-400 whitespace-nowrap">
+                          <div className="flex items-center gap-1 text-xs text-accent-amber whitespace-nowrap font-medium">
                             <Calendar className="w-3 h-3" />
                             {item.periodo}
                           </div>
@@ -606,7 +646,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                               'bg-purple-500 w-1/3'
                             }`}></div>
                           </div>
-                          <div className="flex justify-between text-xs text-neutral-500 mt-1">
+                          <div className="flex justify-between text-xs text-neutral-400 mt-1 font-medium">
                             <span>Início</span>
                             <span className={`font-semibold ${
                               item.status === 'Concluído' ? 'text-emerald-300' :

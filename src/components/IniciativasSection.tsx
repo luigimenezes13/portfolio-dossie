@@ -57,10 +57,10 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
       className={`section-card ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
       <div className="section-header">
-        <div className="icon-container">
-          <Briefcase className="w-7 h-7 text-primary" />
+        <div className="icon-container bg-gradient-to-br from-accent-orange/20 to-accent-rose/20 border-accent-orange/50 shadow-lg shadow-accent-orange/20">
+          <Briefcase className="w-7 h-7 text-accent-orange drop-shadow-lg" />
         </div>
-        <h2 className="section-title">Iniciativas Estratégicas</h2>
+        <h2 className="section-title bg-gradient-to-r from-white via-accent-orange to-white bg-clip-text text-transparent">Iniciativas Estratégicas</h2>
       </div>
 
 
@@ -72,12 +72,12 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
           return (
             <div 
               key={idx} 
-              className="card-compact hover:shadow-xl"
+              className="card-compact hover:shadow-xl hover:shadow-accent-orange/10 hover:border-accent-orange/20"
             >
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">{config.icon}</span>
-                  <h3 className="text-2xl font-bold text-primary">{iniciativa.projeto}</h3>
+                  <span className="text-2xl drop-shadow-lg">{config.icon}</span>
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-primary via-accent-rose to-accent-orange bg-clip-text text-transparent">{iniciativa.projeto}</h3>
                 </div>
                 {iniciativa.impacto && (
                   <span className={config.badge}>
@@ -91,13 +91,13 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
               {/* Informações Adicionais */}
               <div className="flex flex-wrap gap-4 pt-4 border-t border-white/10">
                 {iniciativa.periodo && (
-                  <div className="flex items-center gap-2 text-sm text-neutral-400">
+                  <div className="flex items-center gap-2 text-sm text-info px-2 py-1 bg-info/10 border border-info/20 rounded-md">
                     <Clock className="w-4 h-4" />
-                    <span>{iniciativa.periodo}</span>
+                    <span className="font-medium">{iniciativa.periodo}</span>
                   </div>
                 )}
                 {iniciativa.area && (
-                  <div className="flex items-center gap-2 text-sm text-primary font-medium">
+                  <div className="flex items-center gap-2 text-sm text-accent-rose font-medium px-2 py-1 bg-accent-rose/10 border border-accent-rose/30 rounded-md hover:bg-accent-rose/20 transition-all duration-300">
                     <Briefcase className="w-4 h-4" />
                     <span>{iniciativa.area}</span>
                   </div>

@@ -83,17 +83,17 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
       className={`section-card ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
       <div className="section-header">
-        <div className="icon-container">
-          <TrendingUp className="w-7 h-7 text-primary" />
+        <div className="icon-container bg-gradient-to-br from-success/20 to-accent-green/20 border-success/50 shadow-lg shadow-success/20">
+          <TrendingUp className="w-7 h-7 text-success drop-shadow-lg" />
         </div>
-        <h2 className="section-title">Atuação e Resultados</h2>
+        <h2 className="section-title bg-gradient-to-r from-white via-success to-white bg-clip-text text-transparent">Atuação e Resultados</h2>
       </div>
 
       <p className="text-description">{atuacaoResultados.descricao}</p>
 
       <div className="mb-10">
         <h3 className="text-subtitle mb-6">
-          <Award className="w-5 h-5 text-neutral-400" />
+          <Award className="w-5 h-5 text-accent-gold" />
           Principais Destaques
         </h3>
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
@@ -105,12 +105,12 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
             return (
               <div 
                 key={idx} 
-                className="group relative card-compact hover:shadow-xl hover:shadow-neutral-700/20"
+                className="group relative card-compact hover:shadow-xl hover:shadow-success/10 hover:border-success/20"
               >
                 {/* Ícone de destaque */}
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-neutral-700/20 border border-neutral-600/40 rounded-lg flex items-center justify-center group-hover:bg-neutral-700/30 transition-colors duration-200">
-                    <IconComponent className="w-5 h-5 text-neutral-400" />
+                  <div className="flex-shrink-0 w-10 h-10 bg-success/10 border border-success/30 rounded-lg flex items-center justify-center group-hover:bg-success/20 group-hover:scale-110 transition-all duration-300">
+                    <IconComponent className="w-5 h-5 text-success" />
                   </div>
                   
                   {/* Conteúdo do destaque */}
@@ -139,7 +139,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
       {escopos.length > 0 && (
         <div>
           <h3 className="text-subtitle">
-            <BarChart3 className="w-5 h-5 text-neutral-400" />
+            <BarChart3 className="w-5 h-5 text-info" />
             Métricas de Performance por Escopo
           </h3>
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 md:grid-rows-[1fr_0.5fr_0.5fr]">
@@ -166,22 +166,42 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                 {/* Header do Card */}
                 <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-neutral-700/30 rounded-lg">
-                      {escopoIdx === 0 || escopoIdx === 1 ? (
-                        <Github className="w-5 h-5 text-neutral-400" />
+                    <div className={`p-2 rounded-lg ${
+                      escopoIdx === 0 ? 'bg-accent-rose/15 border border-accent-rose/30' :
+                      escopoIdx === 1 ? 'bg-info/15 border border-info/30' :
+                      escopoIdx === 2 ? 'bg-accent-amber/15 border border-accent-amber/30' :
+                      escopoIdx === 3 ? 'bg-accent-orange/15 border border-accent-orange/30' :
+                      'bg-neutral-700/30'
+                    }`}>
+                      {escopoIdx === 0 ? (
+                        <Github className="w-5 h-5 text-accent-rose" />
+                      ) : escopoIdx === 1 ? (
+                        <Github className="w-5 h-5 text-info" />
                       ) : escopoIdx === 2 ? (
-                        <img src={PipefyIcon} alt="Pipefy" className="w-5 h-5 opacity-60" />
+                        <img src={PipefyIcon} alt="Pipefy" className="w-5 h-5 opacity-80 brightness-125" />
                       ) : escopoIdx === 3 ? (
-                        <BookOpen className="w-5 h-5 text-neutral-400" />
+                        <BookOpen className="w-5 h-5 text-accent-orange" />
                       ) : (
-                        <Crosshair className="w-5 h-5 text-neutral-400" />
+                        <Crosshair className="w-5 h-5 text-accent-green" />
                       )}
                     </div>
-                    <h4 className="text-xl font-bold text-neutral-300">
+                    <h4 className={`text-xl font-bold ${
+                      escopoIdx === 0 ? 'text-accent-rose' :
+                      escopoIdx === 1 ? 'text-info' :
+                      escopoIdx === 2 ? 'text-accent-amber' :
+                      escopoIdx === 3 ? 'text-accent-orange' :
+                      'text-neutral-300'
+                    }`}>
                       {escopo}
                     </h4>
                   </div>
-                  <span className="text-xs font-bold text-neutral-300 bg-neutral-800/50 px-2.5 py-1 rounded-full">
+                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
+                    escopoIdx === 0 ? 'text-accent-rose bg-accent-rose/20 border border-accent-rose/30' :
+                    escopoIdx === 1 ? 'text-info bg-info/20 border border-info/30' :
+                    escopoIdx === 2 ? 'text-accent-amber bg-accent-amber/20 border border-accent-amber/30' :
+                    escopoIdx === 3 ? 'text-accent-orange bg-accent-orange/20 border border-accent-orange/30' :
+                    'text-neutral-300 bg-neutral-800/50'
+                  }`}>
                     {metricasPorEscopo[escopo].length}
                   </span>
                 </div>
@@ -204,10 +224,10 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                       {/* Período */}
                       {metrica.tempo && (
                         <div className="flex items-center gap-2 pt-2 border-t border-neutral-700/20">
-                          <span className="text-xs text-neutral-400 uppercase tracking-wider">
+                          <span className="text-xs text-info uppercase tracking-wider font-bold">
                             Período:
                           </span>
-                          <span className="text-xs text-neutral-200 font-semibold">
+                          <span className="text-xs text-neutral-100 font-semibold">
                             {metrica.tempo}
                           </span>
                         </div>
@@ -216,7 +236,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                       {/* Observação */}
                       {metrica.observacao && (
                         <div className="flex items-start gap-2 pt-2 border-t border-neutral-700/20 mt-2">
-                          <span className="text-xs text-neutral-400 uppercase tracking-wider">
+                          <span className="text-xs text-accent-amber uppercase tracking-wider font-bold">
                             Obs:
                           </span>
                           <span className="text-xs text-neutral-200">

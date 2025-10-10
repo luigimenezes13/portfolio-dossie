@@ -27,14 +27,14 @@ export function LoadingScreen() {
                 />
               </div>
               
-              <div className="profile-badge-large">
-                <CheckCircle2 className="w-10 h-10 text-white" />
+              <div className="profile-badge-large hover:shadow-2xl hover:shadow-success/50 transition-all duration-300 animate-pulse-badge">
+                <CheckCircle2 className="w-10 h-10 text-white drop-shadow-2xl" />
               </div>
             </div>
           </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold animate-fade-in-up px-4" style={{ animationDelay: '0.3s', animationFillMode: 'backwards' }}>
-            <span className="bg-gradient-to-r from-primary via-tertiary to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-accent-rose to-accent-orange bg-clip-text text-transparent animate-pulse-glow">
               Bem-vindo ao meu dossiê
             </span>
           </h1>
