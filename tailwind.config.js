@@ -14,6 +14,45 @@ export default {
         'sans': ['Montserrat', 'sans-serif'],
         'montserrat': ['Montserrat', 'sans-serif'],
       },
+      spacing: {
+        '3': '0.1875rem', // 3px
+        '4': '0.25rem',   // 4px
+        '5': '0.3125rem', // 5px
+        '6': '0.375rem',  // 6px
+        '7': '0.4375rem', // 7px
+        '8': '0.5rem',    // 8px
+        '12': '0.75rem',  // 12px
+        '14': '0.875rem', // 14px
+        '16': '1rem',     // 16px
+        '48': '3rem',     // 48px
+        '64': '4rem',     // 64px
+      },
+      width: {
+        '3': '0.1875rem', // 3px
+        '4': '0.25rem',   // 4px
+        '5': '0.3125rem', // 5px
+        '6': '0.375rem',  // 6px
+        '7': '0.4375rem', // 7px
+        '8': '0.5rem',    // 8px
+        '12': '0.75rem',  // 12px
+        '14': '0.875rem', // 14px
+        '16': '1rem',     // 16px
+        '48': '3rem',     // 48px
+        '64': '4rem',     // 64px
+      },
+      height: {
+        '3': '0.1875rem', // 3px
+        '4': '0.25rem',   // 4px
+        '5': '0.3125rem', // 5px
+        '6': '0.375rem',  // 6px
+        '7': '0.4375rem', // 7px
+        '8': '0.5rem',    // 8px
+        '12': '0.75rem',  // 12px
+        '14': '0.875rem', // 14px
+        '16': '1rem',     // 16px
+        '48': '3rem',     // 48px
+        '64': '4rem',     // 64px
+      },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
         'fade-in-up': 'fadeInUp 0.8s ease-out',
