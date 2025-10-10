@@ -24,12 +24,12 @@ export function PotencialSection({ potencialRetorno }: PotencialSectionProps) {
       </div>
 
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-400 mb-3">Benefícios para a Empresa</h3>
+        <h3 className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wide">Benefícios para a Empresa</h3>
         <div className="space-y-2">
           {potencialRetorno.beneficios.map((beneficio, idx) => (
             <div key={idx} className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group">
               <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-              <span>{beneficio}</span>
+              <span className="font-normal">{beneficio}</span>
             </div>
           ))}
         </div>
@@ -38,11 +38,11 @@ export function PotencialSection({ potencialRetorno }: PotencialSectionProps) {
       <div className="bg-gradient-to-r from-primary/10 to-tertiary/10 border border-primary/30 rounded-xl p-4">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-gray-400">Projeção de Cargo</p>
+            <p className="text-sm text-gray-400 uppercase tracking-wide font-medium">Projeção de Cargo</p>
             <p className="text-white font-bold text-lg">{potencialRetorno.projecaoCargo}</p>
           </div>
           <div className="text-right">
-            <p className="text-sm text-gray-400">Prazo de Evolução</p>
+            <p className="text-sm text-gray-400 uppercase tracking-wide font-medium">Prazo de Evolução</p>
             <p className="text-primary font-bold text-lg">{potencialRetorno.prazoEvolucao}</p>
           </div>
         </div>

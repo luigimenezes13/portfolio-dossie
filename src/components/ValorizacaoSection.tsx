@@ -20,65 +20,63 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
   return (
     <section 
       ref={ref}
-      className={`bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 transition-all duration-700 ${
-        isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
-      }`}
+      className={`section-card ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30">
+      <div className="section-header">
+        <div className="icon-container">
           <DollarSign className="w-6 h-6 text-primary" />
         </div>
-        <h2 className="text-2xl font-bold text-white">Proposta de Valorização</h2>
+        <h2 className="section-title">Proposta de Valorização</h2>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6 mb-6">
-        <div className="bg-black/50 border border-tertiary/20 rounded-xl p-6 hover:bg-black/70 hover:border-tertiary/30 transition-all duration-300 hover:scale-105">
+      <div className="grid-responsive mb-6">
+        <div className="content-card content-card-scale-lg">
           <div className="flex items-center gap-2 mb-4">
             <TrendingDown className="w-5 h-5 text-gray-400" />
             <h3 className="text-lg font-semibold text-gray-300">Situação Atual</h3>
           </div>
-          <p className="text-gray-400 text-sm mb-2">{propostaValorizacao.situacaoAtual.modelo}</p>
-          <p className="text-white text-3xl font-bold">
+          <p className="text-muted mb-2">{propostaValorizacao.situacaoAtual.modelo}</p>
+          <p className="text-value text-value-large">
             {formatCurrency(propostaValorizacao.situacaoAtual.valor)}
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-primary/20 to-tertiary/20 border border-primary/40 rounded-xl p-6 hover:from-primary/30 hover:to-tertiary/30 hover:border-primary/60 transition-all duration-300 hover:scale-105 animate-pulse-glow">
+        <div className="content-card-glow content-card-scale-lg">
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-5 h-5 text-primary" />
             <h3 className="text-lg font-semibold text-white">Proposta</h3>
           </div>
-          <p className="text-gray-300 text-sm mb-2">{propostaValorizacao.proposta.modelo}</p>
-          <p className="text-primary text-3xl font-bold mb-1">
+          <p className="text-gray-300 text-sm mb-2 font-light">{propostaValorizacao.proposta.modelo}</p>
+          <p className="text-primary-value">
             {formatCurrency(propostaValorizacao.proposta.valorBruto)}
           </p>
-          <p className="text-gray-400 text-xs">
+          <p className="text-small-gray">
             Líquido: {formatCurrency(propostaValorizacao.proposta.valorLiquido)}
           </p>
         </div>
       </div>
 
-      <div className="bg-black/50 border border-tertiary/20 rounded-xl p-6">
-        <h3 className="text-sm font-semibold text-gray-400 mb-3 flex items-center gap-2">
+      <div className="content-card">
+        <h3 className="text-subtitle">
           <Building className="w-4 h-4" />
           Referência de Mercado
         </h3>
-        <p className="text-white font-semibold mb-3">{referenciaMercado.cargo}</p>
-        <div className="grid grid-cols-3 gap-4 mb-3">
+        <p className="text-value mb-3">{referenciaMercado.cargo}</p>
+        <div className="grid-responsive-3 mb-3">
           <div>
-            <p className="text-xs text-gray-400">Mínimo</p>
-            <p className="text-gray-300 font-mono text-sm">{formatCurrency(referenciaMercado.faixaSalarial.minimo)}</p>
+            <p className="text-small">Mínimo</p>
+            <p className="text-gray-300 text-sm font-semibold">{formatCurrency(referenciaMercado.faixaSalarial.minimo)}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-400">Máximo</p>
-            <p className="text-gray-300 font-mono text-sm">{formatCurrency(referenciaMercado.faixaSalarial.maximo)}</p>
+            <p className="text-small">Máximo</p>
+            <p className="text-gray-300 text-sm font-semibold">{formatCurrency(referenciaMercado.faixaSalarial.maximo)}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-400">Pico</p>
-            <p className="text-primary font-mono text-sm font-bold">{formatCurrency(referenciaMercado.faixaSalarial.pico)}</p>
+            <p className="text-small">Pico</p>
+            <p className="text-primary text-sm font-bold">{formatCurrency(referenciaMercado.faixaSalarial.pico)}</p>
           </div>
         </div>
-        <p className="text-xs text-gray-500">Fontes: {referenciaMercado.fontesPesquisa.join(', ')}</p>
+        <p className="text-small-gray">Fontes: {referenciaMercado.fontesPesquisa.join(', ')}</p>
       </div>
     </section>
   );

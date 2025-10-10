@@ -4,6 +4,191 @@
 
 @layer base {
   body {
-    @apply bg-black text-white;
+    @apply bg-black text-white font-montserrat;
+  }
+  
+  h1 {
+    @apply font-black;
+  }
+  
+  h2 {
+    @apply font-bold;
+  }
+  
+  h3 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  /* Layout Classes */
+  .container-main {
+    @apply max-w-4xl mx-auto px-4 py-8;
+  }
+  
+  .section-card {
+    @apply bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 transition-all duration-700;
+  }
+  
+  .section-card-primary {
+    @apply bg-gradient-to-br from-primary/20 to-tertiary/20 border border-primary/40 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/20 transition-all duration-700;
+  }
+  
+  .content-card {
+    @apply bg-black/50 border border-tertiary/20 rounded-xl p-4 hover:bg-black/70 hover:border-primary/30 transition-all duration-300;
+  }
+  
+  .content-card-hover {
+    @apply hover:translate-x-2;
+  }
+  
+  .content-card-scale {
+    @apply hover:scale-[1.02];
+  }
+  
+  .content-card-scale-lg {
+    @apply hover:scale-105;
+  }
+  
+  .content-card-glow {
+    @apply bg-gradient-to-br from-primary/20 to-tertiary/20 border border-primary/40 hover:from-primary/30 hover:to-tertiary/30 hover:border-primary/60 animate-pulse-glow;
+  }
+  
+  /* Header Classes */
+  .section-header {
+    @apply flex items-center gap-3 mb-6;
+  }
+  
+  .icon-container {
+    @apply w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30;
+  }
+  
+  .section-title {
+    @apply text-2xl font-bold text-white;
+  }
+  
+  .section-title-large {
+    @apply text-3xl font-bold text-white mb-4;
+  }
+  
+  /* Text Classes */
+  .text-description {
+    @apply text-gray-300 mb-6 leading-relaxed font-normal;
+  }
+  
+  .text-description-large {
+    @apply text-gray-200 leading-relaxed text-lg font-normal;
+  }
+  
+  .text-subtitle {
+    @apply text-sm font-semibold text-gray-400 mb-3 flex items-center gap-2 uppercase tracking-wide;
+  }
+  
+  .text-highlight {
+    @apply text-primary font-bold;
+  }
+  
+  .text-value {
+    @apply text-white font-semibold;
+  }
+  
+  .text-value-large {
+    @apply text-3xl font-bold;
+  }
+  
+  .text-primary-value {
+    @apply text-primary text-3xl font-bold mb-1;
+  }
+  
+  .text-small {
+    @apply text-xs text-gray-400 uppercase tracking-wide;
+  }
+  
+  .text-small-gray {
+    @apply text-xs text-gray-500 font-light;
+  }
+  
+  .text-muted {
+    @apply text-gray-400 text-sm font-light;
+  }
+  
+  /* Profile Classes */
+  .profile-image-container {
+    @apply relative w-48 h-48;
+  }
+  
+  .profile-image {
+    @apply rounded-full overflow-hidden border-4 border-primary/60 shadow-2xl shadow-primary/30 w-full h-full;
+  }
+  
+  .profile-badge {
+    @apply absolute -bottom-2 -right-2 w-14 h-14 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black;
+  }
+  
+  .profile-badge-large {
+    @apply absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black;
+  }
+  
+  /* Animation Classes */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-8;
+  }
+  
+  .animate-on-scroll-visible {
+    @apply animate-fade-in-up;
+  }
+  
+  /* Grid Classes */
+  .grid-responsive {
+    @apply grid md:grid-cols-2 gap-6;
+  }
+  
+  .grid-responsive-3 {
+    @apply grid grid-cols-3 gap-4;
+  }
+  
+  /* Spacing Classes */
+  .space-y-content {
+    @apply space-y-3;
+  }
+  
+  .space-y-content-lg {
+    @apply space-y-4;
+  }
+  
+  .space-y-section {
+    @apply space-y-6;
+  }
+  
+  /* Button Classes */
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/80 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300;
+  }
+  
+  /* Loading/Error States */
+  .screen-container {
+    @apply min-h-screen bg-black text-white flex items-center justify-center p-4;
+  }
+  
+  .error-card {
+    @apply bg-red-950/50 border border-red-500/50 rounded-xl p-8 text-center hover:border-red-500/80 transition-all duration-300;
+  }
+  
+  .empty-card {
+    @apply text-center animate-fade-in-up;
+  }
+  
+  /* Footer Classes */
+  .footer-container {
+    @apply flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-light;
+  }
+  
+  /* Form Classes */
+  .form-input {
+    @apply w-full px-4 py-2 bg-black/50 border border-tertiary/20 rounded-lg text-white placeholder-gray-400 focus:border-primary/50 focus:outline-none transition-all duration-300;
+  }
+  
+  .form-label {
+    @apply block text-sm font-semibold text-gray-300 mb-2;
   }
 }

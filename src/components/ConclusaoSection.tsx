@@ -10,12 +10,10 @@ export function ConclusaoSection({ conclusao }: ConclusaoSectionProps) {
   return (
     <section 
       ref={ref}
-      className={`bg-gradient-to-br from-primary/20 to-tertiary/20 border border-primary/40 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/20 transition-all duration-700 ${
-        isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
-      }`}
+      className={`section-card-primary ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
-      <h2 className="text-2xl font-bold text-white mb-4">Conclusão</h2>
-      <p className="text-gray-200 leading-relaxed text-lg">
+      <h2 className="section-title-large">Conclusão</h2>
+      <p className="text-description-large">
         {conclusao}
       </p>
     </section>

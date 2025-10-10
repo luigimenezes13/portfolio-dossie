@@ -6,9 +6,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#BF092F',
+        primary: '#e50914',
         secondary: '#662222',
         tertiary: '#842A3B',
+      },
+      fontFamily: {
+        'sans': ['Montserrat', 'sans-serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',

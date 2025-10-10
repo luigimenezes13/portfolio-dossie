@@ -14,12 +14,12 @@ export function LoadingScreen() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center overflow-hidden">
+    <div className="screen-container overflow-hidden">
       <div className="text-center">
         <div className="relative flex flex-col items-center justify-center gap-8">
           <div className="animate-scale-in">
             <div className="relative w-64 h-64">
-              <div className="rounded-full overflow-hidden border-4 border-primary/60 shadow-2xl shadow-primary/30 w-full h-full">
+              <div className="profile-image">
                 <img 
                   src={profileImage} 
                   alt="Luigi Bertoli Menezes"
@@ -27,7 +27,7 @@ export function LoadingScreen() {
                 />
               </div>
               
-              <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-primary to-tertiary rounded-full flex items-center justify-center border-4 border-black">
+              <div className="profile-badge-large">
                 <CheckCircle2 className="w-8 h-8 text-white" />
               </div>
             </div>
@@ -40,7 +40,7 @@ export function LoadingScreen() {
           </h1>
           
           {step >= 1 && (
-            <p className="text-2xl md:text-3xl text-gray-400 animate-fade-in-up">
+            <p className="text-2xl md:text-3xl text-gray-400 font-light animate-fade-in-up">
               por <span className="text-white font-semibold">Luigi Bertoli Menezes</span>
             </p>
           )}

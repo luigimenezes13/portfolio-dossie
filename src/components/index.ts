@@ -1,4 +1,3 @@
-export { ProfileImage } from './ProfileImage';
 export { Header } from './Header';
 export { ObjetivoSection } from './ObjetivoSection';
 export { TrajetoriaSection } from './TrajetoriaSection';

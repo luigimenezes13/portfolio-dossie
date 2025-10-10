@@ -12,22 +12,20 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
   return (
     <section 
       ref={ref}
-      className={`bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 transition-all duration-700 ${
-        isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
-      }`}
+      className={`section-card ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30">
+      <div className="section-header">
+        <div className="icon-container">
           <Briefcase className="w-6 h-6 text-primary" />
         </div>
-        <h2 className="text-2xl font-bold text-white">Iniciativas Estratégicas</h2>
+        <h2 className="section-title">Iniciativas Estratégicas</h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-content-lg">
         {iniciativasEstrategicas.map((iniciativa, idx) => (
-          <div key={idx} className="bg-black/50 border border-tertiary/20 rounded-xl p-6 hover:bg-black/70 hover:border-primary/30 transition-all duration-300 hover:scale-[1.02]">
+          <div key={idx} className="content-card content-card-scale">
             <h3 className="text-xl font-bold text-primary mb-3">{iniciativa.projeto}</h3>
-            <p className="text-gray-300 leading-relaxed">{iniciativa.descricao}</p>
+            <p className="text-description">{iniciativa.descricao}</p>
           </div>
         ))}
       </div>

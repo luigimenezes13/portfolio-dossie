@@ -17,7 +17,7 @@ export function Footer({ apiInfo, dossie }: FooterProps) {
         isVisible ? 'animate-fade-in' : 'opacity-0'
       }`}
     >
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <div className="footer-container">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-2">
             API Status: 
@@ -28,12 +28,12 @@ export function Footer({ apiInfo, dossie }: FooterProps) {
             )}
           </span>
           <span>•</span>
-          <span>v{apiInfo?.version || '1.0.0'}</span>
+          <span className="font-medium">v{apiInfo?.version || '1.0.0'}</span>
         </div>
         <div className="flex items-center gap-4">
           <span>Atualizado: {new Date(dossie.updatedAt).toLocaleDateString('pt-BR')}</span>
           <span>•</span>
-          <span className="text-gray-600">Dossiê System</span>
+          <span className="text-gray-600 font-semibold">Dossiê System</span>
         </div>
       </div>
     </footer>
