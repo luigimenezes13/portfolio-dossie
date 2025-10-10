@@ -1,4 +1,5 @@
 import { CheckCircle2, XCircle } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import type { ApiResponse, Dossie } from '../types/api';
 
 interface FooterProps {
@@ -7,8 +8,15 @@ interface FooterProps {
 }
 
 export function Footer({ apiInfo, dossie }: FooterProps) {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.5 });
+
   return (
-    <footer className="mt-16 pt-8 border-t border-tertiary/20 animate-fade-in" style={{ animationDelay: '0.8s', animationFillMode: 'backwards' }}>
+    <footer 
+      ref={ref}
+      className={`mt-16 pt-8 border-t border-tertiary/20 transition-all duration-700 ${
+        isVisible ? 'animate-fade-in' : 'opacity-0'
+      }`}
+    >
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-2">
