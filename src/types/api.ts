@@ -158,6 +158,7 @@ export interface DossieCreateInput {
   potencialRetorno: PotencialRetorno;
   propostaValorizacao: PropostaValorizacao;
   conclusao: string;
+  [key: string]: unknown;
 }
 
 export type DossieUpdateInput = Partial<DossieCreateInput>;
