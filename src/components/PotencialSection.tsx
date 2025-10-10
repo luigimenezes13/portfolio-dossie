@@ -103,12 +103,12 @@ export function PotencialSection({ potencialRetorno }: PotencialSectionProps) {
             )}
 
             {potencialRetorno.estimativaROI && (
-              <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-800/50 via-neutral-800/30 to-neutral-900/20 border border-neutral-700/50 hover:border-primary/40 p-6 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10">
+              <div className="group relative overflow-hidden card-base hover:border-primary/40 p-6 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-neutral-700/20 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <TrendingUp className="w-8 h-8 text-neutral-300 group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                    <div className="px-3 py-1 rounded-full bg-neutral-700/50 text-neutral-300 group-hover:bg-primary/20 group-hover:text-primary text-xs font-semibold transition-all duration-300">
+                    <div className="px-3 py-1 rounded-full bg-secondary/20 text-neutral-300 group-hover:bg-primary/20 group-hover:text-primary text-xs font-semibold transition-all duration-300">
                       ROI
                     </div>
                   </div>

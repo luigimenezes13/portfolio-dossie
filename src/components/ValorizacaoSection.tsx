@@ -33,9 +33,9 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
         
         <div className="grid md:grid-cols-2 gap-8">
           <div className="relative">
-            <div className="card-base border-2 border-neutral-600/30 hover:border-neutral-500/50">
+            <div className="card-base">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-neutral-700/50 rounded-xl flex items-center justify-center border-2 border-neutral-600/50 group-hover:bg-warning/10 group-hover:border-warning/30 transition-all duration-300">
+                <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center border-2 border-secondary/50 group-hover:bg-warning/10 group-hover:border-warning/30 transition-all duration-300">
                   <TrendingDown className="w-6 h-6 text-neutral-400 group-hover:text-warning transition-colors duration-300" />
                 </div>
                 <div>

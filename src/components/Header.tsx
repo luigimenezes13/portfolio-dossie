@@ -131,7 +131,7 @@ export function Header({ dossie }: HeaderProps) {
                         </a>
                       </div>
                       
-                      <div className="pt-2 border-t border-neutral-600">
+                      <div className="pt-2 border-t border-secondary/40">
                         <p className="text-xs text-neutral-300 mb-2 font-medium"><span className="text-primary">Não</span> foram usadas tecnologias como:</p>
                         <div className="flex flex-wrap gap-2">
                           <a 
@@ -155,7 +155,7 @@ export function Header({ dossie }: HeaderProps) {
                         </div>
                       </div>
 
-                      <div className="pt-2 border-t border-neutral-600">
+                      <div className="pt-2 border-t border-secondary/40">
                         <p className="text-xs text-neutral-300 font-medium">
                           Esse dossiê utiliza a API pública (também desenvolvida por mim) disponível em{' '}
                           <a 

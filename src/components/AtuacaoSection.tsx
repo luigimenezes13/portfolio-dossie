@@ -36,13 +36,13 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
           {parts.map((part, index) => {
             if (part.includes('++')) {
               return (
-                <span key={index} className="text-emerald-400" style={{ color: '#10b981' }}>
+                <span key={index} className="metric-positive">
                   {part}
                 </span>
               );
             } else if (part.includes('--')) {
               return (
-                <span key={index} className="text-red-400" style={{ color: '#ef4444' }}>
+                <span key={index} className="metric-negative">
                   {part}
                 </span>
               );
@@ -215,7 +215,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                     >
                       {/* Valor e Atividade */}
                       <div className="flex items-baseline gap-2 mb-2">
-                        {renderMetricValue(metrica.valor, 'text-neutral-300')}
+                        {renderMetricValue(metrica.valor, 'metric-neutral')}
                       </div>
                       <p className="text-white text-sm font-medium leading-snug mb-2">
                         {metrica.atividade}

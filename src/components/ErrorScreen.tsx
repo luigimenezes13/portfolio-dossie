@@ -16,7 +16,7 @@ export function ErrorScreen({ error }: ErrorScreenProps) {
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-error via-red-400 to-error bg-clip-text text-transparent mb-4">
             Erro ao Carregar
           </h2>
-          <p className="text-red-300 text-lg font-normal px-4">{error}</p>
+          <p className="text-error text-lg font-normal px-4">{error}</p>
           <div className="mt-6">
             <button 
               onClick={() => window.location.reload()} 

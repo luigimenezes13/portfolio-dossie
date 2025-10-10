@@ -15,9 +15,9 @@ const getDesenvolvimentoInfo = (tipo: string) => {
     iconBg: 'bg-neutral-700/20',
     iconColor: 'text-neutral-400',
       statusColors: {
-        'Concluído': 'text-emerald-300 bg-emerald-500/15 border-emerald-500/25',
-        'Em andamento': 'text-amber-300 bg-amber-500/15 border-amber-500/25',
-        'Planejado': 'text-purple-300 bg-purple-500/15 border-purple-500/25'
+        'Concluído': 'status-completed',
+        'Em andamento': 'status-in-progress',
+        'Planejado': 'status-planned'
       }
   };
 
@@ -576,9 +576,9 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                   <div key={idx} className="relative flex items-start gap-4">
                     {/* Timeline dot com cor baseada no status - tons suaves */}
                     <div className={`absolute -left-8 w-4 h-4 ${
-                      item.status === 'Concluído' ? 'bg-emerald-500' :
-                      item.status === 'Em andamento' ? 'bg-amber-500' :
-                      'bg-purple-500'
+                      item.status === 'Concluído' ? 'bg-success' :
+                      item.status === 'Em andamento' ? 'bg-accent-amber' :
+                      'bg-accent-purple'
                     } border-4 border-black rounded-full shadow-lg`}></div>
                     
                     {/* Card principal */}
@@ -641,17 +641,17 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                         <div className="mt-4">
                           <div className="w-full bg-neutral-800 rounded-full h-1.5">
                             <div className={`h-1.5 rounded-full transition-all duration-1000 ${
-                              item.status === 'Concluído' ? 'bg-emerald-500 w-full' :
-                              item.status === 'Em andamento' ? 'bg-amber-500 w-2/3' :
-                              'bg-purple-500 w-1/3'
+                              item.status === 'Concluído' ? 'progress-completed w-full' :
+                              item.status === 'Em andamento' ? 'progress-in-progress w-2/3' :
+                              'progress-planned w-1/3'
                             }`}></div>
                           </div>
                           <div className="flex justify-between text-xs text-neutral-400 mt-1 font-medium">
                             <span>Início</span>
                             <span className={`font-semibold ${
-                              item.status === 'Concluído' ? 'text-emerald-300' :
-                              item.status === 'Em andamento' ? 'text-amber-300' :
-                              'text-purple-300'
+                              item.status === 'Concluído' ? 'text-success' :
+                              item.status === 'Em andamento' ? 'text-accent-amber' :
+                              'text-accent-purple'
                             }`}>
                               {item.status}
                             </span>

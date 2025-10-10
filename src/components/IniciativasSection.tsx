@@ -45,7 +45,7 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
         };
       default:
         return {
-          badge: 'badge-base bg-neutral-600 text-white border-neutral-500',
+          badge: 'badge-tech',
           icon: '⚪'
         };
     }
