@@ -13,7 +13,6 @@ export function Header({ dossie }: HeaderProps) {
         <div className="animate-fade-in-left">
           <ProfileImage 
             colaboradorNome={dossie.colaborador.nome}
-            colaboradorFuncao={dossie.colaborador.funcaoAtual}
           />
         </div>
         <div className="animate-fade-in-right" style={{ animationDelay: '0.2s', animationFillMode: 'backwards' }}>
