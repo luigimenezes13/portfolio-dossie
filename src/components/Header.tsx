@@ -177,7 +177,7 @@ export function Header({ dossie }: HeaderProps) {
         </div>
         
         <div className="flex-1 flex flex-col justify-center text-center md:text-left animate-fade-in-right" style={{ animationDelay: '0.2s', animationFillMode: 'backwards' }}>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight bg-gradient-to-r from-primary via-tertiary to-primary bg-clip-text text-transparent mb-10 leading-tight">
+          <h1 className=" py-6 text-5xl md:text-6xl lg:text-7xl font-black tracking-tight bg-gradient-to-r from-primary via-tertiary to-primary bg-clip-text text-transparent mb-10 leading-tight">
             {dossie.colaborador.nome}
           </h1>
           <p className="text-neutral-200 text-2xl md:text-3xl mb-10 font-semibold leading-relaxed">
