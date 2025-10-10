@@ -29,30 +29,71 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
         <h2 className="section-title">Proposta de Valorização</h2>
       </div>
 
-      <div className="grid-responsive mb-10">
-        <div className="content-card content-card-scale-lg">
-          <div className="flex items-center gap-3 mb-4">
-            <TrendingDown className="w-6 h-6 text-neutral-400" />
-            <h3 className="text-xl font-semibold text-neutral-200">Situação Atual</h3>
+      <div className="relative mb-12">
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="relative">
+            <div className="content-card content-card-scale-lg border-2 border-neutral-600/30 hover:border-neutral-500/50 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-neutral-700/50 rounded-xl flex items-center justify-center border-2 border-neutral-600/50">
+                  <TrendingDown className="w-6 h-6 text-neutral-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-neutral-300">Situação Atual</h3>
+                  <p className="text-sm text-neutral-500 font-medium">Posição atual</p>
+                </div>
+              </div>
+              
+              <div className="mb-6">
+                <p className="text-neutral-400 text-sm mb-2 font-medium uppercase tracking-wider">{propostaValorizacao.situacaoAtual.modelo}</p>
+                <p className="text-neutral-100 text-4xl md:text-5xl font-bold">
+                  {formatCurrency(propostaValorizacao.situacaoAtual.valor)}
+                </p>
+              </div>
+            </div>
           </div>
-          <p className="text-muted mb-3">{propostaValorizacao.situacaoAtual.modelo}</p>
-          <p className="text-value text-value-large">
-            {formatCurrency(propostaValorizacao.situacaoAtual.valor)}
-          </p>
+
+          <div className="relative">
+            <div className="absolute -top-3 -right-3 z-10">
+              <div className="bg-gradient-to-r from-primary to-tertiary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                PROPOSTA
+              </div>
+            </div>
+            
+            <div className="content-card content-card-scale-lg border-2 border-primary/50 hover:border-primary/70 transition-all duration-300 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-tertiary/5"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-tertiary/20 rounded-xl flex items-center justify-center border-2 border-primary/50">
+                    <TrendingUp className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Proposta</h3>
+                    <p className="text-sm text-primary font-medium">Nova posição</p>
+                  </div>
+                </div>
+                
+                <div className="mb-6">
+                  <p className="text-neutral-200 text-sm mb-2 font-medium uppercase tracking-wider">{propostaValorizacao.proposta.modelo}</p>
+                  <p className="text-primary text-4xl md:text-5xl font-bold">
+                    {formatCurrency(propostaValorizacao.proposta.valorBruto)}
+                  </p>
+                  <p className="text-neutral-300 text-lg mt-2 font-medium">
+                    Líquido: {formatCurrency(propostaValorizacao.proposta.valorLiquido)}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="content-card-glow content-card-scale-lg">
-          <div className="flex items-center gap-3 mb-4">
-            <TrendingUp className="w-6 h-6 text-primary" />
-            <h3 className="text-xl font-semibold text-white">Proposta</h3>
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 to-tertiary/10 border border-primary/30 rounded-full px-6 py-3">
+            <span className="text-neutral-200 font-semibold">
+              Proposta justa para o mercado de trabalho e as competências do investidor
+            </span>
           </div>
-          <p className="text-neutral-200 text-base mb-3 font-normal">{propostaValorizacao.proposta.modelo}</p>
-          <p className="text-primary-value">
-            {formatCurrency(propostaValorizacao.proposta.valorBruto)}
-          </p>
-          <p className="text-small-gray mt-1">
-            Líquido: {formatCurrency(propostaValorizacao.proposta.valorLiquido)}
-          </p>
         </div>
       </div>
 
