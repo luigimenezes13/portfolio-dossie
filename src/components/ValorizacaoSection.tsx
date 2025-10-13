@@ -1,6 +1,7 @@
 import { DollarSign, TrendingDown, TrendingUp, Building } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import type { Dossie } from '../types/api';
+import { CARD_CLASSES, ICON_CONTAINERS, ICON_COLORS, TYPOGRAPHY } from '../constants/design-system';
 
 interface ValorizacaoSectionProps {
   propostaValorizacao: Dossie['propostaValorizacao'];
@@ -20,20 +21,20 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
   return (
     <section 
       ref={ref}
-      className={`section-card-primary ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
+      className={`${CARD_CLASSES.sectionPrimary} ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
       <div className="section-header">
-        <div className="icon-container bg-gradient-to-br from-secondary/20 to-secondary-light/20 border-secondary/50 shadow-lg shadow-secondary/20">
-          <DollarSign className="w-7 h-7 text-secondary drop-shadow-lg" />
+        <div className={ICON_CONTAINERS.secondary}>
+          <DollarSign className={`w-7 h-7 ${ICON_COLORS.secondary} drop-shadow-lg`} />
         </div>
-        <h2 className="section-title bg-gradient-to-r from-white via-secondary to-white bg-clip-text text-transparent">Proposta de Valorização</h2>
+        <h2 className={TYPOGRAPHY.sectionTitleSecondary}>Proposta de Valorização</h2>
       </div>
 
       <div className="relative mb-12">
         
         <div className="grid md:grid-cols-2 gap-8">
           <div className="relative">
-            <div className="card-base">
+            <div className={CARD_CLASSES.base}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-neutral-700/20 rounded-xl flex items-center justify-center border-2 border-neutral-600/50 group-hover:bg-neutral-600/10 group-hover:border-neutral-500/30 transition-all duration-300">
                   <TrendingDown className="w-6 h-6 text-neutral-400 group-hover:text-neutral-300 transition-colors duration-300" />
@@ -60,13 +61,13 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
               </div>
             </div>
             
-            <div className="card-primary border-2 border-primary/50 hover:border-primary/70 relative overflow-hidden">
+            <div className={`${CARD_CLASSES.primary} border-2 border-primary/50 hover:border-primary/70 relative overflow-hidden`}>
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-tertiary/5"></div>
               
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl flex items-center justify-center border-2 border-primary/50 shadow-lg shadow-primary/20">
-                    <TrendingUp className="w-6 h-6 text-primary drop-shadow-lg" />
+                  <div className={`w-12 h-12 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl flex items-center justify-center border-2 border-primary/50 shadow-lg shadow-primary/20`}>
+                    <TrendingUp className={`w-6 h-6 ${ICON_COLORS.primary} drop-shadow-lg`} />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">Proposta</h3>
@@ -99,7 +100,7 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
                   )}
                   {propostaValorizacao.proposta.observacoes && (
                     <div className="mt-3 pt-3 border-t border-white/10">
-                      <p className="text-xs text-info uppercase tracking-wider mb-1 font-bold">Observações:</p>
+                    <p className="text-xs text-primary uppercase tracking-wider mb-1 font-bold">Observações:</p>
                       <p className="text-sm text-neutral-200 italic">{propostaValorizacao.proposta.observacoes}</p>
                     </div>
                   )}
@@ -110,7 +111,7 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
         </div>
 
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-secondary/15 to-secondary-light/15 border-2 border-secondary/40 rounded-full px-6 py-3 hover:border-secondary/60 hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 group">
+          <div className={`inline-flex items-center gap-2 bg-gradient-to-r from-secondary/15 to-secondary-light/15 border-2 border-secondary/40 rounded-full px-6 py-3 hover:border-secondary/60 hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 group`}>
             <span className="text-2xl group-hover:scale-110 transition-transform">✓</span>
             <span className="text-neutral-100 font-bold group-hover:text-white transition-colors">
               Proposta justa para o mercado de trabalho e as competências do investidor
@@ -119,15 +120,15 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
         </div>
       </div>
 
-      <div className="card-base">
+      <div className={CARD_CLASSES.base}>
         <h3 className="text-subtitle">
-          <Building className="w-5 h-5 text-info" />
+          <Building className={`w-7 h-7 ${ICON_COLORS.primary}`} />
           Referência de Mercado
         </h3>
         <div className="flex items-center gap-3 flex-wrap mb-6">
           <p className="text-value text-xl">{referenciaMercado.cargo}</p>
           {referenciaMercado.senioridade && (
-            <span className="px-3 py-1 bg-info/15 border border-info/30 text-info rounded-full text-sm font-bold hover:bg-info/25 transition-colors">
+            <span className="px-3 py-1 bg-primary/15 border border-primary/30 text-primary rounded-full text-sm font-bold hover:bg-primary/25 transition-colors">
               {referenciaMercado.senioridade}
             </span>
           )}
@@ -141,8 +142,8 @@ export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: V
             <p className="text-neutral-200 text-lg font-semibold group-hover:text-warning transition-colors">{formatCurrency(referenciaMercado.faixaSalarial.minimo)}</p>
           </div>
           <div className="group">
-            <p className="text-small mb-2 text-info">Máximo</p>
-            <p className="text-neutral-200 text-lg font-semibold group-hover:text-info transition-colors">{formatCurrency(referenciaMercado.faixaSalarial.maximo)}</p>
+            <p className="text-small mb-2 text-primary">Máximo</p>
+            <p className="text-neutral-200 text-lg font-semibold group-hover:text-primary transition-colors">{formatCurrency(referenciaMercado.faixaSalarial.maximo)}</p>
           </div>
           {referenciaMercado.faixaSalarial.pico && (
             <div className="group">

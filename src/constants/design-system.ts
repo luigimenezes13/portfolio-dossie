@@ -14,13 +14,16 @@ export const CARD_CLASSES = {
   base: 'bg-gradient-to-br from-neutral-900/40 via-neutral-900/30 to-neutral-900/35 border-2 border-neutral-700/40 rounded-2xl p-6 hover:border-neutral-600/60 hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm',
   
   // Card com destaque - CTAs, informações importantes
-  primary: 'bg-gradient-to-br from-primary/10 to-tertiary/10 border-2 border-primary/40 rounded-2xl p-6 hover:border-primary/60 hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-primary/15',
+  primary: 'bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/40 rounded-2xl p-6 hover:border-primary/60 hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-primary/15',
   
   // Card compacto - listas, itens menores
   compact: 'bg-gradient-to-r from-neutral-800/30 to-transparent border border-neutral-700/40 rounded-xl p-4 hover:border-neutral-600/60 hover:from-neutral-800/50 transition-all duration-300',
   
   // Card de seção completa
-  section: 'bg-gradient-to-br from-secondary/30 to-black border border-tertiary/20 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-primary/15 transition-all duration-700 backdrop-blur-sm',
+  section: 'bg-gradient-to-br from-secondary/30 to-black border border-secondary/20 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-secondary/15 transition-all duration-700 backdrop-blur-sm',
+  
+  // Card de seção com destaque primário
+  sectionPrimary: 'bg-gradient-to-br from-primary/20 to-black border border-primary/30 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-primary/25 transition-all duration-700 backdrop-blur-sm',
 } as const;
 
 /**
@@ -60,29 +63,39 @@ export const ICON_SIZES = {
 } as const;
 
 /**
+ * CLASSES DE ÍCONE CONTAINER PADRONIZADAS
+ * Containers para ícones com cores padronizadas
+ */
+export const ICON_CONTAINERS = {
+  // Container padrão - cor primária
+  primary: 'icon-container bg-gradient-to-br from-primary/20 to-primary/10 border-primary/50 shadow-lg shadow-primary/20',
+  
+  // Container secundário - cor secundária
+  secondary: 'icon-container bg-gradient-to-br from-secondary/20 to-secondary/10 border-secondary/50 shadow-lg shadow-secondary/20',
+  
+  // Container terciário - cor terciária
+  tertiary: 'icon-container bg-gradient-to-br from-tertiary/20 to-tertiary/10 border-tertiary/50 shadow-lg shadow-tertiary/20',
+  
+  // Container neutro - sem cor específica
+  neutral: 'icon-container bg-gradient-to-br from-neutral-700/20 to-neutral-600/10 border-neutral-600/50 shadow-lg shadow-neutral-700/20',
+} as const;
+
+/**
  * CLASSES DE COR PARA ÍCONES
  */
 export const ICON_COLORS = {
   primary: 'text-primary',
+  secondary: 'text-secondary',
+  tertiary: 'text-tertiary',
   neutral: 'text-neutral-400',
   neutralWithHover: 'text-neutral-400 group-hover:text-neutral-200',
   white: 'text-white',
   muted: 'text-neutral-500',
-  // Accent colors
-  accentRose: 'text-accent-rose',
-  accentAmber: 'text-accent-amber',
-  accentOrange: 'text-accent-orange',
-  accentGold: 'text-accent-gold',
   // State colors
   success: 'text-success',
   warning: 'text-warning',
   error: 'text-error',
   info: 'text-info',
-  // PIFE colors
-  pifePessoal: 'text-pife-pessoal',
-  pifeIntelectual: 'text-pife-intelectual',
-  pifeFisico: 'text-pife-fisico',
-  pifeEspiritual: 'text-pife-espiritual',
 } as const;
 
 /**
@@ -147,8 +160,15 @@ export const TYPOGRAPHY = {
   valueLarge: 'text-2xl font-bold text-white',
   valueMedium: 'text-xl font-bold text-white',
   
-  // Especiais
-  gradient: 'bg-gradient-to-r from-primary via-tertiary to-primary bg-clip-text text-transparent',
+  // Títulos de seção com gradientes padronizados
+  sectionTitlePrimary: 'section-title bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent',
+  sectionTitleSecondary: 'section-title bg-gradient-to-r from-white via-secondary to-white bg-clip-text text-transparent',
+  sectionTitleTertiary: 'section-title bg-gradient-to-r from-white via-tertiary to-white bg-clip-text text-transparent',
+  
+  // Gradientes de texto
+  gradientPrimary: 'bg-gradient-to-r from-primary via-primary-light to-secondary bg-clip-text text-transparent',
+  gradientSecondary: 'bg-gradient-to-r from-secondary via-secondary-light to-tertiary bg-clip-text text-transparent',
+  gradientTertiary: 'bg-gradient-to-r from-tertiary via-tertiary-light to-primary bg-clip-text text-transparent',
 } as const;
 
 /**

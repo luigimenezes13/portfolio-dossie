@@ -1,6 +1,7 @@
 import { Briefcase, Clock } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import type { Dossie, IniciativaEstrategica } from '../types/api';
+import { CARD_CLASSES, ICON_CONTAINERS, ICON_COLORS, TYPOGRAPHY } from '../constants/design-system';
 
 interface IniciativasSectionProps {
   iniciativasEstrategicas: Dossie['iniciativasEstrategicas'];
@@ -54,13 +55,13 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
   return (
     <section 
       ref={ref}
-      className={`section-card ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
+      className={`${CARD_CLASSES.section} ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
       <div className="section-header">
-        <div className="icon-container bg-gradient-to-br from-tertiary/20 to-tertiary-light/20 border-tertiary/50 shadow-lg shadow-tertiary/20">
-          <Briefcase className="w-7 h-7 text-tertiary drop-shadow-lg" />
+        <div className={ICON_CONTAINERS.tertiary}>
+          <Briefcase className={`w-7 h-7 ${ICON_COLORS.tertiary} drop-shadow-lg`} />
         </div>
-        <h2 className="section-title bg-gradient-to-r from-white via-tertiary to-white bg-clip-text text-transparent">Iniciativas Estratégicas</h2>
+        <h2 className={TYPOGRAPHY.sectionTitleTertiary}>Iniciativas Estratégicas</h2>
       </div>
 
 
@@ -72,12 +73,12 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
           return (
             <div 
               key={idx} 
-              className="card-compact hover:shadow-xl hover:shadow-tertiary/10 hover:border-tertiary/20"
+              className={`${CARD_CLASSES.compact} hover:shadow-xl hover:shadow-tertiary/10 hover:border-tertiary/20`}
             >
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl drop-shadow-lg">{config.icon}</span>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-primary via-tertiary to-secondary bg-clip-text text-transparent">{iniciativa.projeto}</h3>
+                  <h3 className={`text-2xl font-bold ${TYPOGRAPHY.gradientPrimary}`}>{iniciativa.projeto}</h3>
                 </div>
                 {iniciativa.impacto && (
                   <span className={config.badge}>
@@ -91,13 +92,13 @@ export function IniciativasSection({ iniciativasEstrategicas }: IniciativasSecti
               {/* Informações Adicionais */}
               <div className="flex flex-wrap gap-4 pt-4 border-t border-white/10">
                 {iniciativa.periodo && (
-                  <div className="flex items-center gap-2 text-sm text-info px-2 py-1 bg-info/10 border border-info/20 rounded-md">
+                  <div className="flex items-center gap-2 text-sm text-primary px-2 py-1 bg-primary/10 border border-primary/20 rounded-md">
                     <Clock className="w-4 h-4" />
                     <span className="font-medium">{iniciativa.periodo}</span>
                   </div>
                 )}
                 {iniciativa.area && (
-                  <div className="flex items-center gap-2 text-sm text-secondary font-medium px-2 py-1 bg-secondary/10 border border-secondary/30 rounded-md hover:bg-secondary/20 transition-all duration-300">
+                  <div className={`flex items-center gap-2 text-sm font-medium px-2 py-1 bg-secondary/10 border border-secondary/30 rounded-md hover:bg-secondary/20 transition-all duration-300 ${ICON_COLORS.secondary}`}>
                     <Briefcase className="w-4 h-4" />
                     <span>{iniciativa.area}</span>
                   </div>

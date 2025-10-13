@@ -285,11 +285,11 @@ const getDimensaoInfo = (dimensao: string) => {
       icon: Sparkles, 
       letter: 'E', 
       description: 'Propósito e valores',
-      color: 'text-info',
-      colorLight: 'text-info',
-      bgColor: 'bg-info/15',
-      borderColor: 'border-info/40',
-      glowColor: 'shadow-info/20'
+      color: 'text-primary',
+      colorLight: 'text-primary',
+      bgColor: 'bg-primary/15',
+      borderColor: 'border-primary/40',
+      glowColor: 'shadow-primary/20'
     }
   };
   
@@ -386,7 +386,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
             {/* Timeline indicator - colorido por área */}
             <div className={`absolute -left-3 top-8 w-6 h-6 ${
               idx === 0 ? 'bg-gradient-to-br from-accent-rose to-accent-orange' :
-              idx === 1 ? 'bg-gradient-to-br from-info to-accent-purple' :
+              idx === 1 ? 'bg-gradient-to-br from-primary to-accent-primary' :
               'bg-gradient-to-br from-accent-amber to-accent-gold'
             } border-4 border-black rounded-full shadow-lg group-hover:scale-125 transition-transform duration-300`}></div>
                 
@@ -395,12 +395,12 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                   <div className="flex items-center gap-3">
                     <div className={`p-3 ${
                       idx === 0 ? 'bg-accent-rose/15 border-accent-rose/40' :
-                      idx === 1 ? 'bg-info/15 border-info/40' :
+                      idx === 1 ? 'bg-secondary/15 border-secondary/40' :
                       'bg-accent-amber/15 border-accent-amber/40'
                     } rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-md`}>
                       <AreaIcon className={`w-6 h-6 ${
                         idx === 0 ? 'text-accent-rose' :
-                        idx === 1 ? 'text-info' :
+                        idx === 1 ? 'text-secondary' :
                         'text-accent-amber'
                       }`} />
                     </div>
@@ -411,7 +411,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                       {area.periodo && (
                         <span className={`text-xs font-bold uppercase tracking-wider ${
                           idx === 0 ? 'text-accent-rose/70' :
-                          idx === 1 ? 'text-info/70' :
+                          idx === 1 ? 'text-secondary/70' :
                           'text-accent-amber/70'
                         }`}>
                           {area.periodo}
@@ -436,7 +436,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                         key={kidx}
                         className={`badge-tech ${
                           kidx % 4 === 0 ? 'hover:border-accent-rose/50 hover:bg-accent-rose/10 hover:text-accent-rose' :
-                          kidx % 4 === 1 ? 'hover:border-info/50 hover:bg-info/10 hover:text-info' :
+                          kidx % 4 === 1 ? 'hover:border-secondary/50 hover:bg-secondary/10 hover:text-secondary' :
                           kidx % 4 === 2 ? 'hover:border-accent-amber/50 hover:bg-accent-amber/10 hover:text-accent-amber' :
                           'hover:border-accent-orange/50 hover:bg-accent-orange/10 hover:text-accent-orange'
                         }`}
@@ -462,7 +462,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
           {/* PIFE Acronym Header */}
           <div className="mt-4 p-6 bg-gradient-to-br from-neutral-900/40 via-neutral-900/30 to-neutral-900/40 border border-neutral-700/40 rounded-xl shadow-lg shadow-neutral-700/10">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-2">
                 {[
                   { letter: 'P', color: 'text-pife-pessoalLight', bg: 'bg-pife-pessoal/20', border: 'border-pife-pessoal/50', glow: 'hover:shadow-pife-pessoal/30' },
                   { letter: 'I', color: 'text-pife-intelectualLight', bg: 'bg-pife-intelectual/20', border: 'border-pife-intelectual/50', glow: 'hover:shadow-pife-intelectual/30' },
@@ -598,10 +598,10 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                             </h4>
                             <div className="flex items-center gap-2 flex-wrap">
                               <span className={`px-3 py-1 rounded-lg border text-xs font-semibold ${
-                                item.tipo === 'Curso' || item.tipo === 'Certificação' ? 'bg-info/15 border-info/30 text-info' :
-                                item.tipo === 'Workshop' ? 'bg-accent-rose/15 border-accent-rose/30 text-accent-rose' :
-                                item.tipo === 'Projeto Pessoal' ? 'bg-accent-orange/15 border-accent-orange/30 text-accent-orange' :
-                                'bg-accent-amber/15 border-accent-amber/30 text-accent-amber'
+                                item.tipo === 'Curso' || item.tipo === 'Certificação' ? 'bg-primary/15 border-primary/30 text-primary' :
+                                item.tipo === 'Workshop' ? 'bg-secondary/15 border-secondary/30 text-secondary' :
+                                item.tipo === 'Projeto Pessoal' ? 'bg-tertiary/15 border-tertiary/30 text-tertiary' :
+                                'bg-tertiary/15 border-tertiary/30 text-tertiary'
                               }`}>
                                 {item.tipo}
                               </span>

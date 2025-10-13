@@ -1,0 +1,28 @@
+{
+  // Desabilita validação CSS padrão do VS Code
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  
+  // Mantém funcionalidades do Tailwind CSS IntelliSense
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript",
+    "typescript": "typescript",
+    "javascriptreact": "javascriptreact",
+    "typescriptreact": "typescriptreact"
+  },
+  
+  // Configurações adicionais do Tailwind
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  
+  // Melhora a experiência com CSS
+  "css.customData": [".vscode/css_custom_data.json"],
+  "editor.quickSuggestions": {
+    "strings": true
+  }
+}
+

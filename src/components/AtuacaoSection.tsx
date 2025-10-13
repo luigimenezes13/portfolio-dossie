@@ -2,6 +2,7 @@ import { TrendingUp, BarChart3, Crosshair, Github, BookOpen, CheckCircle, Star, 
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import type { Dossie, Metrica } from '../types/api';
 import PipefyIcon from '../assets/pipefy.svg';
+import { CARD_CLASSES, ICON_CONTAINERS, ICON_COLORS, TYPOGRAPHY } from '../constants/design-system';
 
 interface AtuacaoSectionProps {
   atuacaoResultados: Dossie['atuacaoResultados'];
@@ -80,20 +81,20 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
   return (
     <section 
       ref={ref}
-      className={`section-card ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
+      className={`${CARD_CLASSES.section} ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
       <div className="section-header">
-        <div className="icon-container bg-gradient-to-br from-secondary/20 to-secondary-light/20 border-secondary/50 shadow-lg shadow-secondary/20">
-          <TrendingUp className="w-7 h-7 text-secondary drop-shadow-lg" />
+        <div className={ICON_CONTAINERS.secondary}>
+          <TrendingUp className={`w-7 h-7 ${ICON_COLORS.secondary} drop-shadow-lg`} />
         </div>
-        <h2 className="section-title bg-gradient-to-r from-white via-secondary to-white bg-clip-text text-transparent">Atuação e Resultados</h2>
+        <h2 className={TYPOGRAPHY.sectionTitleSecondary}>Atuação e Resultados</h2>
       </div>
 
       <p className="text-description">{atuacaoResultados.descricao}</p>
 
       <div className="mb-10">
         <h3 className="text-subtitle mb-6">
-          <Award className="w-5 h-5 text-secondary" />
+          <Award className={`w-5 h-5 ${ICON_COLORS.secondary}`} />
           Principais Destaques
         </h3>
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
@@ -139,7 +140,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
       {escopos.length > 0 && (
         <div>
           <h3 className="text-subtitle">
-            <BarChart3 className="w-5 h-5 text-primary" />
+            <BarChart3 className={`w-5 h-5 ${ICON_COLORS.primary}`} />
             Métricas de Performance por Escopo
           </h3>
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 md:grid-rows-[1fr_0.5fr_0.5fr]">
@@ -161,7 +162,7 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
             return (
               <div 
                 key={escopo}
-                className={`card-base shadow-lg flex flex-col ${gridClasses}`}
+                className={`${CARD_CLASSES.base} shadow-lg flex flex-col ${gridClasses}`}
               >
                 {/* Header do Card */}
                 <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
@@ -174,15 +175,15 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                       'bg-neutral-700/30'
                     }`}>
                       {escopoIdx === 0 ? (
-                        <Github className="w-5 h-5 text-primary" />
+                        <Github className={`w-5 h-5 ${ICON_COLORS.primary}`} />
                       ) : escopoIdx === 1 ? (
-                        <Github className="w-5 h-5 text-primary-light" />
+                        <Github className={`w-5 h-5 ${ICON_COLORS.secondary}`} />
                       ) : escopoIdx === 2 ? (
                         <img src={PipefyIcon} alt="Pipefy" className="w-5 h-5 opacity-80 brightness-125" />
                       ) : escopoIdx === 3 ? (
-                        <BookOpen className="w-5 h-5 text-secondary" />
+                        <BookOpen className={`w-5 h-5 ${ICON_COLORS.secondary}`} />
                       ) : (
-                        <Crosshair className="w-5 h-5 text-tertiary" />
+                        <Crosshair className={`w-5 h-5 ${ICON_COLORS.tertiary}`} />
                       )}
                     </div>
                     <h4 className={`text-xl font-bold ${

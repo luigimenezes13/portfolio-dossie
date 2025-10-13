@@ -128,15 +128,15 @@
   }
   
   .badge-high {
-    @apply badge-base bg-accent-orange text-white border-2 border-accent-orange/80;
+    @apply badge-base bg-tertiary text-white border-2 border-tertiary/80;
   }
   
   .badge-medium {
-    @apply badge-base bg-accent-amber text-white border-2 border-accent-amber/80;
+    @apply badge-base bg-secondary text-white border-2 border-secondary/80;
   }
   
   .badge-low {
-    @apply badge-base bg-success text-white border-2 border-success/80;
+    @apply badge-base bg-secondary text-white border-2 border-secondary/80;
   }
   
   /* Badge de Tecnologia */
@@ -159,26 +159,26 @@
   .badge-in-progress {
     @apply inline-flex items-center px-3 py-1 rounded-lg border 
            text-xs font-semibold
-           text-accent-amber bg-accent-amber/15 border-accent-amber/25;
+           text-tertiary bg-tertiary/15 border-tertiary/25;
   }
   
   .badge-planned {
     @apply inline-flex items-center px-3 py-1 rounded-lg border 
            text-xs font-semibold
-           text-accent-purple bg-accent-purple/15 border-accent-purple/25;
+           text-primary bg-primary/15 border-primary/25;
   }
   
   /* Status de Desenvolvimento - Classes específicas para componentes */
   .status-completed {
-    @apply text-success bg-success/15 border-success/25;
+    @apply text-secondary bg-secondary/15 border-secondary/25;
   }
   
   .status-in-progress {
-    @apply text-accent-amber bg-accent-amber/15 border-accent-amber/25;
+    @apply text-tertiary bg-tertiary/15 border-tertiary/25;
   }
   
   .status-planned {
-    @apply text-accent-purple bg-accent-purple/15 border-accent-purple/25;
+    @apply text-primary bg-primary/15 border-primary/25;
   }
   
   /* Progress bars para status */
@@ -187,11 +187,11 @@
   }
   
   .progress-in-progress {
-    @apply bg-accent-amber;
+    @apply bg-tertiary;
   }
   
   .progress-planned {
-    @apply bg-accent-purple;
+    @apply bg-primary;
   }
   
   /* Classes para métricas com cores específicas */
@@ -370,7 +370,7 @@
   }
 
   .tech-badge-purple {
-    @apply bg-info/10 border border-info/30 hover:bg-info/20 hover:border-info/50 text-info;
+    @apply bg-primary/10 border border-primary/30 hover:bg-primary/20 hover:border-primary/50 text-primary;
   }
 
   .tech-badge-white {
@@ -387,11 +387,11 @@
   @keyframes pulse-badge {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+      box-shadow: 0 0 0 0 rgba(142, 22, 22, 0.7);
     }
     50% {
       transform: scale(1.05);
-      box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+      box-shadow: 0 0 0 10px rgba(142, 22, 22, 0);
     }
   }
   
@@ -421,7 +421,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(37, 99, 235, 0.3) 50%,
+      rgba(142, 22, 22, 0.3) 50%,
       transparent 100%
     );
     background-size: 200% 100%;

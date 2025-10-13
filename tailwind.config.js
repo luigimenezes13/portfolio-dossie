@@ -6,16 +6,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primárias - Azul Profissional (Confiança e Tecnologia)
-        primary: '#2563eb',           // blue-600 - Elementos principais
-        'primary-light': '#3b82f6',   // blue-500 - Hovers e estados ativos
-        'primary-dark': '#1d4ed8',    // blue-700 - Textos importantes
-        secondary: '#059669',         // emerald-600 - Métricas positivas
-        'secondary-light': '#10b981', // emerald-500 - Estados de sucesso
-        'secondary-dark': '#047857',  // emerald-700 - Textos de destaque
-        tertiary: '#ea580c',          // orange-600 - Elementos de atenção
-        'tertiary-light': '#fb923c',  // orange-400 - Hovers terciários
-        'tertiary-dark': '#c2410c',   // orange-700 - Textos de alerta
+        // Primárias - Paleta personalizada solicitada
+        primary: '#8E1616',           // Primária
+        'primary-light': '#A61B1B',   // Variação clara para hovers
+        'primary-dark': '#6F1111',    // Variação escura para textos
+        secondary: '#D84040',         // Secundária
+        'secondary-light': '#E66666', // Variação clara
+        'secondary-dark': '#B33232',  // Variação escura
+        tertiary: '#FF7A30',          // Terciária
+        'tertiary-light': '#FFA66F',  // Variação clara
+        'tertiary-dark': '#CC6226',   // Variação escura
         
         // Acentos Balanceados
         accent: {

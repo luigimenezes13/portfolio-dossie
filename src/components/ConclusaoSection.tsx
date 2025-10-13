@@ -1,5 +1,6 @@
 import { CheckCircle, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { CARD_CLASSES, ICON_CONTAINERS, ICON_COLORS, TYPOGRAPHY } from '../constants/design-system';
 
 interface ConclusaoSectionProps {
   conclusao: string;
@@ -11,22 +12,22 @@ export function ConclusaoSection({ conclusao }: ConclusaoSectionProps) {
   return (
     <section 
       ref={ref}
-      className={`section-card ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
+      className={`${CARD_CLASSES.section} ${isVisible ? 'animate-on-scroll-visible' : 'animate-on-scroll'}`}
     >
       {/* Header com ícone */}
       <div className="section-header mb-8">
-        <div className="icon-container bg-gradient-to-br from-secondary/20 to-secondary-light/20 border-secondary/50 shadow-lg shadow-secondary/20">
-          <CheckCircle className="w-7 h-7 text-secondary drop-shadow-lg" />
+        <div className={ICON_CONTAINERS.secondary}>
+          <CheckCircle className={`w-7 h-7 ${ICON_COLORS.secondary} drop-shadow-lg`} />
         </div>
-        <h2 className="section-title bg-gradient-to-r from-white via-secondary to-white bg-clip-text text-transparent">Conclusão</h2>
+        <h2 className={TYPOGRAPHY.sectionTitleSecondary}>Conclusão</h2>
       </div>
 
       {/* Card principal de conclusão */}
-      <div className="relative group card-base p-8 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
+      <div className={`relative group ${CARD_CLASSES.base} p-8 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 overflow-hidden`}>
         
         {/* Ícone decorativo no canto */}
         <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-          <Sparkles className="w-16 h-16 text-secondary animate-pulse" />
+          <Sparkles className={`w-16 h-16 ${ICON_COLORS.secondary} animate-pulse`} />
         </div>
 
         {/* Barra decorativa superior */}
@@ -34,7 +35,7 @@ export function ConclusaoSection({ conclusao }: ConclusaoSectionProps) {
 
         {/* Conteúdo da conclusão */}
         <div className="relative z-10">
-          <p className="text-neutral-100 text-lg leading-relaxed whitespace-pre-line">
+          <p className={`${TYPOGRAPHY.bodyLarge} whitespace-pre-line`}>
             {conclusao}
           </p>
         </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import profileImage from '../assets/profile.jpg';
+import { TYPOGRAPHY } from '../constants/design-system';
 
 export function LoadingScreen() {
   const [step, setStep] = useState(0);
@@ -34,13 +35,13 @@ export function LoadingScreen() {
           </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold animate-fade-in-up px-4" style={{ animationDelay: '0.3s', animationFillMode: 'backwards' }}>
-            <span className="bg-gradient-to-r from-primary via-primary-light to-secondary bg-clip-text text-transparent">
+            <span className={TYPOGRAPHY.gradientPrimary}>
               Bem-vindo ao meu dossiê
             </span>
           </h1>
           
           {step >= 1 && (
-            <p className="text-3xl md:text-4xl text-neutral-300 font-light animate-fade-in-up">
+            <p className={`text-3xl md:text-4xl font-light animate-fade-in-up ${TYPOGRAPHY.bodySmall}`}>
               por <span className="text-white font-semibold">Luigi Bertoli Menezes</span>
             </p>
           )}
