@@ -6,16 +6,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primárias - Paleta personalizada solicitada
-        primary: '#8E1616',           // Primária
-        'primary-light': '#A61B1B',   // Variação clara para hovers
-        'primary-dark': '#6F1111',    // Variação escura para textos
-        secondary: '#D84040',         // Secundária
-        'secondary-light': '#E66666', // Variação clara
-        'secondary-dark': '#B33232',  // Variação escura
-        tertiary: '#FF7A30',          // Terciária
-        'tertiary-light': '#FFA66F',  // Variação clara
-        'tertiary-dark': '#CC6226',   // Variação escura
+        // Primárias - Paleta vermelha equilibrada
+        primary: '#B91C1C',           // Carmim Profundo
+        'primary-light': '#DC2626',   // Variação clara para hovers
+        'primary-dark': '#7F1D1D',    // Variação escura para textos
+        secondary: '#9F1239',         // Rose Escuro
+        'secondary-light': '#E11D48', // Variação clara
+        'secondary-dark': '#881337',  // Variação escura
+        tertiary: '#E03E2F',          // Vermilion
+        'tertiary-light': '#F1695B',  // Variação clara
+        'tertiary-dark': '#AB2F25',   // Variação escura
         
         // Acentos Balanceados
         accent: {

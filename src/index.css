@@ -387,11 +387,11 @@
   @keyframes pulse-badge {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 0 0 0 rgba(142, 22, 22, 0.7);
+      box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.7);
     }
     50% {
       transform: scale(1.05);
-      box-shadow: 0 0 0 10px rgba(142, 22, 22, 0);
+      box-shadow: 0 0 0 10px rgba(185, 28, 28, 0);
     }
   }
   
@@ -421,7 +421,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(142, 22, 22, 0.3) 50%,
+      rgba(185, 28, 28, 0.3) 50%,
       transparent 100%
     );
     background-size: 200% 100%;

@@ -31,15 +31,15 @@ export function PotencialSection({ potencialRetorno }: PotencialSectionProps) {
 
       {/* Seção de Benefícios */}
       <div className="mb-12">
-        <div className="flex items-center gap-3 mb-6">
-          <Sparkles className={`w-5 h-5 ${ICON_COLORS.secondary}`} />
-          <h3 className="text-subtitle">Benefícios para a Empresa</h3>
+        <div className="flex gap-3 mb-6">
+          <Sparkles className={`w-10 h-10 ${ICON_COLORS.secondary}`} />
+          <h3 className=" text-subtitle">Benefícios para a Empresa</h3>
         </div>
         <div className="grid gap-4">
           {potencialRetorno.beneficios.map((beneficio, idx) => (
             <div 
               key={idx} 
-              className={`${CARD_CLASSES.compact} group hover:border-secondary/30 hover:shadow-secondary/10`}
+              className={`${CARD_CLASSES.compact} group hover:border-secondary/30 hover:shadow-secondary/10 flex items-start gap-3`}
               style={{ 
                 transitionDelay: `${idx * 50}ms`,
                 animationDelay: `${idx * 100}ms`

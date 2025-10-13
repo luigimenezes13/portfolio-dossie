@@ -316,10 +316,10 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
       }`}
     >
       <div className="section-header">
-        <div className="icon-container bg-gradient-to-br from-accent-amber/20 to-accent-gold/20 border-accent-amber/50 shadow-lg shadow-accent-amber/20">
-          <Award className="w-7 h-7 text-accent-amber drop-shadow-lg" />
+        <div className="icon-container bg-gradient-to-br from-tertiary/20 to-tertiary-light/20 border-tertiary/50 shadow-lg shadow-tertiary/20">
+          <Award className="w-7 h-7 text-tertiary drop-shadow-lg" />
         </div>
-        <h2 className="section-title bg-gradient-to-r from-white via-accent-amber to-white bg-clip-text text-transparent">Trajetória Profissional</h2>
+        <h2 className="section-title bg-gradient-to-r from-white via-tertiary to-white bg-clip-text text-transparent">Trajetória Profissional</h2>
       </div>
       
       <div className="mb-10">
@@ -385,23 +385,23 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                 >
             {/* Timeline indicator - colorido por área */}
             <div className={`absolute -left-3 top-8 w-6 h-6 ${
-              idx === 0 ? 'bg-gradient-to-br from-accent-rose to-accent-orange' :
-              idx === 1 ? 'bg-gradient-to-br from-primary to-accent-primary' :
-              'bg-gradient-to-br from-accent-amber to-accent-gold'
+              idx === 0 ? 'bg-gradient-to-br from-secondary to-secondary-light' :
+              idx === 1 ? 'bg-gradient-to-br from-primary to-primary-light' :
+              'bg-gradient-to-br from-tertiary to-tertiary-light'
             } border-4 border-black rounded-full shadow-lg group-hover:scale-125 transition-transform duration-300`}></div>
                 
                 {/* Header com ícone e período */}
                 <div className="flex items-start justify-between gap-4 mb-4">
                   <div className="flex items-center gap-3">
                     <div className={`p-3 ${
-                      idx === 0 ? 'bg-accent-rose/15 border-accent-rose/40' :
-                      idx === 1 ? 'bg-secondary/15 border-secondary/40' :
-                      'bg-accent-amber/15 border-accent-amber/40'
+                      idx === 0 ? 'bg-secondary/15 border-secondary/40' :
+                      idx === 1 ? 'bg-primary/15 border-primary/40' :
+                      'bg-tertiary/15 border-tertiary/40'
                     } rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-md`}>
                       <AreaIcon className={`w-6 h-6 ${
-                        idx === 0 ? 'text-accent-rose' :
-                        idx === 1 ? 'text-secondary' :
-                        'text-accent-amber'
+                        idx === 0 ? 'text-secondary' :
+                        idx === 1 ? 'text-primary' :
+                        'text-tertiary'
                       }`} />
                     </div>
                     <div>
@@ -410,9 +410,9 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                       </h4>
                       {area.periodo && (
                         <span className={`text-xs font-bold uppercase tracking-wider ${
-                          idx === 0 ? 'text-accent-rose/70' :
-                          idx === 1 ? 'text-secondary/70' :
-                          'text-accent-amber/70'
+                          idx === 0 ? 'text-secondary/70' :
+                          idx === 1 ? 'text-primary/70' :
+                          'text-tertiary/70'
                         }`}>
                           {area.periodo}
                         </span>
@@ -435,10 +435,10 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                       <span
                         key={kidx}
                         className={`badge-tech ${
-                          kidx % 4 === 0 ? 'hover:border-accent-rose/50 hover:bg-accent-rose/10 hover:text-accent-rose' :
-                          kidx % 4 === 1 ? 'hover:border-secondary/50 hover:bg-secondary/10 hover:text-secondary' :
-                          kidx % 4 === 2 ? 'hover:border-accent-amber/50 hover:bg-accent-amber/10 hover:text-accent-amber' :
-                          'hover:border-accent-orange/50 hover:bg-accent-orange/10 hover:text-accent-orange'
+                          kidx % 4 === 0 ? 'hover:border-secondary/50 hover:bg-secondary/10 hover:text-secondary' :
+                          kidx % 4 === 1 ? 'hover:border-primary/50 hover:bg-primary/10 hover:text-primary' :
+                          kidx % 4 === 2 ? 'hover:border-tertiary/50 hover:bg-tertiary/10 hover:text-tertiary' :
+                          'hover:border-tertiary/50 hover:bg-tertiary/10 hover:text-tertiary'
                         }`}
                       >
                         {keyword}
@@ -464,10 +464,10 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                             <div className="flex items-center gap-2">
                 {[
-                  { letter: 'P', color: 'text-pife-pessoalLight', bg: 'bg-pife-pessoal/20', border: 'border-pife-pessoal/50', glow: 'hover:shadow-pife-pessoal/30' },
-                  { letter: 'I', color: 'text-pife-intelectualLight', bg: 'bg-pife-intelectual/20', border: 'border-pife-intelectual/50', glow: 'hover:shadow-pife-intelectual/30' },
-                  { letter: 'F', color: 'text-pife-fisicoLight', bg: 'bg-pife-fisico/20', border: 'border-pife-fisico/50', glow: 'hover:shadow-pife-fisico/30' },
-                  { letter: 'E', color: 'text-pife-espiritualLight', bg: 'bg-pife-espiritual/20', border: 'border-pife-espiritual/50', glow: 'hover:shadow-pife-espiritual/30' }
+                  { letter: 'P', color: 'text-primary-light', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' },
+                  { letter: 'I', color: 'text-secondary-light', bg: 'bg-secondary/20', border: 'border-secondary/50', glow: 'hover:shadow-secondary/30' },
+                  { letter: 'F', color: 'text-tertiary-light', bg: 'bg-tertiary/20', border: 'border-tertiary/50', glow: 'hover:shadow-tertiary/30' },
+                  { letter: 'E', color: 'text-primary-light', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' }
                 ].map((item, idx) => (
                   <div 
                     key={item.letter}
@@ -484,10 +484,10 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                   Modelo de Desenvolvimento Holístico
                 </p>
                 <p className="text-sm mt-1 font-semibold">
-                  <span className="text-pife-pessoalLight">Pessoal</span> · 
-                  <span className="text-pife-intelectualLight"> Intelectual</span> · 
-                  <span className="text-pife-fisicoLight"> Físico</span> · 
-                  <span className="text-pife-espiritualLight"> Espiritual</span>
+                  <span className="text-primary-light">Pessoal</span> · 
+                  <span className="text-secondary-light"> Intelectual</span> · 
+                  <span className="text-tertiary-light"> Físico</span> · 
+                  <span className="text-primary-light"> Espiritual</span>
                 </p>
               </div>
             </div>
@@ -558,7 +558,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                   return (
                     <div key={idx} className="relative flex items-start gap-4">
                     {/* Timeline dot - colorido */}
-                    <div className="absolute -left-8 w-4 h-4 bg-gradient-to-br from-accent-amber to-accent-orange border-4 border-black rounded-full shadow-lg shadow-accent-amber/30"></div>
+                    <div className="absolute -left-8 w-4 h-4 bg-gradient-to-br from-tertiary to-tertiary-light border-4 border-black rounded-full shadow-lg shadow-tertiary/30"></div>
                       
                       {/* Card de texto livre */}
                       <div className="flex-1 card-compact">
@@ -576,9 +576,9 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                   <div key={idx} className="relative flex items-start gap-4">
                     {/* Timeline dot com cor baseada no status - tons suaves */}
                     <div className={`absolute -left-8 w-4 h-4 ${
-                      item.status === 'Concluído' ? 'bg-success' :
-                      item.status === 'Em andamento' ? 'bg-accent-amber' :
-                      'bg-accent-purple'
+                      item.status === 'Concluído' ? 'bg-secondary' :
+                      item.status === 'Em andamento' ? 'bg-tertiary' :
+                      'bg-primary'
                     } border-4 border-black rounded-full shadow-lg`}></div>
                     
                     {/* Card principal */}
@@ -620,7 +620,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                         
                         {/* Período */}
                         {item.periodo && (
-                          <div className="flex items-center gap-1 text-xs text-accent-amber whitespace-nowrap font-medium">
+                          <div className="flex items-center gap-1 text-xs text-tertiary whitespace-nowrap font-medium">
                             <Calendar className="w-3 h-3" />
                             {item.periodo}
                           </div>
@@ -649,9 +649,9 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                           <div className="flex justify-between text-xs text-neutral-400 mt-1 font-medium">
                             <span>Início</span>
                             <span className={`font-semibold ${
-                              item.status === 'Concluído' ? 'text-success' :
-                              item.status === 'Em andamento' ? 'text-accent-amber' :
-                              'text-accent-purple'
+                              item.status === 'Concluído' ? 'text-secondary' :
+                              item.status === 'Em andamento' ? 'text-tertiary' :
+                              'text-primary'
                             }`}>
                               {item.status}
                             </span>
