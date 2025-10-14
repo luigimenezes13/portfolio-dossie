@@ -222,18 +222,6 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                         {metrica.atividade}
                       </p>
                       
-                      {/* Período */}
-                      {metrica.tempo && (
-                        <div className="flex items-center gap-2 pt-2 border-t border-neutral-700/20">
-                          <span className="text-xs text-primary uppercase tracking-wider font-bold">
-                            Período:
-                          </span>
-                          <span className="text-xs text-neutral-100 font-semibold">
-                            {metrica.tempo}
-                          </span>
-                        </div>
-                      )}
-                      
                       {/* Observação */}
                       {metrica.observacao && (
                         <div className="flex items-start gap-2 pt-2 border-t border-neutral-700/20 mt-2">
@@ -247,6 +235,24 @@ export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
                       )}
                     </div>
                   ))}
+                  
+                  {/* Período - Após o último item do escopo */}
+                  {metricasPorEscopo[escopo][0]?.tempo && (
+                    <div className={`flex items-center gap-2 pt-3 border-t ${
+                      escopoIdx <= 1 ? 'border-primary/30' : 'border-neutral-700/20'
+                    }`}>
+                      <span className={`uppercase tracking-wider font-bold ${
+                        escopoIdx <= 1 ? 'text-sm text-primary' : 'text-xs text-primary'
+                      }`}>
+                        Período:
+                      </span>
+                      <span className={`font-semibold ${
+                        escopoIdx <= 1 ? 'text-sm text-white' : 'text-xs text-neutral-100'
+                      }`}>
+                        {metricasPorEscopo[escopo][0].tempo}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             );
