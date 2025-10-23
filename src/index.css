@@ -384,6 +384,21 @@
 
 /* stylelint-disable at-rule-no-unknown */
 @layer utilities {
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
   @keyframes pulse-badge {
     0%, 100% {
       transform: scale(1);

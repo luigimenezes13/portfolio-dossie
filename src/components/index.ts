@@ -11,3 +11,8 @@ export { LoadingScreen } from './LoadingScreen';
 export { ErrorScreen } from './ErrorScreen';
 export { EmptyState } from './EmptyState';
 export { ScrollAnimation } from './ScrollAnimation';
+export { AcademicFormationSection } from './AcademicFormationSection';
+export { RealizacoesProfissionaisSection } from './RealizacoesProfissionaisSection';
+export { RealizacoesAcademicasSection } from './RealizacoesAcademicasSection';
+export { EfetivacaoSection } from './EfetivacaoSection';
+export { VisaoFuturoSection } from './VisaoFuturoSection';

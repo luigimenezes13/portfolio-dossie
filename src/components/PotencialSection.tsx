@@ -10,6 +10,10 @@ interface PotencialSectionProps {
 export function PotencialSection({ potencialRetorno }: PotencialSectionProps) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
+  if (!potencialRetorno) {
+    return null;
+  }
+
   return (
     <section 
       ref={ref}

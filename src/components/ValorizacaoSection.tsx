@@ -11,6 +11,10 @@ interface ValorizacaoSectionProps {
 export function ValorizacaoSection({ propostaValorizacao, referenciaMercado }: ValorizacaoSectionProps) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
+  if (!propostaValorizacao || !referenciaMercado) {
+    return null;
+  }
+
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',

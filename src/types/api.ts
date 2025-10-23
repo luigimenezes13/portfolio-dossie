@@ -173,6 +173,8 @@ export interface Colaborador {
   funcaoAtual: string;
   dataInicio: string; // Ex: "janeiro/2023", "março/2025"
   senioridade?: NivelSenioridade;
+  tempoV4?: string;
+  curso?: Curso;
 }
 
 export interface Objetivo {
@@ -187,12 +189,9 @@ export interface Area {
   nome: AreaAtuacao | string; // Permite valores customizados
   descricao?: string;
   periodo?: string;
+  projeto?: string;
 }
 
-export interface AlinhamentoCultural {
-  dimensao: DimensaoCultural;
-  exemploPratico: string;
-}
 
 export interface DesenvolvimentoPessoal {
   tipo:
@@ -211,10 +210,90 @@ export interface DesenvolvimentoPessoal {
   periodo?: string;
 }
 
+// New interfaces for updated API structure
+export interface Curso {
+  nome: string;
+  semestre: string;
+  faculdade: string;
+}
+
+export interface PifeDimensao {
+  dimensao: DimensaoCultural;
+  exemploPratico: string;
+}
+
+export interface GrowthPrincipio {
+  principio: string;
+  exemploPratico: string;
+}
+
+export interface FitCultural {
+  pife?: PifeDimensao[];
+  growth?: GrowthPrincipio[];
+}
+
+export interface RealizacoesProfissionais {
+  descricao: string;
+  destaques: string[];
+  metricas?: Metrica[];
+}
+
+export interface BolsaPesquisa {
+  tipo: string;
+  titulo: string;
+  instituicao: string;
+  status: 'Concluído' | 'Em andamento' | 'Planejado';
+  periodo: string;
+}
+
+export interface RealizacoesAcademicas {
+  performanceAcademica: string;
+  bolsasEPesquisas?: BolsaPesquisa[];
+}
+
+export interface PretensaoSalarial {
+  valorBruto: number;
+  valorLiquido: number;
+  modelo: ModeloContratacao;
+  beneficios?: string[];
+  observacoes?: string;
+}
+
+export interface Efetivacao {
+  situacaoAtual: string[];
+  acoesColaborador: string[];
+  urgencia: 'Baixa' | 'Média' | 'Alta' | 'Urgente';
+  cargoPretendido: string;
+  pretensaoSalarial?: PretensaoSalarial;
+  referenciaMercado?: {
+    fontes: FontePesquisaSalarial[];
+    faixaSalarial: FaixaSalarial;
+    regiao?: string;
+    dataReferencia?: string;
+  };
+  potencialRetorno?: {
+    beneficios: string[];
+    projecaoCargo?: string;
+    prazoEvolucao?: string;
+    estimativaROI?: string;
+  };
+}
+
+export interface VisaoFuturoItem {
+  pessoal: string;
+  profissional: string;
+}
+
+export interface VisaoFuturo {
+  umAno: VisaoFuturoItem;
+  tresAnos: VisaoFuturoItem;
+  cincoAnos: VisaoFuturoItem;
+}
+
 export interface Trajetoria {
   areas: Area[];
   perfil: string | CaracteristicaPerfil[]; // String livre ou array de características
-  alinhamentoCultural: AlinhamentoCultural[];
+  fitCultural?: FitCultural;
   desenvolvimentoPessoal: Array<DesenvolvimentoPessoal | string>; // Aceita objeto estruturado ou string livre
 }
 
@@ -293,12 +372,16 @@ export interface Dossie {
   colaborador: Colaborador;
   objetivo: Objetivo;
   trajetoria: Trajetoria;
-  atuacaoResultados: AtuacaoResultados;
+  atuacaoResultados?: AtuacaoResultados; // Make optional for backward compatibility
+  realizacoesProfissionais?: RealizacoesProfissionais;
+  realizacoesAcademicas?: RealizacoesAcademicas;
   iniciativasEstrategicas: IniciativaEstrategica[];
-  contextoEfetivacao: ContextoEfetivacao;
-  referenciaMercado: ReferenciaMercado;
-  potencialRetorno: PotencialRetorno;
-  propostaValorizacao: PropostaValorizacao;
+  contextoEfetivacao?: ContextoEfetivacao; // Make optional
+  efetivacao?: Efetivacao;
+  visaoFuturo?: VisaoFuturo;
+  referenciaMercado?: ReferenciaMercado; // Make optional
+  potencialRetorno?: PotencialRetorno; // Make optional
+  propostaValorizacao?: PropostaValorizacao; // Make optional
   conclusao: string;
   createdAt: Date | string;
   updatedAt: Date | string;

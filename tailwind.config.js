@@ -31,7 +31,7 @@ export default {
         success: '#10b981',    // Verde (emerald-500) - Sucessos, conclusões
         warning: '#f59e0b',    // Âmbar (amber-500) - Avisos, pendências
         error: '#ef4444',      // Vermelho (red-500) - Erros, críticos
-        info: '#3b82f6',       // Azul (blue-500) - Informações
+        info: '#ea580c',       // Laranja (orange-600) - Informações
         
         // Paleta Monocromática Vermelha PIFE (Pessoal, Intelectual, Físico, Espiritual)
         pife: {

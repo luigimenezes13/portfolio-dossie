@@ -16,12 +16,14 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        console.log('IntersectionObserver triggered:', { isIntersecting: entry.isIntersecting, threshold });
         if (entry.isIntersecting) {
           setIsVisible(true);
           if (triggerOnce) {

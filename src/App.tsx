@@ -13,7 +13,11 @@ import {
   Footer,
   LoadingScreen,
   ErrorScreen,
-  EmptyState
+  EmptyState,
+  RealizacoesProfissionaisSection,
+  RealizacoesAcademicasSection,
+  EfetivacaoSection,
+  VisaoFuturoSection
 } from './components';
 
 function App() {
@@ -74,13 +78,40 @@ function App() {
         <div className="space-y-12 md:space-y-16">
           <ObjetivoSection objetivo={dossie.objetivo} />
           <TrajetoriaSection trajetoria={dossie.trajetoria} />
-          <AtuacaoSection atuacaoResultados={dossie.atuacaoResultados} />
+          
+          {/* Use new RealizacoesProfissionais if available, fallback to old AtuacaoResultados */}
+          {dossie.realizacoesProfissionais ? (
+            <RealizacoesProfissionaisSection realizacoesProfissionais={dossie.realizacoesProfissionais} />
+          ) : dossie.atuacaoResultados ? (
+            <AtuacaoSection atuacaoResultados={dossie.atuacaoResultados} />
+          ) : null}
+          
+          {dossie.realizacoesAcademicas && (
+            <RealizacoesAcademicasSection realizacoesAcademicas={dossie.realizacoesAcademicas} />
+          )}
+          
           <IniciativasSection iniciativasEstrategicas={dossie.iniciativasEstrategicas} />
-          <ValorizacaoSection 
-            propostaValorizacao={dossie.propostaValorizacao}
-            referenciaMercado={dossie.referenciaMercado}
-          />
-          <PotencialSection potencialRetorno={dossie.potencialRetorno} />
+          
+          {dossie.visaoFuturo && (
+            <VisaoFuturoSection visaoFuturo={dossie.visaoFuturo} />
+          )}
+          
+          {dossie.efetivacao && (
+            <EfetivacaoSection efetivacao={dossie.efetivacao} />
+          )}
+          
+          {/* Fallback to old structure if new efetivacao not available */}
+          {!dossie.efetivacao && dossie.propostaValorizacao && dossie.referenciaMercado && (
+            <ValorizacaoSection 
+              propostaValorizacao={dossie.propostaValorizacao}
+              referenciaMercado={dossie.referenciaMercado}
+            />
+          )}
+          
+          {!dossie.efetivacao && dossie.potencialRetorno && (
+            <PotencialSection potencialRetorno={dossie.potencialRetorno} />
+          )}
+          
           <ConclusaoSection conclusao={dossie.conclusao} />
         </div>
 

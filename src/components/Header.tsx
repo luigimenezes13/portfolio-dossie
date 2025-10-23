@@ -5,6 +5,7 @@ import profileImage from '../assets/profile.jpg';
 import lovableIcon from '../assets/lovable-ai-icon.webp';
 import v0Icon from '../assets/vercel-v0-icon.webp';
 import { TYPOGRAPHY, ICON_COLORS, ANIMATIONS } from '../constants/design-system';
+import { AcademicFormationSection } from './AcademicFormationSection';
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg
@@ -191,6 +192,12 @@ export function Header({ dossie }: HeaderProps) {
             </span>
             <span>•</span>
             <span>Início: {dossie.colaborador.dataInicio}</span>
+            {dossie.colaborador.tempoV4 && (
+              <>
+                <span>•</span>
+                <span>Tempo V4: {dossie.colaborador.tempoV4}</span>
+              </>
+            )}
             {dossie.colaborador.senioridade && (
               <>
                 <span>•</span>
@@ -198,6 +205,13 @@ export function Header({ dossie }: HeaderProps) {
               </>
             )}
           </div>
+          
+          {/* Enhanced Academic Program Information */}
+          {dossie.colaborador.curso && (
+            <div className="mt-6">
+              <AcademicFormationSection curso={dossie.colaborador.curso} />
+            </div>
+          )}
         </div>
       </div>
     </header>

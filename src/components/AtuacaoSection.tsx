@@ -15,6 +15,10 @@ interface MetricasPorEscopo {
 export function AtuacaoSection({ atuacaoResultados }: AtuacaoSectionProps) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
+  if (!atuacaoResultados) {
+    return null;
+  }
+
   // Função para renderizar valor com cores para linhas de código
   const renderMetricValue = (valor: string | number, textColorClass: string) => {
     if (typeof valor === 'number') {

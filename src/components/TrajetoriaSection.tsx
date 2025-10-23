@@ -1,4 +1,4 @@
-import { Award, ArrowRight, Users, Brain, HeartPulse, Sparkles, Package, Headphones, Code, Zap, Crosshair, MessageSquare, TrendingUp, Shield, Flame, Star, Trophy, BookOpen, GraduationCap, FileText, Globe, Clock, CheckCircle, PlayCircle, Calendar } from 'lucide-react';
+import { Award, ArrowRight, Users, Brain, HeartPulse, Sparkles, Package, Headphones, Code, Zap, Crosshair, MessageSquare, TrendingUp, Shield, Flame, Star, Trophy, BookOpen, GraduationCap, FileText, Globe, Clock, CheckCircle, PlayCircle, Calendar, Briefcase, Settings } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import type { Dossie } from '../types/api';
 
@@ -281,15 +281,25 @@ const getDimensaoInfo = (dimensao: string) => {
       borderColor: 'border-tertiary/40',
       glowColor: 'shadow-tertiary/20'
     },
+    'Emocional': { 
+      icon: Users, 
+      letter: 'E', 
+      description: 'Inteligência emocional e soft skills',
+      color: 'text-tertiary',
+      colorLight: 'text-tertiary-light',
+      bgColor: 'bg-tertiary/15',
+      borderColor: 'border-tertiary/40',
+      glowColor: 'shadow-tertiary/20'
+    },
     'Espiritual': { 
       icon: Sparkles, 
-      letter: 'E', 
+      letter: 'S', 
       description: 'Propósito e valores',
-      color: 'text-primary',
-      colorLight: 'text-primary',
-      bgColor: 'bg-primary/15',
-      borderColor: 'border-primary/40',
-      glowColor: 'shadow-primary/20'
+      color: 'text-secondary',
+      colorLight: 'text-secondary-light',
+      bgColor: 'bg-secondary/15',
+      borderColor: 'border-secondary/40',
+      glowColor: 'shadow-secondary/20'
     }
   };
   
@@ -306,14 +316,27 @@ const getDimensaoInfo = (dimensao: string) => {
 };
 
 export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
+  // Debug temporário para verificar visibilidade
+  console.log('TrajetoriaSection:', { 
+    isVisible, 
+    trajetoria: !!trajetoria,
+    areas: trajetoria?.areas?.length,
+    desenvolvimentoPessoal: trajetoria?.desenvolvimentoPessoal?.length,
+    perfil: trajetoria?.perfil
+  });
+  
+  // Forçar visibilidade para teste
+  const forceVisible = true;
 
   return (
     <section 
       ref={ref}
       className={`section-card ${
-        isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
+        forceVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
       }`}
+      style={{ minHeight: '200px' }}
     >
       <div className="section-header">
         <div className="icon-container bg-gradient-to-br from-tertiary/20 to-tertiary-light/20 border-tertiary/50 shadow-lg shadow-tertiary/20">
@@ -428,6 +451,14 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                   </p>
                 )}
                 
+                {/* Projeto */}
+                {area.projeto && (
+                  <div className="mb-3 pl-1">
+                    <span className="text-neutral-300 text-sm font-medium">Projeto: </span>
+                    <span className="text-primary font-semibold">{area.projeto}</span>
+                  </div>
+                )}
+                
                 {/* Keywords badges */}
                 {keywords.length > 0 && (
                   <div className="flex flex-wrap gap-2 mt-4">
@@ -455,93 +486,6 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
         </div>
       </div>
 
-      <div className="mb-10">
-        <div className="mb-6">
-          <h3 className="text-subtitle">Alinhamento Cultural</h3>
-          
-          {/* PIFE Acronym Header */}
-          <div className="mt-4 p-6 bg-gradient-to-br from-neutral-900/40 via-neutral-900/30 to-neutral-900/40 border border-neutral-700/40 rounded-xl shadow-lg shadow-neutral-700/10">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                            <div className="flex items-center gap-2">
-                {[
-                  { letter: 'P', color: 'text-primary-light', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' },
-                  { letter: 'I', color: 'text-secondary-light', bg: 'bg-secondary/20', border: 'border-secondary/50', glow: 'hover:shadow-secondary/30' },
-                  { letter: 'F', color: 'text-tertiary-light', bg: 'bg-tertiary/20', border: 'border-tertiary/50', glow: 'hover:shadow-tertiary/30' },
-                  { letter: 'E', color: 'text-primary-light', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' }
-                ].map((item, idx) => (
-                  <div 
-                    key={item.letter}
-                    className={`w-12 h-12 ${item.bg} border-2 ${item.border} rounded-lg flex items-center justify-center animate-fade-in-up transition-all hover:scale-110 hover:rotate-6 duration-300 cursor-pointer shadow-lg ${item.glow}`}
-                    style={{ animationDelay: `${idx * 0.1}s` }}
-                  >
-                    <span className={`${item.color} font-bold text-2xl drop-shadow-lg`}>{item.letter}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="hidden sm:block h-12 w-px bg-neutral-600/40"></div>
-              <div className="flex-1">
-                <p className="text-base font-semibold text-white">
-                  Modelo de Desenvolvimento Holístico
-                </p>
-                <p className="text-sm mt-1 font-semibold">
-                  <span className="text-primary-light">Pessoal</span> · 
-                  <span className="text-secondary-light"> Intelectual</span> · 
-                  <span className="text-tertiary-light"> Físico</span> · 
-                  <span className="text-primary-light"> Espiritual</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* PIFE Dimensions Cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {trajetoria.alinhamentoCultural.map((item, idx) => {
-            const info = getDimensaoInfo(item.dimensao);
-            const Icon = info.icon;
-            
-              return (
-                <div 
-                  key={idx} 
-                  className={`relative group card-base hover:shadow-xl hover:${info.glowColor}`}
-                >
-                {/* Letter Badge */}
-                <div className={`absolute -top-3 -left-3 w-14 h-14 ${info.bgColor} border-2 ${info.borderColor} rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 group-hover:shadow-xl group-hover:${info.glowColor}`}>
-                  <span className={`${info.colorLight} font-bold text-2xl drop-shadow-lg`}>
-                    {info.letter}
-                  </span>
-                </div>
-                
-                {/* Icon */}
-                <div className="flex items-start gap-4 mb-4 mt-6">
-                  <div className={`p-3 ${info.bgColor} border ${info.borderColor} rounded-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className={`w-6 h-6 ${info.color}`} />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-white mb-1">
-                      {item.dimensao}
-                    </h4>
-                    <p className={`text-xs ${info.color} font-semibold uppercase tracking-wide`}>
-                      {info.description}
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Example */}
-                <div className={`pl-4 border-l-3 ${info.borderColor} ml-6 py-1`}>
-                  <p className="text-base text-neutral-200 leading-relaxed">
-                    {item.exemploPratico}
-                  </p>
-                </div>
-                
-                {/* Decorative gradient overlay on hover */}
-                <div className="absolute inset-0 bg-neutral-700/20 opacity-0 group-hover:opacity-30 rounded-xl transition-opacity duration-500 -z-10"></div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
 
       {trajetoria.desenvolvimentoPessoal && trajetoria.desenvolvimentoPessoal.length > 0 && (
         <div>
@@ -642,7 +586,8 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                           <div className="w-full bg-neutral-800 rounded-full h-1.5">
                             <div className={`h-1.5 rounded-full transition-all duration-1000 ${
                               item.status === 'Concluído' ? 'progress-completed w-full' :
-                              item.status === 'Em andamento' ? 'progress-in-progress w-2/3' :
+                              item.status === 'Em andamento' ? 
+                                (idx === 0 ? 'progress-in-progress w-5/6' : 'progress-in-progress w-1/3') :
                               'progress-planned w-1/3'
                             }`}></div>
                           </div>
@@ -664,6 +609,200 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
               })}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Fit Cultural - PIFE & Growth */}
+      {trajetoria.fitCultural && (
+        <div className="mb-10">
+          <h3 className="text-subtitle">Fit Cultural</h3>
+          
+          {/* PIFE Section */}
+          {trajetoria.fitCultural.pife && trajetoria.fitCultural.pife.length > 0 && (
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl flex items-center justify-center border-2 border-primary/50 shadow-lg shadow-primary/20">
+                  <Users className="w-6 h-6 text-primary drop-shadow-lg" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-white">PIFE - Desenvolvimento Holístico</h4>
+                  <p className="text-sm text-primary font-medium">Dimensões pessoais e profissionais</p>
+                </div>
+              </div>
+              
+              {/* PIFE Acronym Header */}
+              <div className="mt-4 p-6 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 border border-primary/30 rounded-xl shadow-lg shadow-primary/10">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    {[
+                      { letter: 'P', color: 'text-primary-light', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' },
+                      { letter: 'I', color: 'text-secondary-light', bg: 'bg-secondary/20', border: 'border-secondary/50', glow: 'hover:shadow-secondary/30' },
+                      { letter: 'F', color: 'text-tertiary-light', bg: 'bg-tertiary/20', border: 'border-tertiary/50', glow: 'hover:shadow-tertiary/30' },
+                      { letter: 'E', color: 'text-tertiary-light', bg: 'bg-tertiary/20', border: 'border-tertiary/50', glow: 'hover:shadow-tertiary/30' }
+                    ].map((item, idx) => (
+                      <div 
+                        key={item.letter}
+                        className={`w-10 h-10 ${item.bg} border-2 ${item.border} rounded-lg flex items-center justify-center animate-fade-in-up transition-all hover:scale-110 hover:rotate-6 duration-300 cursor-pointer shadow-lg ${item.glow}`}
+                        style={{ animationDelay: `${idx * 0.1}s` }}
+                      >
+                        <span className={`${item.color} font-bold text-lg drop-shadow-lg`}>{item.letter}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="hidden sm:block h-12 w-px bg-primary/40"></div>
+                  <div className="flex-1">
+                    <p className="text-base font-semibold text-white">
+                      Modelo de Desenvolvimento Holístico
+                    </p>
+                    <p className="text-sm mt-1 font-semibold">
+                      <span className="text-primary-light">Pessoal</span> · 
+                      <span className="text-secondary-light"> Intelectual</span> · 
+                      <span className="text-tertiary-light"> Físico</span> · 
+                      <span className="text-tertiary-light"> Emocional</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6 mt-6">
+                {trajetoria.fitCultural.pife.map((item, idx) => {
+                  const info = getDimensaoInfo(item.dimensao);
+                  const Icon = info.icon;
+                  
+                  return (
+                    <div 
+                      key={idx} 
+                      className={`relative group card-base hover:shadow-xl hover:${info.glowColor}`}
+                    >
+                      {/* Letter Badge */}
+                      <div className={`absolute -top-3 -left-3 w-14 h-14 ${info.bgColor} border-2 ${info.borderColor} rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 group-hover:shadow-xl group-hover:${info.glowColor}`}>
+                        <span className={`${info.colorLight} font-bold text-2xl drop-shadow-lg`}>
+                          {info.letter}
+                        </span>
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className="flex items-start gap-4 mb-4 mt-6">
+                        <div className={`p-3 ${info.bgColor} border ${info.borderColor} rounded-lg group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className={`w-6 h-6 ${info.color}`} />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className={`${info.color} font-bold text-lg mb-2`}>
+                            {item.dimensao}
+                          </h5>
+                          <p className="text-neutral-200 text-sm font-medium mb-2">
+                            {info.description}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      {/* Exemplo prático */}
+                      <div className="pl-1">
+                        <p className="text-neutral-100 text-sm leading-relaxed">
+                          <span className="text-neutral-300 font-medium">Exemplo: </span>
+                          {item.exemploPratico}
+                        </p>
+                      </div>
+                      
+                      {/* Decorative gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-neutral-700/20 opacity-0 group-hover:opacity-30 rounded-xl transition-opacity duration-500 -z-10"></div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Growth Principles Section */}
+          {trajetoria.fitCultural.growth && trajetoria.fitCultural.growth.length > 0 && (
+            <div>
+              {/* Growth Acronym Header */}
+              <div className="mt-4 p-6 bg-gradient-to-br from-secondary/20 via-secondary/10 to-secondary/5 border border-secondary/30 rounded-xl shadow-lg shadow-secondary/10">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    {[
+                      { letter: 'G', color: 'text-secondary-light', bg: 'bg-secondary/20', border: 'border-secondary/50', glow: 'hover:shadow-secondary/30' },
+                      { letter: 'R', color: 'text-primary-light', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' },
+                      { letter: 'O', color: 'text-tertiary-light', bg: 'bg-tertiary/20', border: 'border-tertiary/50', glow: 'hover:shadow-tertiary/30' },
+                      { letter: 'W', color: 'text-secondary-light', bg: 'bg-secondary/20', border: 'border-secondary/50', glow: 'hover:shadow-secondary/30' },
+                      { letter: 'T', color: 'text-primary-light', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' },
+                      { letter: 'H', color: 'text-tertiary-light', bg: 'bg-tertiary/20', border: 'border-tertiary/50', glow: 'hover:shadow-tertiary/30' }
+                    ].map((item, idx) => (
+                      <div 
+                        key={item.letter}
+                        className={`w-10 h-10 ${item.bg} border-2 ${item.border} rounded-lg flex items-center justify-center animate-fade-in-up transition-all hover:scale-110 hover:rotate-6 duration-300 cursor-pointer shadow-lg ${item.glow}`}
+                        style={{ animationDelay: `${idx * 0.1}s` }}
+                      >
+                        <span className={`${item.color} font-bold text-lg drop-shadow-lg`}>{item.letter}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="hidden sm:block h-10 w-px bg-secondary/40"></div>
+                  <div className="flex-1">
+                    <p className="text-base font-semibold text-white">
+                      Growth Principles
+                    </p>
+                    <p className="text-sm mt-1 font-semibold text-secondary-light">
+                      Desenvolvimento contínuo e excelência operacional
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 gap-6 mt-6">
+                {trajetoria.fitCultural.growth.map((principio, idx) => {
+                  // Mapeamento de ícones por índice
+                  const growthIcons = [TrendingUp, MessageSquare, Briefcase, Settings, Code, Flame];
+                  const GrowthIcon = growthIcons[idx] || Star;
+                  
+                  return (
+                  <div 
+                    key={idx}
+                    className={`relative group card-base hover:shadow-xl hover:shadow-secondary/25 transition-all duration-300`}
+                  >
+                    {/* Letter Badge - using first letter of principle */}
+                    <div className={`absolute -top-3 -left-3 w-12 h-12 bg-secondary/15 border-2 border-secondary/40 rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-secondary/25`}>
+                      <span className={`text-secondary-light font-bold text-xl drop-shadow-lg`}>
+                        {principio.principio.charAt(0)}
+                      </span>
+                    </div>
+                    
+                    {/* Icon */}
+                    <div className="flex items-start gap-4 mb-4 mt-6">
+                      <div className={`p-3 bg-secondary/15 border border-secondary/40 rounded-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <GrowthIcon className={`w-6 h-6 text-secondary`} />
+                      </div>
+                      
+                      <div className="flex-1">
+                        <h5 className={`text-secondary font-bold text-lg mb-2`}>
+                          {principio.principio}
+                        </h5>
+                        <p className="text-neutral-200 text-sm font-medium mb-2">
+                          Princípio
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Exemplo prático */}
+                    <div className="pl-1">
+                      <div className="bg-gradient-to-r from-secondary/10 via-secondary/15 to-secondary/10 border-l-4 border-secondary/60 p-4 rounded-r-lg">
+                        <p className="text-neutral-100 leading-relaxed">
+                          <span className="text-secondary font-bold text-base uppercase tracking-wide">Como me encaixo:</span>
+                          <span className="block mt-2 text-neutral-100 text-sm">
+                            {principio.exemploPratico}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Decorative gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-neutral-700/20 opacity-0 group-hover:opacity-30 rounded-xl transition-opacity duration-500 -z-10"></div>
+                  </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </section>
