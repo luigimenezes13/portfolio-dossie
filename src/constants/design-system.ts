@@ -11,19 +11,19 @@
  */
 export const CARD_CLASSES = {
   // Card padrão - uso geral
-  base: 'bg-gradient-to-br from-neutral-900/40 via-neutral-900/30 to-neutral-900/35 border-2 border-neutral-700/40 rounded-2xl p-6 hover:border-neutral-600/60 hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm',
+  base: 'bg-gradient-to-br from-neutral-900/40 via-neutral-900/30 to-neutral-900/35 border-2 border-neutral-600/50 rounded-2xl p-6 hover:border-neutral-500/70 hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm shadow-md hover:shadow-lg',
   
   // Card com destaque - CTAs, informações importantes
-  primary: 'bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/40 rounded-2xl p-6 hover:border-primary/60 hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-primary/15',
+  primary: 'bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/50 rounded-2xl p-6 hover:border-primary/70 hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/15',
   
   // Card compacto - listas, itens menores
-  compact: 'bg-gradient-to-r from-neutral-800/30 to-transparent border border-neutral-700/40 rounded-xl p-4 hover:border-neutral-600/60 hover:from-neutral-800/50 transition-all duration-300',
+  compact: 'bg-gradient-to-r from-neutral-800/30 to-transparent border border-neutral-600/50 rounded-xl p-4 hover:border-neutral-500/70 hover:from-neutral-800/50 transition-all duration-300 shadow-sm hover:shadow-md',
   
   // Card de seção completa
-  section: 'bg-gradient-to-br from-secondary/30 to-black border border-secondary/20 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-secondary/15 transition-all duration-700 backdrop-blur-sm',
+  section: 'bg-gradient-to-br from-secondary/30 to-black border border-secondary/20 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-secondary/15 transition-all duration-700 backdrop-blur-sm shadow-lg',
   
   // Card de seção com destaque primário
-  sectionPrimary: 'bg-gradient-to-br from-primary/20 to-black border border-primary/30 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-primary/25 transition-all duration-700 backdrop-blur-sm',
+  sectionPrimary: 'bg-gradient-to-br from-primary/20 to-black border border-primary/30 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:shadow-primary/25 transition-all duration-700 backdrop-blur-sm shadow-xl',
 } as const;
 
 /**
@@ -87,10 +87,10 @@ export const ICON_COLORS = {
   primary: 'text-primary',
   secondary: 'text-secondary',
   tertiary: 'text-tertiary',
-  neutral: 'text-neutral-400',
-  neutralWithHover: 'text-neutral-400 group-hover:text-neutral-200',
+  neutral: 'text-neutral-300', // Melhorado para WCAG AAA
+  neutralWithHover: 'text-neutral-300 group-hover:text-neutral-200',
   white: 'text-white',
-  muted: 'text-neutral-500',
+  muted: 'text-neutral-400', // Melhorado para WCAG AA
   // State colors
   success: 'text-success',
   warning: 'text-warning',
@@ -120,23 +120,30 @@ export const TRANSITIONS = {
 } as const;
 
 /**
- * CLASSES DE SPACING PADRONIZADAS
+ * CLASSES DE SPACING PADRONIZADAS (8pt Grid System)
  */
 export const SPACING = {
-  // Gaps
+  // Gaps - 8pt grid
   gapSmall: 'gap-4',    // 1rem - elementos próximos
   gapMedium: 'gap-6',   // 1.5rem - grupos relacionados
-  gapLarge: 'gap-12',   // 3rem - seções principais
+  gapLarge: 'gap-8',    // 2rem - padrão médio (novo)
+  gapXLarge: 'gap-12',  // 3rem - seções principais
   
-  // Padding
+  // Padding - 8pt grid
   paddingSmall: 'p-4',  // 1rem - cards pequenos
   paddingMedium: 'p-6', // 1.5rem - cards médios
   paddingLarge: 'p-8',  // 2rem - cards grandes
+  paddingXLarge: 'p-10', // 2.5rem - cards importantes
   
-  // Margin Bottom
+  // Margin Bottom - 8pt grid
   mbSubsection: 'mb-6',  // 1.5rem - entre subseções
   mbSection: 'mb-10',    // 2.5rem - entre seções
   mbMajor: 'mb-12',      // 3rem - entre major sections
+  mbXMajor: 'mb-16',     // 4rem - separação visual extra
+  
+  // Section spacers
+  sectionSpacer: 'h-16', // 4rem - separação visual
+  sectionSpacerLarge: 'h-20', // 5rem - separação visual grande
 } as const;
 
 /**
@@ -149,11 +156,15 @@ export const TYPOGRAPHY = {
   h3: 'text-xl md:text-2xl font-bold',
   h4: 'text-lg font-semibold',
   
-  // Corpo
-  bodyLarge: 'text-lg leading-relaxed text-neutral-100',
-  body: 'text-base leading-relaxed text-neutral-200',
-  bodySmall: 'text-sm text-neutral-400',
-  bodyTiny: 'text-xs text-neutral-500 uppercase tracking-wider',
+  // Corpo - Melhorado para acessibilidade
+  bodyLarge: 'text-lg leading-[1.8] text-neutral-100', // line-height otimizado
+  body: 'text-base leading-[1.8] text-neutral-200', // line-height otimizado
+  bodyMobile: 'text-body-mobile leading-[1.8] text-neutral-200', // 17px para mobile
+  bodySmall: 'text-sm text-neutral-300', // Melhorado para WCAG AAA
+  bodyTiny: 'text-xs text-neutral-400 uppercase tracking-wider', // Melhorado para WCAG AA
+  
+  // Lead paragraph para introduções
+  lead: 'text-lg leading-[1.8] text-neutral-200 font-medium',
   
   // Valores/Números
   valueHuge: 'text-4xl md:text-5xl font-bold text-white',
@@ -172,13 +183,16 @@ export const TYPOGRAPHY = {
 } as const;
 
 /**
- * CONFIGURAÇÕES DE GRID PADRONIZADAS
+ * CONFIGURAÇÕES DE GRID PADRONIZADAS (Mobile-First)
  */
 export const GRID_LAYOUTS = {
-  cols2: 'grid md:grid-cols-2 gap-6',
-  cols3: 'grid md:grid-cols-2 lg:grid-cols-3 gap-6',
-  cols3Responsive: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6',
-  cols2to3: 'grid grid-cols-2 md:grid-cols-3 gap-6',
+  cols2: 'grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8',
+  cols3: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8',
+  cols3Responsive: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8',
+  cols2to3: 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8',
+  // Mobile-optimized grids
+  cols1Mobile: 'grid grid-cols-1 gap-6',
+  cols2Mobile: 'grid grid-cols-1 sm:grid-cols-2 gap-6',
 } as const;
 
 /**
@@ -270,6 +284,36 @@ export const BORDER_RADIUS = {
   large: 'rounded-2xl',  // 1rem
   huge: 'rounded-3xl',   // 1.5rem
   full: 'rounded-full',  // 9999px
+} as const;
+
+/**
+ * CLASSES DE ACESSIBILIDADE
+ */
+export const ACCESSIBILITY = {
+  focusRing: 'focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:outline-none',
+  touchTarget: 'min-h-[44px] min-w-[44px]', // iOS 44px, Android 48px
+  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4',
+  activePress: 'active:scale-[0.98] transition-transform duration-150',
+} as const;
+
+/**
+ * SISTEMA DE ELEVAÇÃO (5 níveis)
+ */
+export const ELEVATION = {
+  flat: 'shadow-sm',
+  low: 'shadow-md hover:shadow-lg',
+  medium: 'shadow-lg hover:shadow-xl',
+  high: 'shadow-xl hover:shadow-2xl',
+  highest: 'shadow-2xl',
+} as const;
+
+/**
+ * CLASSES DE CONTRASTE OTIMIZADAS
+ */
+export const CONTRAST = {
+  textOnDark: 'text-neutral-200', // ratio 7:1 com black
+  textSecondaryOnDark: 'text-neutral-300', // ratio 5:1
+  textMutedOnDark: 'text-neutral-400', // ratio 4.5:1 (mínimo AA)
 } as const;
 
 /**

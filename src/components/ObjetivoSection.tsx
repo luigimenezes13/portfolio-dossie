@@ -16,17 +16,18 @@ export function ObjetivoSection({ objetivo }: ObjetivoSectionProps) {
       className={`${CARD_CLASSES.section} ${
         isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
       }`}
+      aria-labelledby="objetivo-title"
     >
       <div className="section-header">
         <div className={ICON_CONTAINERS.primary}>
           <Crosshair className={`w-7 h-7 ${ICON_COLORS.primary} drop-shadow-lg animate-pulse`} />
         </div>
-        <h2 className={TYPOGRAPHY.sectionTitlePrimary}>Objetivo da Efetivação</h2>
+        <h2 id="objetivo-title" className={TYPOGRAPHY.sectionTitlePrimary}>Objetivo da Efetivação</h2>
       </div>
       
       <p className="text-description mb-8">{objetivo.descricao}</p>
       
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-8">
         {/* Card: Cargo Proposto */}
         <div className={`group relative ${CARD_CLASSES.base} hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30`}>
           {/* Ícone */}

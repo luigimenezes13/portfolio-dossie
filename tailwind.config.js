@@ -69,8 +69,9 @@ export default {
         'hero': ['3.5rem', { lineHeight: '1.1', fontWeight: '800' }],
         'title': ['2.5rem', { lineHeight: '1.2', fontWeight: '700' }],
         'subtitle': ['1.75rem', { lineHeight: '1.3', fontWeight: '600' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.75', fontWeight: '400' }],
-        'body': ['1rem', { lineHeight: '1.75', fontWeight: '400' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.8', fontWeight: '400' }], // Melhorado para leitura
+        'body': ['1rem', { lineHeight: '1.8', fontWeight: '400' }], // Melhorado para leitura
+        'body-mobile': ['1.0625rem', { lineHeight: '1.8', fontWeight: '400' }], // 17px para mobile
       },
       spacing: {
         '18': '4.5rem',

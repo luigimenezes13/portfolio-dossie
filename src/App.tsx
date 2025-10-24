@@ -38,7 +38,7 @@ function App() {
         ]);
         
         const elapsedTime = Date.now() - startTime;
-        const minimumLoadingTime = 5500;
+        const minimumLoadingTime = 2500;
         const remainingTime = Math.max(0, minimumLoadingTime - elapsedTime);
         
         await new Promise(resolve => setTimeout(resolve, remainingTime));
@@ -75,7 +75,7 @@ function App() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-12">
         <Header dossie={dossie} />
 
-        <div className="space-y-12 md:space-y-16">
+        <main className="space-y-16 md:space-y-20" role="main" aria-label="Conteúdo principal do dossiê">
           <ObjetivoSection objetivo={dossie.objetivo} />
           <TrajetoriaSection trajetoria={dossie.trajetoria} />
           
@@ -113,7 +113,7 @@ function App() {
           )}
           
           <ConclusaoSection conclusao={dossie.conclusao} />
-        </div>
+        </main>
 
         <Footer apiInfo={apiInfo} dossie={dossie} />
       </div>

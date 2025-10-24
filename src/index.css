@@ -54,9 +54,9 @@
   /* Card Base - Padrão geral (70% dos casos) */
   .card-base {
     @apply bg-gradient-to-br from-neutral-900/40 via-neutral-900/30 to-neutral-900/35 
-           border-2 border-neutral-700/40 
+           border-2 border-neutral-600/50 
            rounded-2xl p-6
-           hover:border-neutral-600/60 hover:scale-[1.02]
+           hover:border-neutral-500/70 hover:scale-[1.02]
            transition-all duration-300
            backdrop-blur-sm;
   }
@@ -64,9 +64,9 @@
   /* Card Primary - Destaque importante (20% dos casos) */
   .card-primary {
     @apply bg-gradient-to-br from-primary/10 to-tertiary/10
-           border-2 border-primary/40
+           border-2 border-primary/50
            rounded-2xl p-6
-           hover:border-primary/60 hover:scale-[1.02]
+           hover:border-primary/70 hover:scale-[1.02]
            transition-all duration-300
            hover:shadow-2xl hover:shadow-primary/15
            backdrop-blur-sm;
@@ -75,9 +75,9 @@
   /* Card Compact - Listas e itens menores (10% dos casos) */
   .card-compact {
     @apply bg-gradient-to-r from-neutral-800/30 to-transparent
-           border border-neutral-700/40
+           border border-neutral-600/50
            rounded-xl p-4
-           hover:border-neutral-600/60 hover:from-neutral-800/50
+           hover:border-neutral-500/70 hover:from-neutral-800/50
            transition-all duration-300;
   }
   
@@ -252,11 +252,11 @@
   }
   
   .text-small {
-    @apply text-xs text-neutral-400 uppercase tracking-wider font-medium;
+    @apply text-xs text-neutral-300 uppercase tracking-wider font-medium;
   }
   
   .text-small-gray {
-    @apply text-sm text-neutral-400 font-normal;
+    @apply text-sm text-neutral-300 font-normal;
   }
   
   .text-muted {
@@ -328,7 +328,7 @@
   }
   
   .form-input {
-    @apply w-full px-4 py-2 bg-black/50 border border-tertiary/20 rounded-lg text-white placeholder-neutral-400 focus:border-primary/50 focus:outline-none transition-all duration-300;
+    @apply w-full px-4 py-2 bg-black/50 border border-tertiary/20 rounded-lg text-white placeholder-neutral-300 focus:border-primary/50 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 transition-all duration-300;
   }
   
   .form-label {
@@ -378,7 +378,22 @@
   }
 
   .link-primary {
-    @apply text-primary hover:text-tertiary transition-colors font-semibold;
+    @apply text-primary hover:text-tertiary transition-colors font-semibold focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:outline-none rounded-sm;
+  }
+  
+  /* Focus ring para elementos interativos */
+  .focus-ring {
+    @apply focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:outline-none;
+  }
+  
+  /* Active press para botões */
+  .active-press {
+    @apply active:scale-[0.98] transition-transform duration-150;
+  }
+  
+  /* Touch targets otimizados */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
   }
 }
 

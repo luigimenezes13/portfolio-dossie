@@ -85,14 +85,18 @@ export function Header({ dossie }: HeaderProps) {
                 src={profileImage} 
                 alt={`Foto de ${dossie.colaborador.nome}`}
                 className="w-full h-full object-cover"
+                loading="eager"
               />
             </div>
             
             <div 
-              className={`profile-badge cursor-pointer hover:scale-110 transition-all duration-300 absolute bottom-0 right-0 hover:shadow-2xl hover:shadow-secondary/50 ${!hasInteracted ? ANIMATIONS.pulseBadge : ''}`}
+              className={`profile-badge cursor-pointer hover:scale-110 transition-all duration-300 absolute bottom-0 right-0 hover:shadow-2xl hover:shadow-secondary/50 focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:outline-none active:scale-[0.98] ${!hasInteracted ? ANIMATIONS.pulseBadge : ''}`}
               onClick={handleClick}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
+              tabIndex={0}
+              role="button"
+              aria-label="Ver informações do desenvolvedor"
             >
               <CheckCircle2 className="w-8 h-8 text-white drop-shadow-lg" />
               {!hasInteracted && <span className="notification-dot bg-secondary"></span>}
@@ -126,7 +130,8 @@ export function Header({ dossie }: HeaderProps) {
                           href="https://github.com/luigimenezes13" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 link-primary"
+                          className="inline-flex items-center gap-1 link-primary focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:outline-none rounded-sm"
+                          aria-label="Abrir perfil do GitHub em nova aba"
                         >
                           <GithubIcon className="w-4 h-4" />
                           github.com/luigimenezes13
@@ -140,7 +145,8 @@ export function Header({ dossie }: HeaderProps) {
                             href="https://lovable.dev" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="badge-tech"
+                            className="badge-tech focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:outline-none"
+                            aria-label="Abrir Lovable AI em nova aba"
                           >
                             <img src={lovableIcon} alt="Lovable AI" className="w-3.5 h-3.5" />
                             Lovable
@@ -149,7 +155,8 @@ export function Header({ dossie }: HeaderProps) {
                             href="https://v0.dev" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="badge-tech"
+                            className="badge-tech focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:outline-none"
+                            aria-label="Abrir Vercel v0 em nova aba"
                           >
                             <img src={v0Icon} alt="Vercel v0" className="w-3.5 h-3.5" />
                             v0
@@ -164,7 +171,8 @@ export function Header({ dossie }: HeaderProps) {
                             href="https://dossie-backend.vercel.app" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="link-primary"
+                            className="link-primary focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:outline-none rounded-sm"
+                            aria-label="Abrir API do dossiê em nova aba"
                           >
                             dossie-backend.vercel.app
                           </a>

@@ -256,7 +256,7 @@ const getDimensaoInfo = (dimensao: string) => {
       letter: 'P', 
       description: 'Relacionamentos e networking',
       color: 'text-primary',
-      colorLight: 'text-primary-light',
+      colorLight: 'text-primary',
       bgColor: 'bg-primary/15',
       borderColor: 'border-primary/40',
       glowColor: 'shadow-primary/20'
@@ -635,7 +635,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                   <div className="flex items-center gap-2">
                     {[
-                      { letter: 'P', color: 'text-primary-light', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' },
+                      { letter: 'P', color: 'text-primary', bg: 'bg-primary/20', border: 'border-primary/50', glow: 'hover:shadow-primary/30' },
                       { letter: 'I', color: 'text-secondary-light', bg: 'bg-secondary/20', border: 'border-secondary/50', glow: 'hover:shadow-secondary/30' },
                       { letter: 'F', color: 'text-tertiary-light', bg: 'bg-tertiary/20', border: 'border-tertiary/50', glow: 'hover:shadow-tertiary/30' },
                       { letter: 'E', color: 'text-tertiary-light', bg: 'bg-tertiary/20', border: 'border-tertiary/50', glow: 'hover:shadow-tertiary/30' }
@@ -645,7 +645,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                         className={`w-10 h-10 ${item.bg} border-2 ${item.border} rounded-lg flex items-center justify-center animate-fade-in-up transition-all hover:scale-110 hover:rotate-6 duration-300 cursor-pointer shadow-lg ${item.glow}`}
                         style={{ animationDelay: `${idx * 0.1}s` }}
                       >
-                        <span className={`${item.color} font-bold text-lg drop-shadow-lg`}>{item.letter}</span>
+                        <span className={`font-bold text-lg drop-shadow-lg ${item.letter === 'P' ? 'text-primary' : item.color}`} style={item.letter === 'P' ? { color: '#B91C1C' } : {}}>{item.letter}</span>
                       </div>
                     ))}
                   </div>
@@ -676,7 +676,7 @@ export function TrajetoriaSection({ trajetoria }: TrajetoriaSectionProps) {
                     >
                       {/* Letter Badge */}
                       <div className={`absolute -top-3 -left-3 w-14 h-14 ${info.bgColor} border-2 ${info.borderColor} rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 group-hover:shadow-xl group-hover:${info.glowColor}`}>
-                        <span className={`${info.colorLight} font-bold text-2xl drop-shadow-lg`}>
+                        <span className={`${info.colorLight} font-bold text-2xl drop-shadow-lg`} style={info.letter === 'P' ? { color: '#B91C1C' } : {}}>
                           {info.letter}
                         </span>
                       </div>
