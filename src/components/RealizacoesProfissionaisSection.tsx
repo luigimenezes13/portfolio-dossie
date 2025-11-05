@@ -28,8 +28,8 @@ export function RealizacoesProfissionaisSection({ realizacoesProfissionais }: Re
     
     // Verifica se contém padrão de linhas de código (número++ ou número--)
     if (valorStr.includes('++') || valorStr.includes('--')) {
-      // Divide o texto em partes e aplica cores
-      const parts = valorStr.split(/(\d+\+\+|\d+--)/);
+      // Divide o texto em partes e aplica cores (suporta separadores de milhares . ou ,)
+      const parts = valorStr.split(/(\d{1,3}(?:[.,]\d{3})*\+\+|\d{1,3}(?:[.,]\d{3})*--)/);
       
       return (
         <span className={`text-4xl font-extrabold`}>
