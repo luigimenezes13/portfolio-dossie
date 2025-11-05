@@ -16,7 +16,6 @@ import {
   EmptyState,
   RealizacoesProfissionaisSection,
   RealizacoesAcademicasSection,
-  EfetivacaoSection,
   VisaoFuturoSection
 } from './components';
 
@@ -96,9 +95,7 @@ function App() {
             <VisaoFuturoSection visaoFuturo={dossie.visaoFuturo} />
           )}
           
-          {dossie.efetivacao && (
-            <EfetivacaoSection efetivacao={dossie.efetivacao} />
-          )}
+          {/* EfetivacaoSection removido */}
           
           {/* Fallback to old structure if new efetivacao not available */}
           {!dossie.efetivacao && dossie.propostaValorizacao && dossie.referenciaMercado && (

@@ -36,13 +36,13 @@ export function RealizacoesProfissionaisSection({ realizacoesProfissionais }: Re
           {parts.map((part, index) => {
             if (part.includes('++')) {
               return (
-                <span key={index} className="metric-positive">
+                <span key={index} className="text-green-400">
                   {part}
                 </span>
               );
             } else if (part.includes('--')) {
               return (
-                <span key={index} className="metric-negative">
+                <span key={index} className="text-red-400">
                   {part}
                 </span>
               );
