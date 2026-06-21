@@ -67,42 +67,86 @@ export function PleitoPleno() {
                 <span className="text-kicker">PRETENSÃO · MERCADO CAMPINAS</span>
               </div>
 
-              {/* Gráfico horizontal editorial */}
-              <div className="bg-dossie-card border border-dossie-rule p-8 mb-8">
-                <div className="relative h-px bg-ink/15 mb-16">
-                  {sal.benchmarks.map((b, i) => {
-                    const pct = ((b.valor - min) / range) * 100;
-                    return (
-                      <div
-                        key={i}
-                        className="absolute -top-1.5 -translate-x-1/2 flex flex-col items-center"
-                        style={{ left: `${pct}%` }}
-                      >
-                        <div
-                          className={`rounded-full ${
-                            b.destaque
-                              ? 'w-4 h-4 bg-amber-400 ring-4 ring-amber-400/15'
-                              : 'w-2.5 h-2.5 bg-primary'
-                          }`}
-                        />
-                        <div
-                          className={`mt-4 text-[10px] uppercase tracking-wider whitespace-nowrap text-center ${
-                            b.destaque ? 'text-amber-400 font-bold' : 'text-ink/55'
-                          }`}
-                        >
-                          {b.label}
-                        </div>
-                        <div
-                          className={`mt-1 font-serif text-[12px] whitespace-nowrap font-medium ${
-                            b.destaque ? 'text-amber-400' : 'text-ink/65'
-                          }`}
-                        >
-                          R$ {b.valor.toLocaleString('pt-BR')}
-                        </div>
+              {/* Gráfico horizontal editorial · labels alternados acima/baixo */}
+              <div className="bg-dossie-card border border-dossie-rule p-8 pb-10 mb-8">
+                {/* Sorted por valor pra alternância previsível */}
+                {(() => {
+                  const sorted = [...sal.benchmarks].sort((a, b) => a.valor - b.valor);
+                  return (
+                    <div className="relative" style={{ paddingTop: 64, paddingBottom: 64 }}>
+                      {/* Eixo horizontal */}
+                      <div className="relative h-px bg-ink/15">
+                        {sorted.map((b, i) => {
+                          const pct = ((b.valor - min) / range) * 100;
+                          // Alterna posição: 0=baixo, 1=cima, 2=baixo, 3=cima...
+                          // Destaque (pretensão) sempre tem posição própria — mais alta
+                          const above = b.destaque ? true : i % 2 === 1;
+                          return (
+                            <div
+                              key={i}
+                              className="absolute -top-1.5 -translate-x-1/2 flex flex-col items-center"
+                              style={{ left: `${pct}%` }}
+                            >
+                              {/* Dot */}
+                              <div
+                                className={`rounded-full ${
+                                  b.destaque
+                                    ? 'w-5 h-5 bg-amber-400 ring-4 ring-amber-400/15 z-20 relative'
+                                    : 'w-2.5 h-2.5 bg-primary z-10 relative'
+                                }`}
+                              />
+
+                              {/* Linha conectora + label · acima ou abaixo */}
+                              {above ? (
+                                <div
+                                  className="absolute flex flex-col items-center"
+                                  style={{ bottom: '100%', marginBottom: 6 }}
+                                >
+                                  <div
+                                    className={`font-serif text-[12px] whitespace-nowrap font-medium ${
+                                      b.destaque ? 'text-amber-400' : 'text-ink/70'
+                                    }`}
+                                  >
+                                    R$ {b.valor.toLocaleString('pt-BR')}
+                                  </div>
+                                  <div
+                                    className={`mt-1 text-[10px] uppercase tracking-wider whitespace-nowrap ${
+                                      b.destaque ? 'text-amber-400 font-bold' : 'text-ink/55'
+                                    }`}
+                                  >
+                                    {b.label}
+                                  </div>
+                                  {/* Conector vertical */}
+                                  <div
+                                    className={`mt-1 w-px ${b.destaque ? 'bg-amber-400/50' : 'bg-ink/20'}`}
+                                    style={{ height: 14 }}
+                                  />
+                                </div>
+                              ) : (
+                                <div
+                                  className="absolute flex flex-col items-center"
+                                  style={{ top: '100%', marginTop: 6 }}
+                                >
+                                  {/* Conector vertical */}
+                                  <div
+                                    className="w-px bg-ink/20"
+                                    style={{ height: 14 }}
+                                  />
+                                  <div className="mt-1 text-[10px] uppercase tracking-wider whitespace-nowrap text-ink/55">
+                                    {b.label}
+                                  </div>
+                                  <div className="mt-1 font-serif text-[12px] whitespace-nowrap font-medium text-ink/70">
+                                    R$ {b.valor.toLocaleString('pt-BR')}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })()}
               </div>
 
               <div className="space-y-4 max-w-3xl">
