@@ -16,6 +16,7 @@ export function Constante() {
 
     const ctx = gsap.context(() => {
       // SplitText na palavra principal · sutil
+      // Trigger atrelado à SEÇÃO (não ao próprio H2) pra disparar junto com o reveal dos blocos
       if (palavraRef.current) {
         Splitting({ target: palavraRef.current, by: 'chars' });
         const chars = palavraRef.current.querySelectorAll<HTMLSpanElement>('.char');
@@ -23,20 +24,21 @@ export function Constante() {
         gsap.to(chars, {
           y: 0,
           opacity: 1,
-          stagger: 0.05,
-          duration: 0.8,
+          stagger: 0.04,
+          duration: 0.7,
           ease: 'expo.out',
-          scrollTrigger: { trigger: palavraRef.current, start: 'top 75%' },
+          delay: 0.2,
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 90%' },
         });
       }
 
       gsap.from('.constante-reveal', {
         opacity: 0,
         y: 25,
-        stagger: 0.18,
-        duration: 0.9,
+        stagger: 0.12,
+        duration: 0.8,
         ease: 'power2.out',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 90%' },
       });
     }, sectionRef);
 
