@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { gsap, prefersReducedMotion } from '../lib/motion';
 import { useDossie } from '../contexts/DossieContext';
+import type { Dossie } from '../content/dossie';
+
+type TimelineNode = Dossie['timeline'][number];
 
 export function Timeline() {
   const DOSSIE = useDossie();
@@ -136,7 +139,7 @@ function TimelineRow({
   index,
   isLast,
 }: {
-  node: typeof DOSSIE.timeline[0];
+  node: TimelineNode;
   index: number;
   isLast: boolean;
 }) {
