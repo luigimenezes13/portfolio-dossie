@@ -9,77 +9,31 @@ import brendaQuadrosAvatar from '../assets/avatars/brenda-quadros.jpg';
 import jonathanBaumgartenAvatar from '../assets/avatars/jonathan-baumgarten.jpg';
 import deniseSantosAvatar from '../assets/avatars/denise-santos.jpg';
 
-export const DOSSIE = {
-  colaborador: {
-    nome: 'Luigi Bertoli Menezes',
-    funcaoAtual: 'Software Engineer · Júnior',
-    senioridadeAtual: 'Júnior',
-    senioridadeProposta: 'Pleno',
-    cargoProposto: 'Software Engineer Pleno',
-    dataInicio: 'março/2025',
-    dataEfetivacao: 'novembro/2025',
-    tempoV4: '15 meses',
-    tempoJunior: '7 meses',
-    idade: 22,
-    modeloContratacao: 'SLU',
-    empresa: 'V4 Company',
-    avd: 'julho/2026',
-    taglinePessoal:
-      'Planejo o que dá e presto atenção no que o plano não controla — o resto costuma se encaixar no tempo certo.',
-    github: 'luigimenezes13',
-    curso: {
-      nome: 'Engenharia da Computação',
-      semestre: 'penúltimo semestre',
-      faculdade: 'PUC-Campinas',
-    },
-  },
+export type Prova = {
+  type: string;
+  titulo: string;
+  corpo: string;
+  pife: string[];
+  champ: string[];
+  metric?: { value: string; unit: string; context: string };
+  quote?: { texto: string; autor: string; cargo?: string };
+  avatar?: { iniciais: string; nome: string; url?: string };
+  milestone?: { label: string; date: string; meta?: string; oficial?: boolean };
+  link?: { href: string; label: string };
+  anchor?: string;
+  stakeholders?: Array<{ nome: string; area?: string; iniciais: string; url?: string }>;
+};
 
-  tese: 'Pleito para  pleno.',
+export type Growth = {
+  letra: string;
+  titulo: string;
+  citacao: string;
+  abertura: string;
+  provas: Prova[];
+  encerramento: string;
+};
 
-  manifesto: {
-    citacaoRedBook:
-      'Alinhamento cultural é o que transforma talento individual em poder coletivo. Dominar esta cultura é sua vantagem competitiva — tanto para crescer na V4 quanto para acelerar sua carreira.',
-    citacaoFonte: 'THE RED BOOK · V4 COMPANY',
-    tese: 'PIFE é o que quero. GROWTH é como entrego. Este dossiê é a prova.',
-    pleito:
-      'Em 15 meses, percorri de estagiário a Júnior efetivado. Os comportamentos GROWTH viraram regime, as dimensões PIFE estão em equilíbrio. Vim pleitear Pleno não pelo tempo — pelas evidências que seguem.',
-  },
-
-  timeline: [
-    { time: 'Produto · Finance', periodo: 'mar/25 → mai/25', status: 'Estagiário', micro: 'Contexto inicial. APIs, conceitos, postura.' },
-    { time: 'Workforce + HOps', periodo: 'mai/25 → set/25', status: 'Estagiário', micro: '850+ chamados. Confiança de franqueado. Frontend nasceu aqui.' },
-    { time: 'Contratos', periodo: 'set/25 → nov/25', status: 'Estagiário', micro: 'Velocidade de adaptação técnica.' },
-    { time: 'Financeiro (1ª)', periodo: 'nov/25 → fev/26', status: 'Júnior ★', micro: 'Efetivado nov/25. Sustentei dois fluxos — Financeiro e contexto único do Pós-Venda.', marco: true },
-    { time: 'CRM', periodo: 'fev/26 → abr/26', status: 'Júnior', micro: 'Maior tempo. Onde Davi Campos disse "confio em qualquer entrega sua".' },
-    { time: 'Pós-Venda', periodo: 'abr/26 → jun/26', status: 'Júnior', micro: 'Knowledge Pills com estagiários. Pivô da migração.' },
-    { time: 'Financeiro (atual)', periodo: 'jun/26 → presente', status: 'Júnior', micro: 'Service Cart. Entrega em tempo recorde.' },
-  ],
-
-  numeros: {
-    github: {
-      prsMerged: 165,
-      linhasAdicionadas: 62372,
-      codeReviews: 273,
-      mergeRate: 78,
-      linhasMovimentadas: 73102,
-    },
-    prMaturity: {
-      medianaHoras: 3.2,
-      pctMenor24h: 70,
-      pctMenor72h: 86,
-      medianaLinhas: 142,
-      benchDORA: 'DORA Elite (top 4%) bench: lead time < 1 dia',
-    },
-    linear: {
-      totalIssues: 76,
-      criticidade: 26,
-      timesAtendidos: 4,
-      criticidadePct: 34,
-      notaJira: 'CRM em Jira, fora desta contagem',
-    },
-  },
-
-  growths: [
+const growths: Growth[] = [
     {
       letra: 'G',
       titulo: 'GTM TO LEARN FASTER',
@@ -417,7 +371,79 @@ export const DOSSIE = {
       ],
       encerramento: 'Excelência sustentável é regime, não pico. Os números acima são meses, não dias. Pleno opera nesse regime.',
     },
+];
+
+export const DOSSIE = {
+  colaborador: {
+    nome: 'Luigi Bertoli Menezes',
+    funcaoAtual: 'Software Engineer · Júnior',
+    senioridadeAtual: 'Júnior',
+    senioridadeProposta: 'Pleno',
+    cargoProposto: 'Software Engineer Pleno',
+    dataInicio: 'março/2025',
+    dataEfetivacao: 'novembro/2025',
+    tempoV4: '15 meses',
+    tempoJunior: '7 meses',
+    idade: 22,
+    modeloContratacao: 'SLU',
+    empresa: 'V4 Company',
+    avd: 'julho/2026',
+    taglinePessoal:
+      'Planejo o que dá e presto atenção no que o plano não controla — o resto costuma se encaixar no tempo certo.',
+    github: 'luigimenezes13',
+    curso: {
+      nome: 'Engenharia da Computação',
+      semestre: 'penúltimo semestre',
+      faculdade: 'PUC-Campinas',
+    },
+  },
+
+  tese: 'Pleito para  pleno.',
+
+  manifesto: {
+    citacaoRedBook:
+      'Alinhamento cultural é o que transforma talento individual em poder coletivo. Dominar esta cultura é sua vantagem competitiva — tanto para crescer na V4 quanto para acelerar sua carreira.',
+    citacaoFonte: 'THE RED BOOK · V4 COMPANY',
+    tese: 'PIFE é o que quero. GROWTH é como entrego. Este dossiê é a prova.',
+    pleito:
+      'Em 15 meses, percorri de estagiário a Júnior efetivado. Os comportamentos GROWTH viraram regime, as dimensões PIFE estão em equilíbrio. Vim pleitear Pleno não pelo tempo — pelas evidências que seguem.',
+  },
+
+  timeline: [
+    { time: 'Produto · Finance', periodo: 'mar/25 → mai/25', status: 'Estagiário', micro: 'Contexto inicial. APIs, conceitos, postura.' },
+    { time: 'Workforce + HOps', periodo: 'mai/25 → set/25', status: 'Estagiário', micro: '850+ chamados. Confiança de franqueado. Frontend nasceu aqui.' },
+    { time: 'Contratos', periodo: 'set/25 → nov/25', status: 'Estagiário', micro: 'Velocidade de adaptação técnica.' },
+    { time: 'Financeiro (1ª)', periodo: 'nov/25 → fev/26', status: 'Júnior ★', micro: 'Efetivado nov/25. Sustentei dois fluxos — Financeiro e contexto único do Pós-Venda.', marco: true },
+    { time: 'CRM', periodo: 'fev/26 → abr/26', status: 'Júnior', micro: 'Maior tempo. Onde Davi Campos disse "confio em qualquer entrega sua".' },
+    { time: 'Pós-Venda', periodo: 'abr/26 → jun/26', status: 'Júnior', micro: 'Knowledge Pills com estagiários. Pivô da migração.' },
+    { time: 'Financeiro (atual)', periodo: 'jun/26 → presente', status: 'Júnior', micro: 'Service Cart. Entrega em tempo recorde.' },
   ],
+
+  numeros: {
+    github: {
+      prsMerged: 165,
+      linhasAdicionadas: 62372,
+      codeReviews: 273,
+      mergeRate: 78,
+      linhasMovimentadas: 73102,
+    },
+    prMaturity: {
+      medianaHoras: 3.2,
+      pctMenor24h: 70,
+      pctMenor72h: 86,
+      medianaLinhas: 142,
+      benchDORA: 'DORA Elite (top 4%) bench: lead time < 1 dia',
+    },
+    linear: {
+      totalIssues: 76,
+      criticidade: 26,
+      timesAtendidos: 4,
+      criticidadePct: 34,
+      notaJira: 'CRM em Jira, fora desta contagem',
+    },
+  },
+
+  growths,
 
   constante: {
     pergunta:
