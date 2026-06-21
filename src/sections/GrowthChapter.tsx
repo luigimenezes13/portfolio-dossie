@@ -75,7 +75,7 @@ export function GrowthChapter({ index, growth }: GrowthChapterProps) {
             </h2>
 
             <blockquote className="pull-quote max-w-3xl mb-8">
-              &ldquo;{growth.citacao}&rdquo;
+              &ldquo;{renderBoldRed(growth.citacao)}&rdquo;
               <div className="text-kicker not-italic font-sans mt-3 text-[10px]">
                 — THE RED BOOK · V4 · CAP. {growth.letra}
               </div>
