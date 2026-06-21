@@ -1,8 +1,8 @@
 /**
  * <Editable path="manifesto.tese" multiline> {children} </Editable>
  *
- * - Não-editMode: renderiza `{children}` direto, zero overhead.
- * - EditMode: vira contentEditable. Captura innerText no blur, chama updateField.
+ * - Não-editMode: renderiza markdown bold (**texto** → vermelho).
+ * - EditMode: vira contentEditable mostrando texto cru (com `**`).
  * - Visual: hover dashed underline, focus solid underline vermelho.
  */
 import {
@@ -14,11 +14,14 @@ import {
 } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useEdit } from '../contexts/EditContext';
+import { renderBoldRed } from '../lib/markdown-bold';
 
 interface EditableProps extends HTMLAttributes<HTMLElement> {
   path: string;
   multiline?: boolean;
   as?: keyof JSX.IntrinsicElements;
+  /** Default true: processa **bold** em vermelho no read mode. */
+  markdown?: boolean;
   children: ReactNode;
 }
 
@@ -26,6 +29,7 @@ export function Editable({
   path,
   multiline = false,
   as = 'span',
+  markdown = true,
   children,
   className = '',
   ...rest
@@ -46,6 +50,14 @@ export function Editable({
 
   if (!editMode) {
     const Tag = as as 'span';
+    // Read mode: aplica markdown bold se prop ligado e children é string
+    if (markdown && typeof children === 'string') {
+      return (
+        <Tag className={className} {...rest}>
+          {renderBoldRed(children)}
+        </Tag>
+      );
+    }
     return (
       <Tag className={className} {...rest}>
         {children}
@@ -69,7 +81,6 @@ export function Editable({
           e.preventDefault();
           (e.target as HTMLElement).blur();
         }
-        // ESC cancela e restaura
         if (e.key === 'Escape') {
           e.preventDefault();
           if (typeof children === 'string' && ref.current) {
@@ -81,6 +92,7 @@ export function Editable({
       className={`${className} editable-field`}
       {...rest}
     >
+      {/* Edit mode: SEMPRE texto cru, sem markdown processado */}
       {children}
     </Tag>
   );

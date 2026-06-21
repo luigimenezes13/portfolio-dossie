@@ -1,4 +1,5 @@
 import { useDossie } from '../contexts/DossieContext';
+import { renderBoldRed } from '../lib/markdown-bold';
 import { Editable } from '../components/Editable';
 
 export function PleitoPleno() {
@@ -114,7 +115,7 @@ export function PleitoPleno() {
                         : 'font-serif text-[17px] text-ink/85'
                     }`}
                   >
-                    &ldquo;{linha}&rdquo;
+                    &ldquo;{renderBoldRed(linha)}&rdquo;
                   </p>
                 ))}
               </div>

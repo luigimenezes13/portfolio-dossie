@@ -1,4 +1,5 @@
 import { useDossie } from '../contexts/DossieContext';
+import { renderBoldRed } from '../lib/markdown-bold';
 
 const PIFE_CLASS: Record<string, string> = {
   P: 'chip-pife-p',
@@ -37,7 +38,7 @@ export function Academico() {
                   <h3 className="font-serif font-medium text-section-h3 text-ink leading-tight mb-3">
                     {card.titulo}
                   </h3>
-                  <p className="font-serif text-[16px] text-ink/75 leading-relaxed mb-5">{card.corpo}</p>
+                  <p className="font-serif text-[16px] text-ink/75 leading-relaxed mb-5">{renderBoldRed(card.corpo)}</p>
                   <div className="pt-3 border-t border-dossie-ruleSoft flex gap-1.5 flex-wrap">
                     {card.chips.map((c) => (
                       <span key={c} className={PIFE_CLASS[c] ?? 'chip-pife border-ink/20 text-ink/60'}>
@@ -57,10 +58,10 @@ export function Academico() {
 
             <article className="proof-card border-l-2 !border-l-primary p-8 lg:p-10">
               <h3 className="proof-card-title text-base mb-4">{DOSSIE.academico.unicamp.titulo}</h3>
-              <p className="font-serif text-[17px] text-ink/85 leading-relaxed mb-6">{DOSSIE.academico.unicamp.corpo}</p>
+              <p className="font-serif text-[17px] text-ink/85 leading-relaxed mb-6">{renderBoldRed(DOSSIE.academico.unicamp.corpo)}</p>
               <div className="mt-2 pt-6 border-t border-dossie-ruleSoft">
                 <p className="font-editorial italic text-[18px] lg:text-[20px] text-ink/75 leading-relaxed">
-                  {DOSSIE.academico.unicamp.citacao}
+                  {renderBoldRed(DOSSIE.academico.unicamp.citacao)}
                 </p>
               </div>
             </article>

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap, prefersReducedMotion } from '../lib/motion';
 import { useDossie } from '../contexts/DossieContext';
 import type { Dossie } from '../content/dossie';
+import { renderBoldRed } from '../lib/markdown-bold';
 
 type TimelineNode = Dossie['timeline'][number];
 
@@ -170,7 +171,7 @@ function TimelineRow({
       {/* Microcopy editorial */}
       <div className="col-span-12 sm:col-span-5">
         <p className="font-serif italic text-[16px] text-ink/75 leading-snug">
-          {node.micro}
+          {renderBoldRed(node.micro)}
         </p>
       </div>
     </article>

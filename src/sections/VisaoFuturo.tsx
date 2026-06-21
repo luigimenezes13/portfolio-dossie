@@ -1,4 +1,5 @@
 import { useDossie } from '../contexts/DossieContext';
+import { renderBoldRed } from '../lib/markdown-bold';
 
 export function VisaoFuturo() {
   const DOSSIE = useDossie();
@@ -34,7 +35,7 @@ export function VisaoFuturo() {
                   <div className="text-kicker mb-3 text-[10px]">PROFISSIONAL</div>
                   <ul className="space-y-1.5 font-serif text-[15px] text-ink/80 leading-snug">
                     {bloco.profissional.map((item, j) => (
-                      <li key={j} className="text-pretty">— {item}</li>
+                      <li key={j} className="text-pretty">— {renderBoldRed(item)}</li>
                     ))}
                   </ul>
                 </div>
@@ -43,7 +44,7 @@ export function VisaoFuturo() {
                   <div className="text-kicker mb-3 text-[10px]">PESSOAL</div>
                   <ul className="space-y-1.5 font-serif text-[15px] text-ink/80 leading-snug">
                     {bloco.pessoal.map((item, j) => (
-                      <li key={j} className="text-pretty">— {item}</li>
+                      <li key={j} className="text-pretty">— {renderBoldRed(item)}</li>
                     ))}
                   </ul>
                 </div>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, prefersReducedMotion } from '../lib/motion';
 import type { Dossie } from '../content/dossie';
+import { renderBoldRed } from '../lib/markdown-bold';
 
 type Growth = Dossie['growths'][number];
 type Prova = Growth['provas'][number];
@@ -81,7 +82,7 @@ export function GrowthChapter({ index, growth }: GrowthChapterProps) {
             </blockquote>
 
             <p className="font-serif italic text-fluid-deck text-ink/75 max-w-3xl">
-              {growth.abertura}
+              {renderBoldRed(growth.abertura)}
             </p>
           </div>
         </div>
@@ -104,7 +105,7 @@ export function GrowthChapter({ index, growth }: GrowthChapterProps) {
         {/* Encerramento */}
         <div className="mt-16 rule-top border-dossie-rule pt-6 max-w-3xl">
           <p className="font-serif italic text-fluid-quote text-ink/85">
-            &ldquo;{growth.encerramento}&rdquo;
+            &ldquo;{renderBoldRed(growth.encerramento)}&rdquo;
           </p>
         </div>
 
@@ -252,7 +253,7 @@ function PersonCard({ prova, index }: { prova: Prova; index: number }) {
 
         {q && (
           <blockquote className="pull-quote text-[20px]">
-            &ldquo;{q.texto}&rdquo;
+            &ldquo;{renderBoldRed(q.texto)}&rdquo;
             <div className="text-byline not-italic mt-2 text-[10px]">
               — {q.autor}
               {q.cargo && <span className="text-ink/45 normal-case tracking-normal"> · {q.cargo}</span>}
@@ -294,7 +295,7 @@ function MilestoneCard({ prova, index }: { prova: Prova; index: number }) {
 
         <div className="space-y-1">
           <div className="font-mono text-[13px] text-ink/75">{m?.date}</div>
-          {m?.meta && <div className="text-byline normal-case tracking-normal text-ink/55 text-[12px]">{m.meta}</div>}
+          {m?.meta && <div className="text-byline normal-case tracking-normal text-ink/55 text-[12px]">{renderBoldRed(m.meta)}</div>}
         </div>
 
         {stakeholders && stakeholders.length > 0 && (
@@ -381,7 +382,7 @@ function NarrativeCard({ prova, index }: { prova: Prova; index: number }) {
     <ArticleChrome type="narrativo" index={index} link={prova.link} pife={prova.pife} champ={prova.champ}>
       {prova.anchor && (
         <blockquote className="font-editorial italic text-fluid-deck text-ink leading-snug text-balance mb-3 border-l-2 border-primary pl-4">
-          {prova.anchor}
+          {renderBoldRed(prova.anchor)}
         </blockquote>
       )}
 
@@ -393,19 +394,3 @@ function NarrativeCard({ prova, index }: { prova: Prova; index: number }) {
   );
 }
 
-/**
- * Renderiza prosa interpretando **negrito vermelho**
- */
-function renderBoldRed(text: string) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith('**') && part.endsWith('**')) {
-      return (
-        <strong key={i} className="text-primary font-semibold">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    return <span key={i}>{part}</span>;
-  });
-}

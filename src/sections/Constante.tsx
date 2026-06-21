@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import Splitting from 'splitting';
 import { gsap, prefersReducedMotion } from '../lib/motion';
 import { useDossie } from '../contexts/DossieContext';
+import { renderBoldRed } from '../lib/markdown-bold';
 import { Editable } from '../components/Editable';
 
 export function Constante() {
@@ -68,15 +69,15 @@ export function Constante() {
         <div className="constante-reveal grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2 max-w-3xl mx-auto mb-12">
           {DOSSIE.constante.desdobramento.map(([left, right], i) => (
             <div key={i} className="contents">
-              <div className="font-serif text-[18px] text-ink/85 py-2 border-b border-dossie-ruleSoft">{left}</div>
-              <div className="font-serif text-[18px] text-ink/70 py-2 border-b border-dossie-ruleSoft">{right}</div>
+              <div className="font-serif text-[18px] text-ink/85 py-2 border-b border-dossie-ruleSoft">{renderBoldRed(left)}</div>
+              <div className="font-serif text-[18px] text-ink/70 py-2 border-b border-dossie-ruleSoft">{renderBoldRed(right)}</div>
             </div>
           ))}
         </div>
 
         <div className="constante-reveal max-w-3xl mx-auto mb-20 text-center space-y-1">
           {DOSSIE.constante.fechamento.map((linha, i) => (
-            <p key={i} className="font-serif italic text-[18px] text-ink/70">{linha}</p>
+            <p key={i} className="font-serif italic text-[18px] text-ink/70">{renderBoldRed(linha)}</p>
           ))}
         </div>
 
