@@ -54,10 +54,10 @@ export function Constante() {
         </p>
 
         {/* Palavra dominante — uma linha só */}
-        <div className="constante-reveal text-center mb-20 overflow-hidden">
+        <div className="constante-reveal text-center mb-20 py-6 overflow-x-clip">
           <h2
             ref={palavraRef}
-            className="font-serif font-medium text-primary leading-[0.95] whitespace-nowrap inline-block"
+            className="font-serif font-medium text-primary leading-[1.1] whitespace-nowrap inline-block pb-2"
             style={{ fontSize: 'clamp(36px, 11vw, 200px)', letterSpacing: '-0.02em' }}
           >
             {DOSSIE.constante.palavra}
