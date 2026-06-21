@@ -88,29 +88,29 @@ export function Timeline() {
             <RotacaoEvidencia
               num="01"
               titulo="Stack diferente, mesma profundidade"
-              corpo="Cada time tinha contexto técnico próprio (Produto, HOps, CRM, Service Cart). Entreguei nos sete sem queda de qualidade — 165 PRs distribuídos em mais de 10 repositórios."
+              corpo="Cada time tinha contexto técnico próprio (Produto, Workforce, CRM, Financeiro). Entreguei nos sete sem queda de qualidade — 165 PRs distribuídos em mais de 10 repositórios."
             />
             <RotacaoEvidencia
               num="02"
               titulo="Velocidade durante a transição"
-              corpo="No último salto (Pós-Venda → Financeiro), entreguei o Service Cart na call em tempo recorde. Trocar de time não pausou a entrega; acelerou."
+              corpo="No último salto (Pós-Venda → Financeiro), entreguei o Pagamento na call em tempo recorde. Trocar de time não desacelerou a entrega; acelerou."
             />
             <RotacaoEvidencia
               num="03"
               titulo="Validação no momento mais difícil"
-              corpo="Davi Campos (dev sênior do CRM) deu o elogio durante a passagem pelo CRM, não em retrospectiva. Maturidade reconhecida sob pressão de contexto novo."
+              corpo="Davi Campos (dev sênior do CRM) deu o elogio na passagem pelo CRM. Maturidade reconhecida sob pressão de contexto novo."
             />
             <RotacaoEvidencia
               num="04"
               titulo="Ownership que não soltou"
-              corpo="Sustentei Workforce por 10 meses contínuos cruzando 4 times. Co-owner do LMS continuou no fluxo de decisão mesmo após sair do time original."
+              corpo="Sustentei Workforce por 10 meses contínuos cruzando 4 times. Co-owner do LMS."
             />
           </div>
 
           {/* Frase de fechamento dramático */}
           <div className="mt-12 pt-8 rule-top border-dossie-ruleSoft max-w-3xl">
             <p className="font-editorial italic text-fluid-quote text-ink">
-              &ldquo;Rotação sem queda é a tese deste dossiê. Os 6 capítulos GROWTH só explicitam por quê.&rdquo;
+              &ldquo;Rotação sem queda na qualidade é a tese deste dossiê. Os 6 capítulos GROWTH só explicitam por quê.&rdquo;
             </p>
           </div>
         </div>
