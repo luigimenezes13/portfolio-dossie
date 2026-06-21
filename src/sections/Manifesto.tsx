@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, prefersReducedMotion } from '../lib/motion';
 import { useDossie } from '../contexts/DossieContext';
+import { Editable } from '../components/Editable';
 
 export function Manifesto() {
   const DOSSIE = useDossie();
@@ -39,9 +40,9 @@ export function Manifesto() {
 
         {/* Pull-quote editorial */}
         <blockquote className="manifesto-reveal pull-quote max-w-4xl mb-16">
-          &ldquo;{DOSSIE.manifesto.citacaoRedBook}&rdquo;
+          &ldquo;<Editable path="manifesto.citacaoRedBook" multiline>{DOSSIE.manifesto.citacaoRedBook}</Editable>&rdquo;
           <div className="text-kicker not-italic font-sans mt-4 text-[10px]">
-            — {DOSSIE.manifesto.citacaoFonte}
+            — <Editable path="manifesto.citacaoFonte">{DOSSIE.manifesto.citacaoFonte}</Editable>
           </div>
         </blockquote>
 
@@ -50,7 +51,7 @@ export function Manifesto() {
           <div className="col-span-12 lg:col-span-8">
             <div className="columns-2 text-body-editorial">
               <p className="dropcap">
-                {DOSSIE.manifesto.pleito}
+                <Editable path="manifesto.pleito" multiline as="span">{DOSSIE.manifesto.pleito}</Editable>
               </p>
               <p>
                 O Red Book diz que PIFE é o que queremos na vida — e que GROWTH descreve <em>como vencemos</em> por meio de comportamentos observáveis. Este dossiê é a prova de que esses comportamentos viraram regime, não pico.

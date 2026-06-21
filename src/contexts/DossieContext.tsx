@@ -11,6 +11,7 @@ interface DossieContextValue {
   source: 'api' | 'mock';
   loading: boolean;
   error: string | null;
+  setDossie: (next: DossieType) => void;
 }
 
 const DossieContext = createContext<DossieContextValue | null>(null);
@@ -63,12 +64,15 @@ function mergeAvatarsFromMock(apiDossie: DossieType, mock: DossieType): DossieTy
 }
 
 export function DossieProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<DossieContextValue>({
+  const [innerState, setInnerState] = useState<Omit<DossieContextValue, 'setDossie'>>({
     dossie: MOCK_DOSSIE,
     source: 'mock',
     loading: true,
     error: null,
   });
+
+  const setDossie = (next: DossieType) =>
+    setInnerState((s) => ({ ...s, dossie: next }));
 
   useEffect(() => {
     let cancelled = false;
@@ -81,13 +85,13 @@ export function DossieProvider({ children }: { children: ReactNode }) {
         if (cancelled) return;
 
         const merged = mergeAvatarsFromMock(json.data[0], MOCK_DOSSIE);
-        setState({ dossie: merged, source: 'api', loading: false, error: null });
+        setInnerState({ dossie: merged, source: 'api', loading: false, error: null });
         console.info('[Dossiê] carregado da API:', API_URL);
       } catch (err) {
         if (cancelled) return;
         const msg = err instanceof Error ? err.message : 'Erro desconhecido';
         console.warn('[Dossiê] API falhou, usando mock local. Motivo:', msg);
-        setState({ dossie: MOCK_DOSSIE, source: 'mock', loading: false, error: msg });
+        setInnerState({ dossie: MOCK_DOSSIE, source: 'mock', loading: false, error: msg });
       }
     })();
     return () => {
@@ -95,24 +99,29 @@ export function DossieProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  return <DossieContext.Provider value={state}>{children}</DossieContext.Provider>;
+  return (
+    <DossieContext.Provider value={{ ...innerState, setDossie }}>
+      {children}
+    </DossieContext.Provider>
+  );
 }
 
-/**
- * Hook usado nas seções. Retorna o dossiê ativo (API com fallback mock).
- * Para compatibilidade com o código existente que importa `DOSSIE` direto,
- * exportamos também um proxy via `useDossie()` que sempre retorna o objeto.
- */
 export function useDossie(): DossieType {
   const ctx = useContext(DossieContext);
-  if (!ctx) {
-    // Sem provider: retorna mock (modo testes/storybook)
-    return MOCK_DOSSIE;
-  }
+  if (!ctx) return MOCK_DOSSIE;
   return ctx.dossie;
 }
 
-export function useDossieMeta(): Omit<DossieContextValue, 'dossie'> {
+/**
+ * Setter usado pelo EditContext pra sincronizar mutações locais
+ * no estado central, sem precisar de import circular.
+ */
+export function useDossieSetter(): (next: DossieType) => void {
+  const ctx = useContext(DossieContext);
+  return ctx?.setDossie ?? (() => {});
+}
+
+export function useDossieMeta(): Omit<DossieContextValue, 'dossie' | 'setDossie'> {
   const ctx = useContext(DossieContext);
   if (!ctx) {
     return { source: 'mock', loading: false, error: null };

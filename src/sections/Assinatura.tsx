@@ -1,4 +1,5 @@
 import { useDossie } from '../contexts/DossieContext';
+import { Editable } from '../components/Editable';
 
 export function Assinatura() {
   const DOSSIE = useDossie();
@@ -12,10 +13,10 @@ export function Assinatura() {
             className="font-editorial italic text-ink text-balance leading-relaxed"
             style={{ fontSize: 'clamp(24px, 4vw, 48px)', lineHeight: 1.35 }}
           >
-            &ldquo;{DOSSIE.assinatura.tagline}&rdquo;
+            &ldquo;<Editable path="assinatura.tagline" multiline>{DOSSIE.assinatura.tagline}</Editable>&rdquo;
           </p>
           <cite className="text-kicker not-italic text-[11px] block">
-            — {DOSSIE.assinatura.atribuicao}
+            — <Editable path="assinatura.atribuicao">{DOSSIE.assinatura.atribuicao}</Editable>
           </cite>
         </blockquote>
 

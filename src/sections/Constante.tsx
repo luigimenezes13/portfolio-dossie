@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import Splitting from 'splitting';
 import { gsap, prefersReducedMotion } from '../lib/motion';
 import { useDossie } from '../contexts/DossieContext';
+import { Editable } from '../components/Editable';
 
 export function Constante() {
   const DOSSIE = useDossie();
@@ -48,7 +49,7 @@ export function Constante() {
 
         {/* Pergunta editorial */}
         <p className="constante-reveal font-editorial italic text-fluid-quote text-ink/65 text-balance max-w-3xl mb-20">
-          &ldquo;{DOSSIE.constante.pergunta}&rdquo;
+          &ldquo;<Editable path="constante.pergunta" multiline>{DOSSIE.constante.pergunta}</Editable>&rdquo;
         </p>
 
         {/* Palavra dominante — uma linha só */}
@@ -87,7 +88,7 @@ export function Constante() {
               key={i}
               className={`font-editorial italic text-section-h2 text-balance ${i === 1 ? 'text-primary' : 'text-ink'}`}
             >
-              {linha}
+              <Editable path={`constante.moral[${i}]`} multiline as="span">{linha}</Editable>
             </p>
           ))}
         </div>

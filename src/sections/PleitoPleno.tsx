@@ -1,4 +1,5 @@
 import { useDossie } from '../contexts/DossieContext';
+import { Editable } from '../components/Editable';
 
 export function PleitoPleno() {
   const DOSSIE = useDossie();
@@ -30,7 +31,9 @@ export function PleitoPleno() {
               </div>
               <ul className="space-y-2 font-serif text-fluid-deck text-ink/85 leading-relaxed">
                 {DOSSIE.pleitoPleno.ondeEstou.map((linha, i) => (
-                  <li key={i} className="text-pretty">{linha}</li>
+                  <li key={i} className="text-pretty">
+                    <Editable path={`pleitoPleno.ondeEstou[${i}]`} multiline as="span">{linha}</Editable>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -45,7 +48,9 @@ export function PleitoPleno() {
                 {DOSSIE.pleitoPleno.porQuePleno.map((item, i) => (
                   <div key={i} className="grid grid-cols-[auto_1fr] gap-5 items-baseline border-b border-dossie-ruleSoft pb-3">
                     <span className="font-serif text-primary text-2xl font-medium leading-none">{item.letra}</span>
-                    <span className="font-serif text-[16px] text-ink/85 text-pretty">{item.texto}</span>
+                    <span className="font-serif text-[16px] text-ink/85 text-pretty">
+                      <Editable path={`pleitoPleno.porQuePleno[${i}].texto`} multiline as="span">{item.texto}</Editable>
+                    </span>
                   </div>
                 ))}
               </div>
@@ -123,7 +128,9 @@ export function PleitoPleno() {
               </div>
               <ul className="space-y-2 font-serif text-fluid-deck text-ink/85 leading-relaxed">
                 {DOSSIE.pleitoPleno.oQueMuda.map((linha, i) => (
-                  <li key={i} className="text-pretty">— {linha}</li>
+                  <li key={i} className="text-pretty">
+                    — <Editable path={`pleitoPleno.oQueMuda[${i}]`} multiline as="span">{linha}</Editable>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -153,7 +160,7 @@ export function PleitoPleno() {
         <div className="mt-24 rule-top border-dossie-rule pt-12 max-w-4xl mx-auto text-center">
           <div className="red-line-glow w-32 mx-auto mb-8" />
           <p className="font-editorial italic text-section-h2 text-balance text-ink">
-            &ldquo;{DOSSIE.pleitoPleno.fechamento}&rdquo;
+            &ldquo;<Editable path="pleitoPleno.fechamento" multiline>{DOSSIE.pleitoPleno.fechamento}</Editable>&rdquo;
           </p>
         </div>
       </div>

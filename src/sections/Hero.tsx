@@ -3,6 +3,7 @@ import Splitting from 'splitting';
 import { gsap, prefersReducedMotion } from '../lib/motion';
 import { useDossie } from '../contexts/DossieContext';
 import { ProfileBadge } from '../components/ProfileBadge';
+import { Editable } from '../components/Editable';
 
 export function Hero() {
   const DOSSIE = useDossie();
@@ -70,7 +71,7 @@ export function Hero() {
           ref={deckRef}
           className="text-deck max-w-3xl mb-14 text-ink/85"
         >
-          &ldquo;{DOSSIE.tese}&rdquo;
+          &ldquo;<Editable path="tese" multiline>{DOSSIE.tese}</Editable>&rdquo;
         </p>
 
         <div className="grid grid-cols-12 gap-6 lg:gap-12 items-start">
