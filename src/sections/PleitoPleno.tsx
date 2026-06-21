@@ -1,6 +1,7 @@
-import { DOSSIE } from '../content/dossie';
+import { useDossie } from '../contexts/DossieContext';
 
 export function PleitoPleno() {
+  const DOSSIE = useDossie();
   const sal = DOSSIE.pleitoPleno.salario;
   const min = Math.min(...sal.benchmarks.map((b) => b.valor));
   const max = Math.max(...sal.benchmarks.map((b) => b.valor));

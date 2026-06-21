@@ -1,6 +1,7 @@
-import { DOSSIE } from '../content/dossie';
+import { useDossie } from '../contexts/DossieContext';
 
 export function VisaoFuturo() {
+  const DOSSIE = useDossie();
   return (
     <section className="relative bg-dossie-default text-ink py-24 lg:py-32 rule-bottom border-dossie-rule">
       <div className="dossie-container">

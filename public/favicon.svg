@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Documento com canto dobrado · Netflix red #e50914 -->
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e50914"/>
+      <stop offset="1" stop-color="#b30710"/>
+    </linearGradient>
+    <linearGradient id="fold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff3742"/>
+      <stop offset="1" stop-color="#e50914"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sombra sutil -->
+  <path d="M11 6 H38 L52 20 V57 a3 3 0 0 1 -3 3 H11 a3 3 0 0 1 -3 -3 V9 a3 3 0 0 1 3 -3 Z"
+        fill="#000" opacity="0.18" transform="translate(1.5,2)"/>
+
+  <!-- Corpo do documento -->
+  <path d="M11 6 H38 L52 20 V57 a3 3 0 0 1 -3 3 H11 a3 3 0 0 1 -3 -3 V9 a3 3 0 0 1 3 -3 Z"
+        fill="url(#paper)"/>
+
+  <!-- Canto dobrado · sombra interna -->
+  <path d="M38 6 L52 20 H41 a3 3 0 0 1 -3 -3 V6 Z"
+        fill="url(#fold)"/>
+
+  <!-- Linhas do conteúdo (sutis, em branco translúcido) -->
+  <g stroke="#fff" stroke-opacity="0.55" stroke-width="1.6" stroke-linecap="round">
+    <line x1="16" y1="32" x2="44" y2="32"/>
+    <line x1="16" y1="40" x2="44" y2="40"/>
+    <line x1="16" y1="48" x2="36" y2="48"/>
+  </g>
+
+  <!-- Marca: ponto vermelho que diferencia (corner watermark) -->
+  <circle cx="15" cy="15" r="2" fill="#fff" opacity="0.85"/>
+</svg>

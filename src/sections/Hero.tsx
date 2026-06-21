@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
 import Splitting from 'splitting';
 import { gsap, prefersReducedMotion } from '../lib/motion';
-import { DOSSIE } from '../content/dossie';
+import { useDossie } from '../contexts/DossieContext';
 import { ProfileBadge } from '../components/ProfileBadge';
 
 export function Hero() {
+  const DOSSIE = useDossie();
   const nameRef = useRef<HTMLHeadingElement>(null);
   const deckRef = useRef<HTMLParagraphElement>(null);
 

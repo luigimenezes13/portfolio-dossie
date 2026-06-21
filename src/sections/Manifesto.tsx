@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { gsap, prefersReducedMotion } from '../lib/motion';
-import { DOSSIE } from '../content/dossie';
+import { useDossie } from '../contexts/DossieContext';
 
 export function Manifesto() {
+  const DOSSIE = useDossie();
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {

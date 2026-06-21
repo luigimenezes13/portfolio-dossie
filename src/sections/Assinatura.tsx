@@ -1,6 +1,7 @@
-import { DOSSIE } from '../content/dossie';
+import { useDossie } from '../contexts/DossieContext';
 
 export function Assinatura() {
+  const DOSSIE = useDossie();
   return (
     <footer className="relative bg-dossie-deeper text-ink py-32 lg:py-40">
       <div className="dossie-container max-w-3xl text-center space-y-12">

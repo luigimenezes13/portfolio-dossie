@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
 import Splitting from 'splitting';
 import { gsap, prefersReducedMotion } from '../lib/motion';
-import { DOSSIE } from '../content/dossie';
+import { useDossie } from '../contexts/DossieContext';
 
 export function Constante() {
+  const DOSSIE = useDossie();
   const sectionRef = useRef<HTMLElement>(null);
   const palavraRef = useRef<HTMLHeadingElement>(null);
 
