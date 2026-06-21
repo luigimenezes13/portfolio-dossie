@@ -88,22 +88,22 @@ export function Timeline() {
             <RotacaoEvidencia
               num="01"
               titulo="Stack diferente, mesma profundidade"
-              corpo="Cada time tinha contexto técnico próprio (Produto, Workforce, CRM, Financeiro). Entreguei nos sete sem queda de qualidade — 165 PRs distribuídos em mais de 10 repositórios."
+              corpo="Cada time tinha contexto técnico próprio (Produto, Workforce, CRM, Financeiro). Entreguei nos sete **sem queda de qualidade** — 165 PRs distribuídos em mais de 10 repositórios."
             />
             <RotacaoEvidencia
               num="02"
               titulo="Velocidade durante a transição"
-              corpo="No último salto (Pós-Venda → Financeiro), entreguei o Pagamento na call em tempo recorde. Trocar de time não desacelerou a entrega; acelerou."
+              corpo="No último salto (Pós-Venda → Financeiro), entreguei o **Pagamento na call** em tempo recorde. Trocar de time não desacelerou a entrega; **acelerou**."
             />
             <RotacaoEvidencia
               num="03"
               titulo="Validação no momento mais difícil"
-              corpo="Davi Campos (dev sênior do CRM) deu o elogio na passagem pelo CRM. Maturidade reconhecida sob pressão de contexto novo."
+              corpo="Davi Campos (**dev sênior** do CRM) deu o elogio **na passagem pelo CRM**. Maturidade reconhecida sob pressão de contexto novo."
             />
             <RotacaoEvidencia
               num="04"
               titulo="Ownership que não soltou"
-              corpo="Sustentei Workforce por 10 meses contínuos cruzando 4 times. Co-owner do LMS."
+              corpo="Sustentei **Workforce por 10 meses contínuos** cruzando 4 times. Co-owner do LMS."
             />
           </div>
 
@@ -130,7 +130,7 @@ function RotacaoEvidencia({ num, titulo, corpo }: { num: string; titulo: string;
     <article className="article-card">
       <div className="text-byline mb-3 text-[10px]">№ {num}</div>
       <h4 className="font-serif font-medium text-fluid-h3 text-ink leading-tight mb-3">{titulo}</h4>
-      <p className="font-serif text-[16px] text-ink/75 leading-relaxed">{corpo}</p>
+      <p className="font-serif text-[16px] text-ink/75 leading-relaxed">{renderBoldRed(corpo)}</p>
     </article>
   );
 }
