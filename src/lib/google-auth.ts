@@ -50,36 +50,53 @@ interface GoogleNotification {
   getNotDisplayedReason?: () => string;
 }
 
-let initialized = false;
+let initPromise: Promise<void> | null = null;
 
 export async function waitForGoogle(): Promise<void> {
   if (window.google?.accounts?.id) return;
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    let elapsed = 0;
     const interval = setInterval(() => {
       if (window.google?.accounts?.id) {
         clearInterval(interval);
         resolve();
+      } else if ((elapsed += 100) > 10000) {
+        clearInterval(interval);
+        reject(new Error('GIS script não carregou em 10s'));
       }
     }, 100);
   });
 }
 
-export async function initGoogleAuth(
+/**
+ * Idempotente · garante que initialize() rodou apenas uma vez.
+ * Retorna a mesma promise pra todos os callers (evita race condition
+ * entre AuthContext e AuthBadge).
+ */
+export function initGoogleAuth(
   clientId: string,
   onCredential: (idToken: string) => void
 ): Promise<void> {
-  await waitForGoogle();
-  if (initialized) return;
-  initialized = true;
-  window.google!.accounts.id.initialize({
-    client_id: clientId,
-    callback: (resp) => onCredential(resp.credential),
-    auto_select: false,
-    cancel_on_tap_outside: true,
-  });
+  if (initPromise) return initPromise;
+  initPromise = (async () => {
+    await waitForGoogle();
+    window.google!.accounts.id.initialize({
+      client_id: clientId,
+      callback: (resp) => onCredential(resp.credential),
+      auto_select: false,
+      cancel_on_tap_outside: true,
+    });
+  })();
+  return initPromise;
 }
 
-export function renderGoogleButton(parent: HTMLElement): void {
+/**
+ * Aguarda o init terminar antes de renderizar o botão.
+ * GIS exige initialize() antes de renderButton().
+ */
+export async function renderGoogleButton(parent: HTMLElement): Promise<void> {
+  if (initPromise) await initPromise;
+  await waitForGoogle();
   if (!window.google?.accounts?.id) return;
   window.google.accounts.id.renderButton(parent, {
     type: 'standard',
