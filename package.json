@@ -13,10 +13,13 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
     "axios": "^1.12.2",
+    "gsap": "^3.15.0",
     "lucide-react": "^0.545.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "splitting": "^1.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

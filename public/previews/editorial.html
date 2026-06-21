@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview · Editorial Cinematográfico · Luigi Bertoli Menezes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f8f5f0;
+      --paper-warm: #efeae0;
+      --ink: #1a1413;
+      --ink-soft: #4a4341;
+      --ink-mute: #7a716e;
+      --red: #b91c1c;
+      --red-bright: #e50914;
+      --rule: #c8c0b5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Fraunces', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      font-feature-settings: 'kern', 'liga', 'ss01';
+    }
+    ::selection { background: var(--red); color: #fff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+    /* === MASTHEAD === */
+    .masthead {
+      border-bottom: 1px solid var(--ink);
+      padding: 24px 0 20px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-soft);
+    }
+    .masthead .center {
+      font-family: 'Fraunces', serif;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .masthead .right { text-align: right; }
+    .red-dot { color: var(--red); }
+
+    /* === HERO === */
+    .hero {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      margin-bottom: 28px;
+    }
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(56px, 9vw, 132px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      margin-bottom: 32px;
+      max-width: 900px;
+    }
+    .hero-name .em { font-style: italic; font-weight: 500; }
+    .hero-deck {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(20px, 2.2vw, 28px);
+      line-height: 1.4;
+      color: var(--ink-soft);
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .hero-photo {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      filter: grayscale(20%) contrast(1.05);
+      border: 1px solid var(--rule);
+    }
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      padding-top: 8px;
+      border-top: 1px solid var(--ink);
+    }
+    .fact {
+      padding-top: 12px;
+    }
+    .fact-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-mute);
+      margin-bottom: 8px;
+    }
+    .fact-value {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .fact-value .red { color: var(--red); }
+    .fact-context {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--ink-mute);
+      margin-top: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    /* === SECTION HEADER (kicker + title) === */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .kicker {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      max-width: 880px;
+    }
+    .section-title .em { font-style: italic; }
+    .section-title .red { color: var(--red); }
+
+    /* === MANIFESTO === */
+    .quote-pull {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.35;
+      color: var(--ink);
+      max-width: 880px;
+      border-left: 3px solid var(--red);
+      padding-left: 32px;
+      margin: 48px 0;
+    }
+    .quote-attr {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--red);
+      margin-top: 16px;
+    }
+    .columns-2 {
+      column-count: 2;
+      column-gap: 48px;
+      column-rule: 1px solid var(--rule);
+      max-width: 1000px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .columns-2 p { margin-bottom: 18px; break-inside: avoid; }
+    .columns-2 p:first-child::first-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 72px;
+      font-weight: 500;
+      float: left;
+      line-height: 0.85;
+      margin: 6px 8px 0 0;
+      color: var(--red);
+    }
+
+    /* === GROWTH CHAPTER === */
+    .growth-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+    .growth-letter {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(120px, 16vw, 200px);
+      line-height: 0.85;
+      color: var(--red);
+    }
+    .growth-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .growth-cite {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(22px, 2.6vw, 30px);
+      line-height: 1.4;
+      max-width: 920px;
+      padding: 24px 0 24px 32px;
+      border-left: 1px solid var(--red);
+      margin-bottom: 56px;
+      color: var(--ink);
+    }
+    .proofs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 56px;
+      align-items: start;
+    }
+    .proof {
+      border-top: 1px solid var(--ink);
+      padding-top: 20px;
+    }
+    .proof-kicker {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--ink-mute);
+      margin-bottom: 12px;
+    }
+    .proof-headline {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+    .proof-deck {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+    .proof-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+    .proof-body strong { color: var(--red); font-weight: 600; }
+    .proof-bignum {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 72px;
+      line-height: 0.95;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+    .proof-bignum-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--ink-mute);
+      margin-bottom: 16px;
+    }
+
+    /* === FOOTNOTE === */
+    .footnote {
+      text-align: center;
+      padding: 60px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--ink-mute);
+    }
+    .footnote a { color: var(--red); text-decoration: none; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo { width: 180px; height: 180px; }
+      .hero-facts { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .proofs { grid-template-columns: 1fr; gap: 32px; }
+      .columns-2 { column-count: 1; }
+      .growth-header { grid-template-columns: 1fr; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div>Junho 2026 · Edição AVD</div>
+    <div class="center">O <em>Dossiê</em></div>
+    <div class="right"><span class="red-dot">●</span> Pleito Pleno · V4 Company</div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-meta">№ 01 · O candidato</div>
+      <h1 class="hero-name">Luigi Bertoli<br/><span class="em">Menezes</span></h1>
+      <p class="hero-deck">
+        "Júnior efetivado em 8 meses. Esta é a tese de Pleno — não pelo tempo, pelas evidências que seguem."
+      </p>
+      <div class="hero-grid">
+        <img class="hero-photo" src="/src/assets/profile.jpg" alt="Luigi Bertoli Menezes" onerror="this.style.background='var(--paper-warm)'; this.style.display='block';"/>
+        <div class="hero-facts">
+          <div class="fact">
+            <div class="fact-label">LT</div>
+            <div class="fact-value">15 <span style="font-size:18px;">meses</span></div>
+            <div class="fact-context">desde mar/2025</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Júnior</div>
+            <div class="fact-value">7 <span style="font-size:18px;">meses</span></div>
+            <div class="fact-context">efetivado em nov/2025</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">AVD</div>
+            <div class="fact-value"><span class="red">jul</span> 26</div>
+            <div class="fact-context">próximo ciclo</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Ownership</div>
+            <div class="fact-value">2 <span style="font-size:18px;">produtos</span></div>
+            <div class="fact-context">Workforce + LMS</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="section">
+      <div class="kicker">№ 02 · Manifesto</div>
+      <h2 class="section-title">
+        <span class="em">PIFE</span> é o que quero.<br/>
+        <span class="red">GROWTH</span> é como entrego.
+      </h2>
+
+      <div class="quote-pull">
+        "Alinhamento cultural é o que transforma talento individual em poder coletivo. Dominar esta cultura é sua vantagem competitiva — tanto para crescer na V4 quanto para acelerar sua carreira."
+        <div class="quote-attr">— The Red Book · V4 Company</div>
+      </div>
+
+      <div class="columns-2">
+        <p>
+          Em quinze meses, percorri de estagiário a Júnior efetivado, atravessei sete times distintos, mergeei cento e sessenta e cinco pull requests, treinei seis estagiários e mantive ownership de dois produtos. Não vim pleitear Pleno pelo tempo. Vim pleitear pelas evidências.
+        </p>
+        <p>
+          O Red Book diz que PIFE é o que queremos na vida — e que GROWTH descreve como vencemos por meio de comportamentos observáveis. Este dossiê é a prova de que esses comportamentos viraram regime, não pico.
+        </p>
+        <p>
+          O que segue está organizado pelos seis princípios GROWTH. Cada princípio abre com uma citação do Red Book e fecha com a evidência concreta. A consistência é o fio condutor — todos os números abaixo são meses, não dias.
+        </p>
+      </div>
+    </section>
+
+    <!-- GROWTH O · OWNERSHIP (preview) -->
+    <section class="section">
+      <div class="kicker">№ 07 · GROWTH · capítulo O</div>
+      <div class="growth-header">
+        <div class="growth-letter">O</div>
+        <h2 class="growth-name"><em>Ownership</em></h2>
+      </div>
+
+      <div class="growth-cite">
+        "Ownership não é sobre ter competência — é sobre ter coragem de assumir o resultado e colher os frutos como proprietário."
+        <div class="quote-attr">— The Red Book · cap. O</div>
+      </div>
+
+      <div class="proofs">
+        <article class="proof">
+          <div class="proof-kicker">№ 01 · Marco</div>
+          <div class="proof-headline">Workforce · 10 meses contínuos</div>
+          <p class="proof-deck">"Assumido por necessidade, reconhecido oficialmente."</p>
+          <p class="proof-body">
+            Owner desde <strong>set/2025</strong>. Em junho/2026 fui reconhecido oficialmente como responsável pelo produto na <strong>WGO</strong> (What's Going On, monthly de tech). Report a stakeholders, decisões técnicas, evolução incremental.
+          </p>
+        </article>
+
+        <article class="proof">
+          <div class="proof-kicker">№ 02 · Citação</div>
+          <div class="proof-bignum">"</div>
+          <div class="proof-bignum-label">Davi Campos · Dev Sênior · CRM</div>
+          <p class="proof-deck">
+            "Confio em qualquer entrega sua. Nível de maturidade alto pra sua senioridade. Know-how de V4 imenso."
+          </p>
+          <p class="proof-body">
+            Reconhecimento articulado por sênior do time confirma o que os entregáveis mostravam.
+          </p>
+        </article>
+
+        <article class="proof">
+          <div class="proof-kicker">№ 03 · Métrica</div>
+          <div class="proof-bignum">165</div>
+          <div class="proof-bignum-label">PRs mergeados · 15 meses · 78% merge rate</div>
+          <p class="proof-body">
+            Em 15 meses na V4, <strong>165 PRs</strong> mergeados de 212 abertos. <strong>+62.372 linhas</strong> adicionadas, distribuídas em mais de 10 repositórios. PR Maturity DORA Elite: mediana <strong>3,2h</strong> até merge.
+          </p>
+        </article>
+
+        <article class="proof">
+          <div class="proof-kicker">№ 04 · Narrativo</div>
+          <p class="proof-deck">"Carreguei a migração técnica e o discovery do time."</p>
+          <div class="proof-headline" style="font-size:20px;">Pivô da migração no Pós-Venda</div>
+          <p class="proof-body">
+            Liderança nova chegou com know-how técnico forte mas pouca contagem de V4. Carreguei as tasks complexas, o contexto histórico, o discovery + refinamento técnico das próximas iniciativas. Recebi crédito explícito de teammates pelo papel de pivô.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTNOTE -->
+    <div class="footnote">
+      Preview C1 · Editorial Cinematográfico ·
+      <a href="/">voltar à versão Award-winning Showcase</a> ·
+      <a href="/previews/terminal.html">ver Terminal/Engineering</a>
+    </div>
+  </main>
+</body>
+</html>

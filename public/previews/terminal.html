@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview · Terminal / Engineering · Luigi Bertoli Menezes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-elevated: #161b22;
+      --bg-hover: #1f262e;
+      --border: #30363d;
+      --border-bright: #6e7681;
+      --text: #c9d1d9;
+      --text-dim: #8b949e;
+      --text-mute: #6e7681;
+      --red: #e50914;
+      --red-soft: #ff5c66;
+      --green: #3fb950;
+      --amber: #d29922;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+      padding: 0;
+    }
+    ::selection { background: var(--red); color: #fff; }
+    a { color: var(--red-soft); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* === LAYOUT === */
+    .app {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    /* === SIDEBAR === */
+    .sidebar {
+      background: var(--bg-elevated);
+      border-right: 1px solid var(--border);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar-prompt {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-prompt .red { color: var(--red); }
+    .sidebar-prompt .green { color: var(--green); }
+    .sidebar-section {
+      margin-bottom: 24px;
+    }
+    .sidebar-label {
+      font-size: 10px;
+      color: var(--text-mute);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+    .sidebar-nav a {
+      display: block;
+      color: var(--text-dim);
+      padding: 4px 0;
+      font-size: 12px;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+      margin-left: -12px;
+    }
+    .sidebar-nav a:hover {
+      color: var(--text);
+      border-left-color: var(--red);
+      background: var(--bg-hover);
+      text-decoration: none;
+    }
+    .sidebar-nav a.active {
+      color: var(--red);
+      border-left-color: var(--red);
+    }
+    .sidebar-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      padding: 3px 0;
+    }
+    .sidebar-stat .key { color: var(--text-mute); }
+    .sidebar-stat .val { color: var(--text); }
+    .sidebar-stat .val.red { color: var(--red); }
+    .sidebar-stat .val.green { color: var(--green); }
+
+    /* === MAIN === */
+    .main {
+      padding: 40px 48px;
+      max-width: 1100px;
+    }
+
+    /* === COMMAND BLOCK === */
+    .cmd {
+      padding: 16px 20px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+    .cmd .prompt { color: var(--green); }
+    .cmd .flag { color: var(--amber); }
+    .cmd .arg { color: var(--red-soft); }
+
+    /* === HERO === */
+    .hero {
+      padding: 24px 0 48px;
+      border-bottom: 1px dashed var(--border);
+      margin-bottom: 48px;
+    }
+    .hero-art {
+      color: var(--red);
+      font-size: 12px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      white-space: pre;
+      font-weight: 600;
+    }
+    .hero-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: clamp(28px, 5vw, 56px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero-name .red { color: var(--red); }
+    .hero-role {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+    .hero-tese {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--red);
+      padding: 16px 20px;
+      font-size: 14px;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+    .hero-tese .label {
+      color: var(--text-mute);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .hero-stat {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 6px;
+    }
+    .hero-stat .label {
+      color: var(--text-mute);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .hero-stat .value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat .ctx { color: var(--text-dim); font-size: 11px; }
+
+    /* === SECTION === */
+    .section {
+      margin-bottom: 64px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-header .h-bar { flex: 1; height: 1px; background: var(--border); }
+    .section-header .h-num {
+      color: var(--red);
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .section-header .h-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .section-header .h-meta {
+      color: var(--text-mute);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* === MANIFESTO === */
+    .manifesto-quote {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 20px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .manifesto-quote .src {
+      color: var(--red);
+      font-size: 11px;
+      margin-top: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .yaml-block {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 24px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .yaml-block .key { color: var(--red-soft); }
+    .yaml-block .val { color: var(--text); }
+    .yaml-block .str { color: var(--green); }
+    .yaml-block .comment { color: var(--text-mute); }
+
+    /* === GROWTH === */
+    .growth {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .growth-header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed var(--border);
+      margin-bottom: 24px;
+    }
+    .growth-letter {
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--red);
+      border-radius: 6px;
+    }
+    .growth-title { font-size: 24px; font-weight: 700; }
+    .growth-title .sub {
+      display: block;
+      font-size: 12px;
+      color: var(--text-mute);
+      font-weight: 400;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .growth-badge {
+      background: rgba(229, 9, 20, 0.15);
+      color: var(--red);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .growth-cite {
+      color: var(--text-dim);
+      font-style: italic;
+      font-size: 14px;
+      padding: 12px 16px;
+      border-left: 2px solid var(--red);
+      margin-bottom: 24px;
+    }
+    .growth-cite .src {
+      display: block;
+      margin-top: 8px;
+      color: var(--red);
+      font-style: normal;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* === PROOFS as cards === */
+    .proofs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .proof {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      font-size: 13px;
+    }
+    .proof:hover {
+      border-color: var(--red);
+    }
+    .proof-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .proof-num {
+      color: var(--text-mute);
+      font-size: 11px;
+    }
+    .proof-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+    .tag-metric { background: rgba(229, 9, 20, 0.15); color: var(--red); }
+    .tag-person { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+    .tag-milestone { background: rgba(210, 153, 34, 0.15); color: var(--amber); }
+    .tag-narrative { background: rgba(110, 118, 129, 0.15); color: var(--text-dim); }
+    .proof-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .proof-body {
+      color: var(--text-dim);
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+    .proof-body strong { color: var(--red); font-weight: 600; }
+    .proof-bignum {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 48px;
+      color: var(--red);
+      line-height: 0.9;
+      margin: 8px 0 4px;
+    }
+    .proof-bignum-label {
+      font-size: 11px;
+      color: var(--text-mute);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    /* === FOOTNOTE === */
+    .footnote {
+      padding: 32px 0;
+      font-size: 11px;
+      color: var(--text-mute);
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+      .main { padding: 24px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .proofs { grid-template-columns: 1fr; }
+      .growth-header { grid-template-columns: 1fr; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-prompt">
+        <span class="green">luigi</span>@<span class="red">v4</span>:<span class="red">~</span>$ cat dossie.md
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">// chapters</div>
+        <nav class="sidebar-nav">
+          <a href="#hero" class="active">01 hero</a>
+          <a href="#manifesto">02 manifesto</a>
+          <a href="#timeline">03 trajetória</a>
+          <a href="#numbers">04 os números</a>
+          <a href="#growth">05–10 growth</a>
+          <a href="#constante">11 a constante</a>
+          <a href="#academico">12 formação</a>
+          <a href="#visao">13 visão futuro</a>
+          <a href="#pleito">14 pleito pleno</a>
+          <a href="#assinatura">15 assinatura</a>
+        </nav>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">// stats</div>
+        <div class="sidebar-stat"><span class="key">tempo_v4</span><span class="val">15m</span></div>
+        <div class="sidebar-stat"><span class="key">tempo_jr</span><span class="val">7m</span></div>
+        <div class="sidebar-stat"><span class="key">prs_merged</span><span class="val red">165</span></div>
+        <div class="sidebar-stat"><span class="key">linhas</span><span class="val">+62k</span></div>
+        <div class="sidebar-stat"><span class="key">reviews</span><span class="val">273</span></div>
+        <div class="sidebar-stat"><span class="key">issues</span><span class="val">76</span></div>
+        <div class="sidebar-stat"><span class="key">ttm_med</span><span class="val green">3.2h</span></div>
+        <div class="sidebar-stat"><span class="key">merge_rate</span><span class="val green">78%</span></div>
+        <div class="sidebar-stat"><span class="key">avd</span><span class="val red">jul/26</span></div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">// stack</div>
+        <div class="sidebar-stat"><span class="key">arch</span><span class="val">DDD</span></div>
+        <div class="sidebar-stat"><span class="key">arch</span><span class="val">Clean</span></div>
+        <div class="sidebar-stat"><span class="key">arch</span><span class="val">EDA</span></div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- COMMAND PROMPT -->
+      <div class="cmd">
+        <span class="prompt">$</span> luigi <span class="flag">--profile</span>=full <span class="flag">--target</span>=<span class="arg">"pleno"</span> <span class="flag">--avd</span>=<span class="arg">jul/26</span>
+      </div>
+
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <pre class="hero-art">
+╔═══════════════════════════════════════════╗
+║  DOSSIÊ · v2.0.0 · build 2026-06-21       ║
+║  PIFE × GROWTH · CONSISTÊNCIA · PROOF     ║
+╚═══════════════════════════════════════════╝</pre>
+        <h1 class="hero-name">
+          luigi.bertoli<span class="red">.</span>menezes
+        </h1>
+        <div class="hero-role">
+          // software engineer · júnior → <span style="color:var(--red);font-weight:600">pleno</span> · v4 company · slu
+        </div>
+
+        <div class="hero-tese">
+          <span class="label">// tese</span>
+          "Júnior efetivado em 8 meses. Esta é a tese de Pleno —
+          não pelo tempo, pelas evidências que seguem."
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="label">// tempo_v4</div>
+            <div class="value">15m</div>
+            <div class="ctx">since mar/2025</div>
+          </div>
+          <div class="hero-stat">
+            <div class="label">// junior</div>
+            <div class="value">7m</div>
+            <div class="ctx">efetivado nov/2025</div>
+          </div>
+          <div class="hero-stat">
+            <div class="label">// avd</div>
+            <div class="value">jul/26</div>
+            <div class="ctx">next promotion cycle</div>
+          </div>
+          <div class="hero-stat">
+            <div class="label">// ownership</div>
+            <div class="value">2</div>
+            <div class="ctx">workforce + lms</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MANIFESTO -->
+      <section class="section" id="manifesto">
+        <div class="section-header">
+          <span class="h-num">02</span>
+          <span class="h-title">manifesto.md</span>
+          <div class="h-bar"></div>
+          <span class="h-meta">// pife × growth</span>
+        </div>
+
+        <div class="manifesto-quote">
+          "Alinhamento cultural é o que transforma talento individual em poder coletivo. Dominar esta cultura é sua vantagem competitiva — tanto para crescer na V4 quanto para acelerar sua carreira."
+          <div class="src">// the red book · v4 company</div>
+        </div>
+
+        <div class="yaml-block">
+<span class="comment"># manifesto.yaml</span><br/>
+<span class="key">pife</span>: <span class="str">"o que quero na vida"</span><br/>
+<span class="key">growth</span>: <span class="str">"como entrego — comportamentos observáveis"</span><br/>
+<span class="key">tese</span>: |<br/>
+&nbsp;&nbsp;<span class="str">"PIFE é o que quero. GROWTH é como entrego.</span><br/>
+&nbsp;&nbsp;<span class="str">&nbsp;Este dossiê é a prova."</span><br/>
+<br/>
+<span class="key">pleito</span>: |<br/>
+&nbsp;&nbsp;<span class="str">"Em 15 meses, percorri de estagiário a Júnior efetivado.</span><br/>
+&nbsp;&nbsp;<span class="str">&nbsp;Os comportamentos GROWTH viraram regime,</span><br/>
+&nbsp;&nbsp;<span class="str">&nbsp;as dimensões PIFE estão em equilíbrio.</span><br/>
+&nbsp;&nbsp;<span class="str">&nbsp;Vim pleitear Pleno não pelo tempo —</span><br/>
+&nbsp;&nbsp;<span class="str">&nbsp;pelas evidências que seguem."</span>
+        </div>
+      </section>
+
+      <!-- GROWTH O · OWNERSHIP -->
+      <section class="section" id="growth">
+        <div class="section-header">
+          <span class="h-num">07</span>
+          <span class="h-title">growth/ownership.md</span>
+          <div class="h-bar"></div>
+          <span class="h-meta">// principle</span>
+        </div>
+
+        <div class="growth">
+          <div class="growth-header">
+            <div class="growth-letter">O</div>
+            <div class="growth-title">
+              Ownership
+              <span class="sub">// cap. O · red book v4</span>
+            </div>
+            <span class="growth-badge">6 proofs</span>
+          </div>
+
+          <div class="growth-cite">
+            "Ownership não é sobre ter competência — é sobre ter coragem de assumir o resultado e colher os frutos como proprietário."
+            <span class="src">// the red book · cap. o</span>
+          </div>
+
+          <div class="proofs">
+            <!-- proof 1 · milestone -->
+            <article class="proof">
+              <div class="proof-head">
+                <span class="proof-num">// 01</span>
+                <span class="proof-tag tag-milestone">milestone</span>
+              </div>
+              <div class="proof-title">workforce.owner</div>
+              <p class="proof-body">
+                Owner desde <strong>set/2025</strong>. Reconhecido oficialmente na <strong>WGO</strong> (What's Going On, monthly de tech) em jun/2026. <span style="color:var(--green)">10 meses contínuos</span>, mesmo cruzando 4 times. Report a stakeholders, decisões técnicas, evolução incremental.
+              </p>
+            </article>
+
+            <!-- proof 2 · person -->
+            <article class="proof">
+              <div class="proof-head">
+                <span class="proof-num">// 02</span>
+                <span class="proof-tag tag-person">person</span>
+              </div>
+              <div class="proof-title">davi_campos.kudos</div>
+              <p class="proof-body" style="font-style:italic; color:var(--text);">
+                "Confio em qualquer entrega sua. Nível de maturidade alto pra sua senioridade. Know-how de V4 imenso."
+              </p>
+              <div style="margin-top:12px; padding-top:8px; border-top:1px dashed var(--border); color:var(--text-mute); font-size:11px;">
+                — davi.campos@v4company.com · dev sênior · crm
+              </div>
+            </article>
+
+            <!-- proof 3 · metric -->
+            <article class="proof">
+              <div class="proof-head">
+                <span class="proof-num">// 03</span>
+                <span class="proof-tag tag-metric">metric</span>
+              </div>
+              <div class="proof-title">prs_merged</div>
+              <div class="proof-bignum">165</div>
+              <div class="proof-bignum-label">// 78% merge rate · 73k lines</div>
+              <p class="proof-body">
+                <strong>+62.372</strong> linhas adicionadas em <strong>15 meses</strong>. Mediana <strong>3.2h</strong> até merge. <span style="color:var(--green)">DORA Elite</span> (top 4% global · lead time &lt;1d).
+              </p>
+            </article>
+
+            <!-- proof 4 · narrative -->
+            <article class="proof">
+              <div class="proof-head">
+                <span class="proof-num">// 04</span>
+                <span class="proof-tag tag-narrative">narrative</span>
+              </div>
+              <div class="proof-title">pos_venda_migration.pivot</div>
+              <p class="proof-body" style="font-style:italic; margin-bottom:8px;">
+                "Carreguei a migração técnica e o discovery do time."
+              </p>
+              <p class="proof-body">
+                Liderança nova chegou com know-how técnico forte mas pouca contagem de V4. Carreguei tasks complexas, contexto histórico, discovery + refinamento técnico. Recebi crédito explícito de teammates pelo papel de pivô.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTNOTE -->
+      <div class="footnote">
+        // preview C2 · terminal / engineering dossier ·
+        <a href="/">voltar à versão Award-winning Showcase (atual)</a> ·
+        <a href="/previews/editorial.html">ver Editorial Cinematográfico</a>
+      </div>
+
+    </main>
+  </div>
+</body>
+</html>

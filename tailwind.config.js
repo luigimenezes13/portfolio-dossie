@@ -1,52 +1,60 @@
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        // Primárias - Paleta vermelha equilibrada
-        primary: '#B91C1C',           // Carmim Profundo
-        'primary-light': '#DC2626',   // Variação clara para hovers
-        'primary-dark': '#7F1D1D',    // Variação escura para textos
-        secondary: '#9F1239',         // Rose Escuro
-        'secondary-light': '#E11D48', // Variação clara
-        'secondary-dark': '#881337',  // Variação escura
-        tertiary: '#E03E2F',          // Vermilion
-        'tertiary-light': '#F1695B',  // Variação clara
-        'tertiary-dark': '#AB2F25',   // Variação escura
-        
-        // Acentos Balanceados
-        accent: {
-          orange: '#ea580c',   // Laranja energético (orange-600)
-          amber: '#f59e0b',    // Âmbar dourado (amber-500)
-          rose: '#e11d48',     // Rosa vibrante (rose-600)
-          gold: '#FFD700',     // Dourado
-          green: '#10B981',    // Verde (emerald-500)
-          purple: '#A855F7',   // Roxo (purple-500)
-        },
-        
-        // Estados e Feedback
-        success: '#10b981',    // Verde (emerald-500) - Sucessos, conclusões
-        warning: '#f59e0b',    // Âmbar (amber-500) - Avisos, pendências
-        error: '#ef4444',      // Vermelho (red-500) - Erros, críticos
-        info: '#ea580c',       // Laranja (orange-600) - Informações
-        
-        // Paleta Monocromática Vermelha PIFE (Pessoal, Intelectual, Físico, Espiritual)
+        // PRIMÁRIAS — Vermelho contido como acento editorial
+        primary: '#e50914',
+        'primary-light': '#ff1f2d',
+        'primary-deep': '#b30710',
+        secondary: '#842A3B',
+        tertiary: '#662222',
+
+        // PIFE — vocabulário Red Book
         pife: {
-          pessoal: '#dc2626',         // red-600 - Vermelho puro intenso
-          intelectual: '#e11d48',     // rose-600 - Rose vibrante
-          fisico: '#be123c',          // rose-700 - Rose profundo
-          espiritual: '#ea580c',      // orange-600 - Laranja quente
-          // Variações para hover e backgrounds
-          pessoalLight: '#f87171',    // red-400
-          intelectualLight: '#fb7185',// rose-400
-          fisicoLight: '#fb923c',     // orange-400
-          espiritualLight: '#fbbf24', // amber-400
+          professional: '#e50914',
+          intelectual: '#d97706',
+          fitness: '#16a34a',
+          emocional: '#8b5cf6',
         },
-        
-        // Cinzas com melhor contraste (Escala Neutra Completa)
+
+        // Acentos editoriais
+        accent: {
+          orange: '#d97706',  // âmbar mais sóbrio
+          amber: '#f59e0b',
+          rose: '#e11d48',
+          purple: '#8b5cf6',
+          green: '#16a34a',
+        },
+
+        // Estados
+        success: '#16a34a',
+        warning: '#d97706',
+        error: '#ef4444',
+
+        // EDITORIAL DARK — paleta warm/tinta sobre fundo escuro quente
+        dossie: {
+          black: '#000000',
+          deeper: '#0a0807',   // mais profundo, ligeiramente warm
+          deep: '#0d0b09',     // fundo padrão
+          default: '#100d0b',  // base preferencial (warm)
+          card: '#161210',     // card sólido (sem blur agressivo)
+          rule: '#3a342e',     // bordas finas (rule)
+          ruleSoft: '#241f1a', // bordas muito sutis
+        },
+
+        // TINTA — texto editorial (off-white quente, não branco puro)
+        ink: {
+          DEFAULT: '#e8dfd2',  // texto principal — branco creme
+          soft: '#a89e8e',     // texto secundário
+          mute: '#6b6359',     // microcopy
+          dim: '#403a33',      // muito mute
+        },
+
+        // Neutros legados (compatibilidade)
         neutral: {
           50: '#FAFAFA',
           100: '#F5F5F5',
@@ -61,66 +69,67 @@ export default {
         },
       },
       fontFamily: {
-        'sans': ['Montserrat', 'sans-serif'],
-        'montserrat': ['Montserrat', 'sans-serif'],
+        // SERIF DOMINANTE editorial
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Instrument Serif', 'Georgia', 'serif'],
+        editorial: ['Instrument Serif', 'Fraunces', 'Georgia', 'serif'],
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        mono: ['JetBrains Mono', 'SF Mono', 'Menlo', 'monospace'],
+        montserrat: ['Montserrat', 'sans-serif'], // legacy
       },
       fontSize: {
-        'display': ['4rem', { lineHeight: '1.1', fontWeight: '900' }],
-        'hero': ['3.5rem', { lineHeight: '1.1', fontWeight: '800' }],
-        'title': ['2.5rem', { lineHeight: '1.2', fontWeight: '700' }],
-        'subtitle': ['1.75rem', { lineHeight: '1.3', fontWeight: '600' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.8', fontWeight: '400' }], // Melhorado para leitura
-        'body': ['1rem', { lineHeight: '1.8', fontWeight: '400' }], // Melhorado para leitura
-        'body-mobile': ['1.0625rem', { lineHeight: '1.8', fontWeight: '400' }], // 17px para mobile
+        // Escalas fluid editoriais (mais contidas que o atual)
+        'fluid-masthead': ['clamp(56px, 9vw, 132px)', { lineHeight: '0.95', letterSpacing: '-0.025em' }],
+        'fluid-hero': ['clamp(64px, 10vw, 160px)', { lineHeight: '0.92', letterSpacing: '-0.03em' }],
+        'fluid-letter': ['clamp(120px, 16vw, 200px)', { lineHeight: '0.85', letterSpacing: '-0.03em' }],
+        'fluid-h1': ['clamp(40px, 5.5vw, 80px)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+        'fluid-h2': ['clamp(32px, 4.2vw, 60px)', { lineHeight: '1.1', letterSpacing: '-0.015em' }],
+        'fluid-h3': ['clamp(22px, 2.4vw, 34px)', { lineHeight: '1.2' }],
+        'fluid-quote': ['clamp(20px, 2.4vw, 32px)', { lineHeight: '1.4' }],
+        'fluid-deck': ['clamp(18px, 1.9vw, 24px)', { lineHeight: '1.45' }],
+        'fluid-body': ['clamp(15px, 1.1vw, 17px)', { lineHeight: '1.7' }],
+        'fluid-small': ['clamp(12px, 0.9vw, 14px)', { lineHeight: '1.55' }],
+
+        // Legados mantidos
+        display: ['4rem', { lineHeight: '1.1', fontWeight: '900' }],
+        hero: ['3.5rem', { lineHeight: '1.1', fontWeight: '800' }],
+        title: ['2.5rem', { lineHeight: '1.2', fontWeight: '700' }],
+        subtitle: ['1.75rem', { lineHeight: '1.3', fontWeight: '600' }],
+      },
+      letterSpacing: {
+        'widest-2': '0.22em',
+        'widest-3': '0.3em',
       },
       spacing: {
-        '18': '4.5rem',
-        '22': '5.5rem',
-        '26': '6.5rem',
-        '30': '7.5rem',
+        18: '4.5rem',
+        22: '5.5rem',
+        26: '6.5rem',
+        30: '7.5rem',
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-out',
-        'fade-in-up': 'fadeInUp 0.8s ease-out',
-        'fade-in-down': 'fadeInDown 0.8s ease-out',
-        'fade-in-left': 'fadeInLeft 0.8s ease-out',
-        'fade-in-right': 'fadeInRight 0.8s ease-out',
-        'scale-in': 'scaleIn 0.5s ease-out',
-        'slide-up': 'slideUp 0.6s ease-out',
-        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+        'fade-in': 'fadeIn 0.8s ease-out',
+        'fade-in-up': 'fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1)',
+        'fade-in-down': 'fadeInDown 0.9s cubic-bezier(0.16, 1, 0.3, 1)',
+        'fade-in-left': 'fadeInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1)',
+        'fade-in-right': 'fadeInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1)',
+        'scale-in': 'scaleIn 0.6s ease-out',
+        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+        'scroll-cue': 'scrollCue 2s ease-in-out infinite',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+        fadeInDown: { '0%': { opacity: '0', transform: 'translateY(-30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+        fadeInLeft: { '0%': { opacity: '0', transform: 'translateX(-30px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+        fadeInRight: { '0%': { opacity: '0', transform: 'translateX(30px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+        scaleIn: { '0%': { opacity: '0', transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+        pulseSoft: {
+          '0%, 100%': { opacity: '0.6' },
+          '50%': { opacity: '1' },
         },
-        fadeInUp: {
-          '0%': { opacity: '0', transform: 'translateY(30px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeInDown: {
-          '0%': { opacity: '0', transform: 'translateY(-30px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(-30px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        fadeInRight: {
-          '0%': { opacity: '0', transform: 'translateX(30px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        scaleIn: {
-          '0%': { opacity: '0', transform: 'scale(0.9)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(100%)' },
-          '100%': { transform: 'translateY(0)' },
-        },
-        pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(37, 99, 235, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(37, 99, 235, 0.6)' },
+        scrollCue: {
+          '0%, 100%': { transform: 'translateY(0)', opacity: '0.4' },
+          '50%': { transform: 'translateY(8px)', opacity: '0.8' },
         },
       },
     },
