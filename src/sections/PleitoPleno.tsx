@@ -187,7 +187,7 @@ export function PleitoPleno() {
             <dl className="space-y-3 font-sans text-[13px]">
               <MetaItem label="De" value="Júnior · SLU" />
               <MetaItem label="Para" value="Pleno · SLU" highlight />
-              <MetaItem label="Pretensão" value="R$ 7.500" highlight />
+              <MetaItem label="Pretensão" value="R$ 7.800" highlight />
               <MetaItem label="Janela" value="AVD jul/26" />
               <MetaItem label="LT (lifetime)" value={DOSSIE.colaborador.tempoV4} />
               <MetaItem label="Tempo Júnior" value={DOSSIE.colaborador.tempoJunior} />

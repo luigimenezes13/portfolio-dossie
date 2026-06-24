@@ -13,6 +13,7 @@ import { Assinatura } from './sections/Assinatura';
 import { DossieProvider, useDossieMeta } from './contexts/DossieContext';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { EditProvider, useEdit } from './contexts/EditContext';
+import { MetricsProvider } from './contexts/MetricsContext';
 import { AuthBadge } from './components/AuthBadge';
 
 function AppContent() {
@@ -70,7 +71,9 @@ function App() {
     <DossieProvider>
       <AuthProvider>
         <EditProvider>
-          <AppContent />
+          <MetricsProvider>
+            <AppContent />
+          </MetricsProvider>
         </EditProvider>
       </AuthProvider>
     </DossieProvider>

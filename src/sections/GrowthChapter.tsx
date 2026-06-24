@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap, prefersReducedMotion } from '../lib/motion';
 import type { Dossie } from '../content/dossie';
 import { renderBoldRed } from '../lib/markdown-bold';
+import { useMetrics } from '../hooks/useMetrics';
 
 type Growth = Dossie['growths'][number];
 type Prova = Growth['provas'][number];
@@ -24,6 +25,51 @@ const PIFE_CLASS: Record<string, string> = {
   E: 'chip-pife-e',
 };
 const CHAMP_ORDER = ['C', 'H', 'A', 'M', 'P'];
+
+const LIVE_NUMBER = (x: number) => x.toLocaleString('pt-BR');
+
+/** Mapa de tokens {chave}→valor formatado a partir das métricas live do GitHub. */
+function buildLiveTokens(metrics: ReturnType<typeof useMetrics>): Record<string, string> {
+  const gh = metrics.data?.github;
+  const pr = metrics.data?.prMaturity;
+  if (!gh || !pr) return {};
+  const cons = metrics.data?.consistencia;
+  const contrib = metrics.data?.contributions;
+  return {
+    prsMerged: LIVE_NUMBER(gh.prsMerged),
+    prsTotal: LIVE_NUMBER(gh.prsTotal),
+    mergeRate: String(gh.mergeRate),
+    linhasAdicionadas: LIVE_NUMBER(gh.linhasAdicionadas),
+    linhasRemovidas: LIVE_NUMBER(gh.linhasRemovidas),
+    linhasMovimentadas: LIVE_NUMBER(gh.linhasMovimentadas),
+    codeReviews: LIVE_NUMBER(gh.codeReviews),
+    reposTouched: LIVE_NUMBER(gh.reposTouched),
+    medianaHoras: pr.medianaHoras.toFixed(1).replace('.', ','),
+    pctMenor24h: String(pr.pctMenor24h),
+    pctMenor72h: String(pr.pctMenor72h),
+    medianaLinhas: LIVE_NUMBER(pr.medianaLinhas),
+    semanasAtivas: cons ? String(cons.semanasAtivas) : '—',
+    maiorStreak: cons ? String(cons.maiorStreakSemanas) : '—',
+    contribuicoes: contrib ? LIVE_NUMBER(contrib.totalUltimoAno) : '—',
+    commits: contrib ? LIVE_NUMBER(contrib.commits) : '—',
+  };
+}
+
+/** Interpola {tokens} nos campos textuais da prova (no-op se não houver token). */
+function interpolateProva(prova: Prova, ip: (t?: string) => string | undefined): Prova {
+  const out: Prova = { ...prova };
+  out.titulo = ip(prova.titulo) ?? prova.titulo;
+  if (prova.corpo != null) out.corpo = ip(prova.corpo) ?? prova.corpo;
+  if (prova.anchor != null) out.anchor = ip(prova.anchor);
+  if (prova.metric) {
+    out.metric = {
+      ...prova.metric,
+      value: ip(prova.metric.value) ?? prova.metric.value,
+      context: ip(prova.metric.context) ?? prova.metric.context,
+    };
+  }
+  return out;
+}
 
 export function GrowthChapter({ index, growth }: GrowthChapterProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -51,6 +97,12 @@ export function GrowthChapter({ index, growth }: GrowthChapterProps) {
   }, []);
 
   const chapterNum = String(index).padStart(2, '0');
+
+  const metrics = useMetrics();
+  const tokens = buildLiveTokens(metrics);
+  const fallbackChar = metrics.loading ? '…' : '—';
+  const ip = (t?: string) =>
+    t == null ? t : t.replace(/\{(\w+)\}/g, (_, k) => tokens[k] ?? fallbackChar);
 
   return (
     <section ref={sectionRef} className="relative bg-dossie-default text-ink py-24 lg:py-32 rule-bottom border-dossie-rule">
@@ -98,7 +150,9 @@ export function GrowthChapter({ index, growth }: GrowthChapterProps) {
         {/* Grid de provas */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
           {growth.provas.map((prova, i) => (
-            <ProvaCard key={i} prova={prova} index={i + 1} />
+            <div key={i} className={prova.featured ? 'md:col-span-2' : undefined}>
+              <ProvaCard prova={interpolateProva(prova, ip)} index={i + 1} />
+            </div>
           ))}
         </div>
 

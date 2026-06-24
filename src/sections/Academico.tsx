@@ -20,7 +20,7 @@ export function Academico() {
           Engenharia da Computação · <span className="red">PUC-Campinas</span>
         </h2>
         <p className="text-deck max-w-2xl mb-16 text-ink/65">
-          Penúltimo semestre → último → mestrado UNICAMP. Forma-se enquanto contribui em produção.
+          Último semestre · colação dez/2026 → mestrado UNICAMP. Forma-se enquanto entrega em produção.
         </p>
 
         {/* Grid 12 col · 3 cards + sidebar */}
@@ -71,7 +71,7 @@ export function Academico() {
           <aside className="col-span-12 lg:col-span-3 lg:pl-8 lg:border-l border-dossie-rule">
             <div className="text-kicker mb-4 text-[10px]">FICHA ACADÊMICA</div>
             <dl className="space-y-3 font-sans text-[13px]">
-              <MetaItem label="Graduação" value="9º semestre" />
+              <MetaItem label="Graduação" value="último · dez/26" />
               <MetaItem label="IC" value="2024" />
               <MetaItem label="TCC" value="nível tese" highlight />
               <MetaItem label="Mestrado" value="UNICAMP IC" highlight />

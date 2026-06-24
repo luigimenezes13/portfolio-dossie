@@ -15,6 +15,7 @@ export type Prova = {
   corpo: string;
   pife: string[];
   champ: string[];
+  featured?: boolean;
   metric?: { value: string; unit: string; context: string };
   quote?: { texto: string; autor: string; cargo?: string };
   avatar?: { iniciais: string; nome: string; url?: string };
@@ -123,15 +124,16 @@ const growths: Growth[] = [
       provas: [
         {
           type: 'milestone',
+          featured: true,
           milestone: {
             label: 'WORKFORCE',
             date: 'set/2025 → presente',
             meta: '10 meses contínuos · 4 times cruzados',
             oficial: true,
           },
-          titulo: 'Owner do Workforce desde set/2025',
+          titulo: 'Referência técnica e de produto — além do cargo de Júnior',
           corpo:
-            'Assumi por necessidade quando o time precisava de continuidade técnica. Em junho/2026, fui reconhecido oficialmente como responsável pelo produto na WGO (What\'s Going On, monthly de tech). Report a stakeholders, decisões técnicas, evolução incremental.',
+            'Cadeira de Júnior, mas na prática **referência técnica e de produto**. Exerci a liderança técnica do produto sem que a função exigisse — defini a **arquitetura-alvo** (para onde o Workforce ia), a autoria das decisões de **integração e Event-Driven** e dos **padrões que o time adotou** como referência. Ajudei a guiar a migração de **3 repos** (backend e frontend do Workforce + contracts) sob esse desenho — o Workforce, praticamente sozinho. Reconhecido como responsável pelo produto na WGO de jun/26. **Fiz mais do que me foi proposto.**',
           pife: ['P', 'I'],
           champ: ['H', 'P'],
         },
@@ -192,7 +194,7 @@ const growths: Growth[] = [
         },
       ],
       encerramento:
-        'Dois produtos sob owner. Uma migração pivotada. Uma validação de sênior. Pleno demonstra ownership de produto, não de feature.',
+        'Liderança técnica de um produto — sem o cargo pedir. Dois produtos sob owner. Arquitetura como **autoria**. Uma validação de sênior. **Pleno é o piso — já opero a direção técnica acima dele.**',
     },
     {
       letra: 'W',
@@ -294,6 +296,20 @@ const growths: Growth[] = [
           pife: ['I'],
           champ: [],
         },
+        {
+          type: 'milestone',
+          milestone: {
+            label: 'GRADUAÇÃO',
+            date: 'colação dez/2026',
+            meta: 'Eng. da Computação · PUC-Campinas · último semestre',
+            oficial: false,
+          },
+          titulo: 'Formando-se esse ano — sob carga dupla',
+          corpo:
+            'Último semestre de Engenharia da Computação, colação em dezembro/2026. Fechei a graduação entregando nível Pleno em paralelo, não depois. **Disciplina simultânea, não trade-off.** O diploma fecha a **única lacuna de papel** entre o que já entrego e o nível que pleiteio.',
+          pife: ['I', 'F', 'E'],
+          champ: [],
+        },
       ],
       encerramento: 'Quem desafia verdade estabelecida com método não improvisa decisão técnica.',
     },
@@ -305,27 +321,46 @@ const growths: Growth[] = [
         'Padrão alto é fácil de declarar e difícil de manter. Os números mostram que aqui ele virou regime, não pico.',
       provas: [
         {
-          type: 'metric',
-          metric: { value: '165', unit: 'PRs merged', context: '78% merge rate · 73k linhas movimentadas' },
-          titulo: '165 PRs merged · 78% merge rate',
+          type: 'milestone',
+          milestone: {
+            label: 'STAKEHOLDER REPORT C-LEVEL',
+            date: 'contínuo · sem intermediação',
+            meta: '3+ áreas · compliance · people · operação',
+            oficial: true,
+          },
+          stakeholders: [
+            { nome: 'Brenda Quadros', area: 'Compliance', iniciais: 'BQ', url: brendaQuadrosAvatar },
+            { nome: 'Jonathan Baumgarten', area: 'People', iniciais: 'JB', url: jonathanBaumgartenAvatar },
+            { nome: 'Denise Santos', area: 'Operação', iniciais: 'DS', url: deniseSantosAvatar },
+          ],
+          titulo: 'Report direto a stakeholders C-level',
           corpo:
-            'Em 15 meses na V4, 165 PRs mergeados de 212 abertos. +62.372 linhas adicionadas, -10.730 removidas, distribuídas em mais de 10 repositórios.',
+            'Como Owner do Workforce e Co-owner do LMS, mantenho report direto a stakeholders de áreas-chave: **Brenda Quadros** (compliance), **Jonathan Baumgarten** (people), **Denise Santos** (operação), entre outros. Decisões técnicas alinham vertical sem camada intermediária. Pleno opera nessa cadência.',
+          pife: ['P', 'I'],
+          champ: ['H'],
+        },
+        {
+          type: 'metric',
+          metric: { value: '{prsMerged}', unit: 'PRs merged', context: '{mergeRate}% merge rate · {linhasMovimentadas} linhas movimentadas' },
+          titulo: '{prsMerged} PRs merged · {mergeRate}% merge rate',
+          corpo:
+            'Em 15 meses na V4, {prsMerged} PRs mergeados de {prsTotal} abertos. +{linhasAdicionadas} linhas adicionadas, -{linhasRemovidas} removidas, distribuídas em mais de 10 repositórios.',
           pife: ['P'],
           champ: ['H'],
         },
         {
           type: 'metric',
-          metric: { value: '3,2h', unit: 'mediana', context: 'time-to-merge · DORA Elite' },
+          metric: { value: '{medianaHoras}h', unit: 'mediana', context: 'time-to-merge · DORA Elite' },
           titulo: 'PR Maturity · DORA Elite',
           corpo:
-            '70% dos PRs mergeados em <24h. 86% em <72h. Mediana de tamanho por PR: 142 linhas. Benchmark DORA Elite (top 4% global): lead time < 1 dia.',
+            '{pctMenor24h}% dos PRs mergeados em <24h. {pctMenor72h}% em <72h. Mediana de tamanho por PR: {medianaLinhas} linhas. Benchmark DORA Elite (top 4% global): lead time < 1 dia.',
           pife: ['I'],
           champ: [],
         },
         {
           type: 'metric',
-          metric: { value: '273', unit: 'code reviews', context: 'dados a outros em times além do meu' },
-          titulo: '273 code reviews dados a outros',
+          metric: { value: '{codeReviews}', unit: 'code reviews', context: 'dados a outros em times além do meu' },
+          titulo: '{codeReviews} code reviews dados a outros',
           corpo:
             'Padrão não é só na entrega — é também na revisão. O time inteiro mergeia melhor quando alguém olha de fora. Frugal Execution coletiva.',
           pife: ['E', 'P'],
@@ -348,25 +383,6 @@ const growths: Growth[] = [
             'Métrica meta do treinamento Knowledge Pills: tempo até primeira PR. Para o Zorzo, pouco mais de um mês. Eficiência do método mensurada em comportamento observável de outra pessoa.',
           pife: ['I', 'P'],
           champ: ['P'],
-        },
-        {
-          type: 'milestone',
-          milestone: {
-            label: 'STAKEHOLDER REPORT C-LEVEL',
-            date: 'contínuo · sem intermediação',
-            meta: '3+ áreas · compliance · people · operação',
-            oficial: true,
-          },
-          stakeholders: [
-            { nome: 'Brenda Quadros', area: 'Compliance', iniciais: 'BQ', url: brendaQuadrosAvatar },
-            { nome: 'Jonathan Baumgarten', area: 'People', iniciais: 'JB', url: jonathanBaumgartenAvatar },
-            { nome: 'Denise Santos', area: 'Operação', iniciais: 'DS', url: deniseSantosAvatar },
-          ],
-          titulo: 'Report direto a stakeholders C-level',
-          corpo:
-            'Como Owner do Workforce e Co-owner do LMS, mantenho report direto a stakeholders de áreas-chave: **Brenda Quadros** (compliance), **Jonathan Baumgarten** (people), **Denise Santos** (operação), entre outros. Decisões técnicas alinham vertical sem camada intermediária. Pleno opera nessa cadência.',
-          pife: ['P', 'I'],
-          champ: ['H'],
         },
       ],
       encerramento: 'Excelência sustentável é regime, não pico. Os números acima são meses, não dias. Pleno opera nesse regime.',
@@ -394,7 +410,8 @@ export const DOSSIE = {
     github: 'luigimenezes13',
     curso: {
       nome: 'Engenharia da Computação',
-      semestre: 'penúltimo semestre',
+      semestre: 'último semestre',
+      colacao: 'dezembro/2026',
       faculdade: 'PUC-Campinas',
     },
   },
@@ -407,7 +424,7 @@ export const DOSSIE = {
     citacaoFonte: 'THE RED BOOK · V4 COMPANY',
     tese: 'PIFE é o que quero. GROWTH é como entrego. Este dossiê é a prova.',
     pleito:
-      'Em 15 meses, percorri de estagiário a Júnior efetivado. Os comportamentos GROWTH viraram regime, as dimensões PIFE estão em equilíbrio. Vim pleitear Pleno não pelo tempo — pelas evidências que seguem.',
+      'Em 15 meses, percorri de estagiário a Júnior efetivado. Os comportamentos GROWTH viraram regime, as dimensões PIFE estão em equilíbrio. Vim pleitear Pleno não pelo tempo — pelas evidências que seguem. Me formo engenheiro em dez/26 — o nível encontra o diploma no mesmo semestre.',
   },
 
   timeline: [
@@ -417,7 +434,7 @@ export const DOSSIE = {
     { time: 'Financeiro (1ª)', periodo: 'nov/25 → fev/26', status: 'Júnior ★', micro: 'Efetivado nov/25. Sustentei dois fluxos — Financeiro e contexto único do Pós-Venda.', marco: true },
     { time: 'CRM', periodo: 'fev/26 → abr/26', status: 'Júnior', micro: 'Maior tempo. Onde Davi Campos disse "confio em qualquer entrega sua".' },
     { time: 'Pós-Venda', periodo: 'abr/26 → jun/26', status: 'Júnior', micro: 'Knowledge Pills com estagiários. Pivô da migração.' },
-    { time: 'Financeiro (atual)', periodo: 'jun/26 → presente', status: 'Júnior', micro: 'Service Cart. Entrega em tempo recorde.' },
+    { time: 'Financeiro (atual)', periodo: 'jun/26 → presente', status: 'Júnior', micro: 'Service Cart. Entrega em tempo recorde. Último semestre — colação dez/26.' },
   ],
 
   numeros: {
@@ -434,13 +451,6 @@ export const DOSSIE = {
       pctMenor72h: 86,
       medianaLinhas: 142,
       benchDORA: 'DORA Elite (top 4%) bench: lead time < 1 dia',
-    },
-    linear: {
-      totalIssues: 76,
-      criticidade: 26,
-      timesAtendidos: 4,
-      criticidadePct: 34,
-      notaJira: 'CRM em Jira, fora desta contagem',
     },
   },
 
@@ -477,9 +487,9 @@ export const DOSSIE = {
         chips: ['I', 'T'],
       },
       {
-        titulo: 'Graduação · PUC-Campinas',
+        titulo: 'Graduação · colação dez/2026',
         corpo:
-          'Engenharia da Computação. Penúltimo semestre — entrando no último. Forma-se enquanto contribui em produção: disciplina simultânea, não trade-off.',
+          'Engenharia da Computação no último semestre — colação em dezembro/2026. Formo-me engenheiro enquanto entrego nível Pleno em produção: as duas curvas correm juntas, não em sequência. **Disciplina simultânea, não trade-off.**',
         chips: ['I', 'F', 'E'],
       },
     ],
@@ -498,7 +508,7 @@ export const DOSSIE = {
       horizonte: '1 ANO',
       profissional: [
         'Pleno consolidado na V4 Company',
-        'Forma-se em Engenharia da Computação · PUC-Campinas',
+        'Formado em Engenharia da Computação · PUC-Campinas (dez/2026)',
         'Inicia mestrado UNICAMP · Eng. de Software + Visão Computacional',
       ],
       pessoal: ['Equilíbrio acadêmico × produto', 'PIFE em rotina sustentável'],
@@ -532,13 +542,14 @@ export const DOSSIE = {
       'Efetivado em nov/2025. 7 meses como Júnior até a AVD.',
       '15 meses totais na V4 Company.',
       'Owner ativo em 2 produtos: Workforce (owner) e LMS (co-owner com Matheus Almeida).',
+      'Último semestre de Engenharia da Computação · colação dez/2026.',
     ],
     porQuePleno: [
       { letra: 'G', texto: '7 times rotacionados, 6 estagiários treinados, 1 PR em <30 dias.' },
       { letra: 'R', texto: 'Feedback ao líder com maturidade, sob pressão, sem cortar entrega.' },
-      { letra: 'O', texto: 'Workforce sustentado por 10 meses cruzando 4 times. WGO de jun/26 oficializou.' },
+      { letra: 'O', texto: 'Referência técnica e de produto no Workforce — defini a arquitetura-alvo. 10 meses cruzando 4 times. WGO de jun/26 oficializou a responsabilidade pelo produto.' },
       { letra: 'W', texto: 'Service Cart entregue na call (FIN-647 · PR #3182).' },
-      { letra: 'T', texto: 'TCC nível mestrado. Mestrado UNICAMP IC em planejamento.' },
+      { letra: 'T', texto: 'TCC nível mestrado. Formando-se em dez/26. Mestrado UNICAMP IC em planejamento.' },
       { letra: 'H', texto: '165 PRs · mediana time-to-merge 3,2h · DORA Elite.' },
     ],
     salario: {
@@ -553,6 +564,7 @@ export const DOSSIE = {
       narrativa: [
         'Pleiteio R$ 7.500 — abaixo da mediana de Campinas (R$ 7.967), abaixo do piso Robert Half 2026 (R$ 9.550).',
         'Não é o que ofertariam pra um Pleno em outro lugar. É o reconhecimento justo do que já entrego como Júnior.',
+        'Sendo Júnior, virei referência técnica e de produto e decido arquitetura. Pleno é piso, não teto.',
         'Pleito de razoabilidade, não de retenção.',
       ],
     },

@@ -1,19 +1,21 @@
 import { useEffect, useRef } from 'react';
 import { gsap, prefersReducedMotion } from '../lib/motion';
-import { useDossie } from '../contexts/DossieContext';
 import { useMetrics } from '../hooks/useMetrics';
 
 export function Numbers() {
-  const DOSSIE = useDossie();
   const metrics = useMetrics();
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Métricas SÓ da API do GitHub — sem fallback estático.
+  const gh = metrics.data?.github ?? null;
+  const pr = metrics.data?.prMaturity ?? null;
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Counter animation
+      // Counter animation — alvos capturados quando os dados live chegam
       const counters = sectionRef.current!.querySelectorAll<HTMLElement>('[data-counter]');
       counters.forEach((el) => {
         const target = parseFloat(el.dataset.counter ?? '0');
@@ -44,12 +46,7 @@ export function Numbers() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
-
-  // Prioriza métricas frescas do endpoint; cai pro snapshot estático
-  const gh = metrics.data?.github ?? DOSSIE.numeros.github;
-  const pr = metrics.data?.prMaturity ?? DOSSIE.numeros.prMaturity;
-  const lin = metrics.data?.linear ?? DOSSIE.numeros.linear;
+  }, [gh, pr]);
 
   return (
     <section ref={sectionRef} className="relative bg-dossie-default text-ink py-24 lg:py-32 rule-bottom border-dossie-rule">
@@ -70,7 +67,7 @@ export function Numbers() {
           )}
           {metrics.degraded && (
             <span className="text-amber-400/70 normal-case font-sans text-[10px] tracking-normal">
-              snapshot estático (live indisponível)
+              ao vivo indisponível · verifique o token do GitHub
             </span>
           )}
         </div>
@@ -82,46 +79,49 @@ export function Numbers() {
         </p>
 
         <div className="space-y-20">
-          {/* PAINEL 1 — GitHub */}
-          <Panel
-            num="01"
-            label="GITHUB · ENTREGA"
-            metrics={[
-              { value: gh.prsMerged, label: 'PRs mergeados' },
-              { value: gh.linhasAdicionadas, label: 'linhas adicionadas' },
-              { value: gh.codeReviews, label: 'code reviews dados' },
-            ]}
-            note={`${gh.mergeRate}% merge rate · ${gh.linhasMovimentadas.toLocaleString('pt-BR')} linhas movimentadas`}
-          />
+          {gh && pr ? (
+            <>
+              {/* PAINEL 1 — GitHub */}
+              <Panel
+                num="01"
+                label="GITHUB · ENTREGA"
+                metrics={[
+                  { value: gh.prsMerged, label: 'PRs mergeados' },
+                  { value: gh.linhasMovimentadas, label: 'linhas movimentadas' },
+                  { value: gh.codeReviews, label: 'code reviews dados' },
+                ]}
+                note={`${gh.mergeRate}% merge rate · ${gh.reposTouched} repos · +${gh.linhasAdicionadas.toLocaleString('pt-BR')} / −${gh.linhasRemovidas.toLocaleString('pt-BR')} linhas`}
+              />
 
-          {/* PAINEL 2 — PR Maturity */}
-          <Panel
-            num="02"
-            label="PR MATURITY · QUALIDADE DE FLUXO"
-            metrics={[
-              { value: pr.medianaHoras, label: 'mediana time-to-merge', suffix: 'h', decimal: true },
-              { value: pr.pctMenor24h, label: '<24h', suffix: '%' },
-              { value: pr.pctMenor72h, label: '<72h', suffix: '%' },
-            ]}
-            note={`Mediana ${pr.medianaLinhas} linhas/PR. ${pr.benchDORA} · você está em ${pr.medianaHoras}h.`}
-          />
+              {/* PAINEL 2 — PR Maturity */}
+              <Panel
+                num="02"
+                label="PR MATURITY · QUALIDADE DE FLUXO"
+                metrics={[
+                  { value: pr.medianaHoras, label: 'mediana time-to-merge', suffix: 'h', decimal: true },
+                  { value: pr.pctMenor24h, label: '<24h', suffix: '%' },
+                  { value: pr.pctMenor72h, label: '<72h', suffix: '%' },
+                ]}
+                note={`Mediana ${pr.medianaLinhas} linhas/PR. ${pr.benchDORA} · você está em ${pr.medianaHoras}h.`}
+              />
+            </>
+          ) : (
+            <div className="numbers-panel border border-dashed border-dossie-rule rounded p-10 text-center text-byline text-ink/40">
+              {metrics.loading
+                ? 'Calculando métricas ao vivo do GitHub…'
+                : 'Métricas ao vivo indisponíveis — verifique o token do GitHub.'}
+            </div>
+          )}
 
-          {/* PAINEL 3 — Linear */}
-          <Panel
-            num="03"
-            label="LINEAR · CRITICIDADE"
-            metrics={[
-              { value: lin.totalIssues, label: 'issues' },
-              { value: lin.criticidade, label: 'P0/P1 · Urgent + High' },
-            ]}
-            note={`${lin.timesAtendidos} times · ${lin.criticidadePct}% de criticidade · ${lin.notaJira}`}
-          />
-
-          {/* PAINEL 4 — Consistência (Throughput + Size Discipline) */}
+          {/* PAINEL 3 — Consistência (Throughput + Size Discipline) */}
           <ConsistenciaPanel
             throughput={metrics.data?.consistencia?.throughputMensal ?? []}
             sizeDiscipline={metrics.data?.github?.sizeDiscipline ?? null}
-            totalPRs={gh.prsMerged}
+            totalPRs={gh?.prsMerged ?? 0}
+            semanasAtivas={metrics.data?.consistencia?.semanasAtivas ?? null}
+            maiorStreak={metrics.data?.consistencia?.maiorStreakSemanas ?? null}
+            contribAno={metrics.data?.contributions?.totalUltimoAno ?? null}
+            commits={metrics.data?.contributions?.commits ?? null}
           />
         </div>
 
@@ -145,7 +145,7 @@ export function Numbers() {
 interface PanelProps {
   num: string;
   label: string;
-  metrics: Array<{ value: number; label: string; suffix?: string; decimal?: boolean }>;
+  metrics: Array<{ value: number; label: string; suffix?: string; decimal?: boolean; color?: string }>;
   note: string;
 }
 
@@ -159,17 +159,17 @@ function Panel({ num, label, metrics, note }: PanelProps) {
       </div>
 
       {/* Métricas — counter sobre fundo */}
-      <div className={`grid gap-8 lg:gap-12 mb-6 ${metrics.length === 2 ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl' : 'grid-cols-1 sm:grid-cols-3'}`}>
+      <div className={`grid gap-8 lg:gap-12 mb-6 ${metrics.length === 2 ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl' : metrics.length >= 4 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-1 sm:grid-cols-3'}`}>
         {metrics.map((m, i) => (
           <div key={i}>
             <div
               className="big-number"
-              style={{ fontSize: 'clamp(64px, 9vw, 128px)' }}
+              style={{ fontSize: 'clamp(64px, 9vw, 128px)', ...(m.color ? { color: m.color } : {}) }}
               data-counter={m.value}
               data-suffix={m.suffix ?? ''}
               data-decimal={m.decimal ? '1' : '0'}
             >
-              0{m.suffix ?? ''}
+              {(m.decimal ? m.value.toFixed(1) : Math.round(m.value).toLocaleString('pt-BR'))}{m.suffix ?? ''}
             </div>
             <div className="text-byline mt-3 normal-case tracking-normal text-ink/55 text-[12px]">
               {m.label}
@@ -193,9 +193,24 @@ interface ConsistenciaPanelProps {
   throughput: Array<{ month: string; prs: number }>;
   sizeDiscipline: { below100: number; mid: number; above500: number } | null;
   totalPRs: number;
+  semanasAtivas: number | null;
+  maiorStreak: number | null;
+  contribAno: number | null;
+  commits: number | null;
 }
 
-function ConsistenciaPanel({ throughput, sizeDiscipline, totalPRs }: ConsistenciaPanelProps) {
+function StatMini({ value, label }: { value: number | null; label: string }) {
+  return (
+    <div>
+      <div className="font-serif font-medium text-3xl text-ink leading-none">
+        {value != null ? value.toLocaleString('pt-BR') : '—'}
+      </div>
+      <div className="text-byline mt-2 normal-case tracking-normal text-ink/50 text-[11px]">{label}</div>
+    </div>
+  );
+}
+
+function ConsistenciaPanel({ throughput, sizeDiscipline, totalPRs, semanasAtivas, maiorStreak, contribAno, commits }: ConsistenciaPanelProps) {
   const hasThroughput = throughput.length > 0;
   const maxPrs = hasThroughput ? Math.max(...throughput.map((t) => t.prs)) : 0;
   const totalThroughput = throughput.reduce((s, t) => s + t.prs, 0);
@@ -214,9 +229,18 @@ function ConsistenciaPanel({ throughput, sizeDiscipline, totalPRs }: Consistenci
   return (
     <div className="numbers-panel">
       <div className="flex items-center gap-4 mb-8 pb-3 border-b border-dossie-rule">
-        <span className="editorial-number text-2xl font-medium">№ 04</span>
+        <span className="editorial-number text-2xl font-medium">№ 03</span>
         <span className="text-kicker">CONSISTÊNCIA · O FIO CONDUTOR</span>
       </div>
+
+      {(maiorStreak != null || contribAno != null) && (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10">
+          <StatMini value={maiorStreak} label="maior streak · semanas seguidas" />
+          <StatMini value={semanasAtivas} label="semanas ativas com PR" />
+          <StatMini value={contribAno} label="contribuições · 12 meses" />
+          <StatMini value={commits} label="commits · 12 meses" />
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-6">
         {/* Throughput sparkline */}
